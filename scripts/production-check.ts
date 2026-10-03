@@ -1,7 +1,8 @@
 /**
  * Read-only production checks before the P0 + B3 merge gate closes.
  *
- *   node scripts/production-check.ts https://<backend-host>
+ *   NODE_USE_ENV_PROXY=1 node scripts/production-check.ts https://<backend-host>
+ *   (NODE_USE_ENV_PROXY is only needed behind an HTTP proxy, e.g. the Claude cloud sandbox)
  *
  * 1. Taxonomy version label served by the production DB.
  * 2. API ↔ snapshot parity for the 25 careers (slug, title, cluster, months, pathway).
@@ -81,7 +82,7 @@ const paths = Object.keys((openapi.body as { paths?: object }).paths ?? {});
 // The old /compare route was shadowed by /{career_slug}; only its absence from the schema proves the new code.
 record("4a. /compare endpoint removed", openapi.status === 200 && !paths.includes("/api/v1/career-intelligence/compare"), "");
 record("4c. v1 PDF endpoint deployed", paths.includes("/api/v1/deep-diagnostic/{session_id}/pdf"), openapi.status === 200 ? "" : `openapi HTTP ${openapi.status}`);
-record("4d. no salary in public taxonomy", !JSON.stringify(full.body).includes("salary"), "");
+record("4d. no salary in public taxonomy", full.status === 200 && !JSON.stringify(full.body).includes("salary"), full.status === 200 ? "" : `HTTP ${full.status}`);
 
 for (const r of results) console.log(`${r.ok ? "PASS" : "FAIL"}  ${r.check}${r.detail ? `  — ${r.detail}` : ""}`);
 process.exit(results.every((r) => r.ok) ? 0 : 1);
