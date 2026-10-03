@@ -23,14 +23,14 @@ export function FAQ({ items, source }: FAQProps) {
             if (event.currentTarget.open) track("faq_expand", { source, item: item.id });
           }}
         >
-          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-ink md:px-6 [&::-webkit-details-marker]:hidden">
+          <summary className="flex min-h-14 cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 font-semibold text-fg md:px-6 [&::-webkit-details-marker]:hidden">
             <span>{item.question}</span>
             <ChevronDown
               aria-hidden="true"
-              className="size-5 shrink-0 text-ink-3 transition-transform duration-200 group-open:rotate-180"
+              className="size-5 shrink-0 text-fg-muted transition-transform duration-200 group-open:rotate-180 group-open:text-primary"
             />
           </summary>
-          <p className="px-5 pb-5 text-ink-2 md:px-6">{item.answer}</p>
+          <p className="px-5 pb-5 text-fg-muted md:px-6">{item.answer}</p>
         </details>
       ))}
     </div>

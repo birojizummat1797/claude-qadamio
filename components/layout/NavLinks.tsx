@@ -35,7 +35,7 @@ export function NavLinks({ items, orientation = "horizontal", onNavigate }: NavL
                 vertical
                   ? "min-h-12 border-b border-line px-1 text-lg font-medium"
                   : "min-h-10 px-3 text-[15px] font-medium",
-                active ? "text-green" : "text-ink-2 hover:text-ink",
+                active ? "text-primary" : "text-fg-muted hover:text-fg",
               )}
             >
               {item.label}

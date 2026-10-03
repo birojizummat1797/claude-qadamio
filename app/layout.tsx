@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#fafaf7",
+  themeColor: "#f7f5f0",
   width: "device-width",
   initialScale: 1,
 };
@@ -50,7 +50,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"
-          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-[var(--radius-sm)] focus:bg-ink focus:px-4 focus:py-3 focus:text-paper"
+          className="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:rounded-[var(--radius-sm)] focus:bg-midnight focus:px-4 focus:py-3 focus:text-on-midnight"
         >
           {a11yLabels.skipToContent}
         </a>

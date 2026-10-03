@@ -20,9 +20,9 @@ export function hasSocialProof(data: SocialProofData): boolean {
 export function TestimonialCard({ quote, author, context }: Testimonial) {
   return (
     <figure className="h-full rounded-[var(--radius-lg)] border border-line bg-surface p-6">
-      <blockquote className="text-ink">“{quote}”</blockquote>
-      <figcaption className="mt-4 text-sm text-ink-2">
-        <span className="font-semibold text-ink">{author}</span>
+      <blockquote className="text-fg">“{quote}”</blockquote>
+      <figcaption className="mt-4 text-sm text-fg-muted">
+        <span className="font-semibold text-fg">{author}</span>
         {context && <span> · {context}</span>}
       </figcaption>
     </figure>
@@ -34,9 +34,9 @@ export function StatsBlock({ stats, sourceLabel }: { stats: readonly Stat[]; sou
     <dl className="grid gap-4 sm:grid-cols-3">
       {stats.map((stat) => (
         <div key={stat.label} className="rounded-[var(--radius-lg)] border border-line bg-surface p-6">
-          <dt className="text-sm text-ink-2">{stat.label}</dt>
-          <dd className="mt-1 text-h2 font-bold text-ink">{stat.value}</dd>
-          <dd className="mt-2 text-xs text-ink-3">
+          <dt className="text-sm text-fg-muted">{stat.label}</dt>
+          <dd className="mt-1 text-h2 font-bold text-fg">{stat.value}</dd>
+          <dd className="mt-2 text-xs text-fg-muted">
             {sourceLabel}: {stat.source}, {stat.asOf}
           </dd>
         </div>
@@ -70,7 +70,7 @@ export function SocialProof({ data, emptyState, labels }: SocialProofProps) {
 
   if (!hasSocialProof(data)) {
     return (
-      <p className="max-w-prose rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface p-6 text-ink-2">
+      <p className="max-w-prose rounded-[var(--radius-lg)] border border-dashed border-line-strong bg-surface p-6 text-fg-muted">
         {emptyState}
       </p>
     );

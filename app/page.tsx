@@ -25,7 +25,7 @@ import {
 
 function MoreLink({ href, label }: { href: string; label: string }) {
   return (
-    <Link href={href} className="inline-flex min-h-11 items-center gap-2 font-semibold text-green hover:text-green-hover">
+    <Link href={href} className="inline-flex min-h-11 items-center gap-2 font-semibold text-primary hover:text-primary-hover">
       {label}
       <ArrowRight aria-hidden="true" className="size-4" />
     </Link>
@@ -45,7 +45,7 @@ export default function HomePage() {
         <ViewTracker event="how_it_works_view" props={{ source: "home" }} />
         <StepList steps={howItWorks.steps} />
         <div className="mt-8 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-          <p className="max-w-prose text-sm text-ink-3">{howItWorks.note}</p>
+          <p className="max-w-prose text-sm text-fg-muted">{howItWorks.note}</p>
           <MoreLink href={howItWorks.moreHref} label={howItWorks.moreLabel} />
         </div>
       </Section>

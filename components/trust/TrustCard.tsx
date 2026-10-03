@@ -14,11 +14,11 @@ export function TrustCard({ icon, title, body }: TrustItem) {
   const Icon = ICONS[icon];
   return (
     <div className="h-full rounded-[var(--radius-lg)] border border-line bg-surface p-6">
-      <span className="inline-flex size-10 items-center justify-center rounded-full bg-green-soft text-green">
+      <span className="inline-flex size-10 items-center justify-center rounded-full bg-primary-soft text-primary">
         <Icon aria-hidden="true" className="size-5" />
       </span>
-      <h3 className="mt-4 text-h3 font-semibold text-ink">{title}</h3>
-      <p className="mt-2 text-ink-2">{body}</p>
+      <h3 className="mt-4 text-h3 font-semibold text-fg">{title}</h3>
+      <p className="mt-2 text-fg-muted">{body}</p>
     </div>
   );
 }

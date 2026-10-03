@@ -11,9 +11,9 @@ const base =
   "disabled:pointer-events-none disabled:opacity-50";
 
 const variants: Record<ButtonVariant, string> = {
-  primary: "bg-green text-on-green hover:bg-green-hover",
-  secondary: "border border-line-strong bg-surface text-ink hover:border-ink-3",
-  ghost: "text-ink hover:bg-green-soft",
+  primary: "bg-primary text-on-primary hover:bg-primary-hover",
+  secondary: "border border-line-strong bg-surface text-fg hover:border-fg",
+  ghost: "text-fg hover:bg-primary-soft",
 };
 
 const sizes: Record<ButtonSize, string> = {

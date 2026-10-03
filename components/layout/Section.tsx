@@ -9,15 +9,15 @@ interface SectionProps {
   title?: string;
   intro?: string;
   children?: ReactNode;
-  tone?: "paper" | "surface" | "ink";
+  tone?: "paper" | "surface" | "midnight";
   width?: "content" | "prose";
   className?: string;
 }
 
 const tones = {
-  paper: "bg-paper text-ink",
-  surface: "bg-surface text-ink",
-  ink: "bg-ink text-paper",
+  paper: "bg-paper text-fg",
+  surface: "bg-surface text-fg",
+  midnight: "zone-dark bg-midnight text-on-midnight",
 } as const;
 
 /** Page section with consistent rhythm: 56px mobile / 96px desktop. */
@@ -32,7 +32,8 @@ export function Section({
   className,
 }: SectionProps) {
   const headingId = id && title ? `${id}-title` : undefined;
-  const muted = tone === "ink" ? "text-paper/75" : "text-ink-2";
+  const dark = tone === "midnight";
+  const muted = dark ? "text-on-midnight-muted" : "text-fg-muted";
 
   return (
     <section id={id} aria-labelledby={headingId} className={cn("py-14 md:py-24", tones[tone], className)}>
@@ -40,7 +41,7 @@ export function Section({
         {(eyebrow || title || intro) && (
           <header className="mb-8 max-w-prose md:mb-12">
             {eyebrow && (
-              <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wide", tone === "ink" ? "text-paper/70" : "text-green")}>
+              <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wide", dark ? "text-on-midnight-muted" : "text-accent-text")}>
                 {eyebrow}
               </p>
             )}

@@ -1,25 +1,56 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────
-   Qadam design tokens — public web.
-   Token names follow the Mini App convention (--color-*, --radius-*)
-   so both surfaces share one design language (D5).
-   Contrast (WCAG AA) checked against --color-paper and white:
-   ink 17.9:1, ink-2 9.0:1, ink-3 5.5:1, green 5.2:1 (on paper);
-   white text on green 5.4:1.
+   Qadam Brand Color System — proposal v1 (pending product-owner approval).
+   Roles: Blue = action, Midnight = depth, Clay = human warmth,
+   Spark = one "next step" marker per screen. Semantic colors are separate
+   from the brand. Every text/background pair used in the UI is checked
+   for WCAG AA in tests/unit/contrast.test.ts.
+   Token names follow the Mini App convention (--color-*, --radius-*).
    ─────────────────────────────────────────────────────────────── */
 @theme {
-  --color-ink: #111214;
-  --color-ink-2: #43464d;
-  --color-ink-3: #62666f;
-  --color-paper: #fafaf7;
+  /* Brand */
+  --color-primary: #2f4fe0;          /* Qadam Blue — actions only */
+  --color-primary-hover: #2238b8;
+  --color-primary-soft: #eaefff;     /* Mist */
+  --color-primary-line: #c9d4ff;     /* decorative lines, chip borders */
+  --color-on-primary: #ffffff;
+
+  --color-midnight: #0e1733;         /* Brand Primary Dark */
+  --color-midnight-2: #16224a;
+  --color-midnight-line: #24305a;
+  --color-on-midnight: #f7f5f0;
+  --color-on-midnight-muted: #a8b2cc;
+  --color-on-midnight-link: #9db0ff;
+
+  --color-accent: #c07a5a;           /* Clay — graphics only, never text */
+  --color-accent-text: #8f4f33;      /* Clay for small text (eyebrows) */
+  --color-accent-soft: #f4e7de;
+  --color-spark: #f0642a;            /* Energy micro-accent: max one per screen */
+
+  /* Neutrals */
+  --color-paper: #f7f5f0;            /* page background */
   --color-surface: #ffffff;
-  --color-line: #e4e4de;
-  --color-line-strong: #cfcfc6;
-  --color-green: #17794e;
-  --color-green-hover: #11603e;
-  --color-green-soft: #e8f2ec;
-  --color-on-green: #ffffff;
+  --color-fg: #151a26;               /* Graphite text */
+  --color-fg-muted: #545c6e;         /* Slate text */
+  --color-line: #e3dfd7;             /* decorative borders */
+  --color-line-strong: #8c8b93;      /* input / control borders (3:1) */
+
+  /* Journey staircase: Mist steps that deepen as the journey rises */
+  --color-step-1: #f5f7ff;
+  --color-step-2: #eef2ff;
+  --color-step-3: #e6ecff;
+  --color-step-4: #dde5ff;
+  --color-step-5: #d2dcff;
+
+  /* Semantic (not brand) */
+  --color-success: #18704a;
+  --color-success-soft: #e5f2ea;
+  --color-warning: #8a5a00;
+  --color-warning-icon: #b87400;
+  --color-warning-soft: #fbf1dc;
+  --color-error: #b42828;
+  --color-error-soft: #fcebea;
 
   --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
@@ -27,7 +58,7 @@
   --radius-md: 12px;
   --radius-lg: 20px;
 
-  --shadow-card: 0 1px 2px rgb(17 18 20 / 0.04), 0 4px 16px rgb(17 18 20 / 0.05);
+  --shadow-card: 0 1px 2px rgb(14 23 51 / 0.04), 0 4px 16px rgb(14 23 51 / 0.05);
 
   --container-content: 1200px;
   --container-prose: 720px;
@@ -53,21 +84,31 @@
 
   body {
     background-color: var(--color-paper);
-    color: var(--color-ink);
+    color: var(--color-fg);
     font-family: var(--font-sans);
     line-height: 1.55;
     -webkit-font-smoothing: antialiased;
   }
 
   ::selection {
-    background-color: var(--color-green);
-    color: var(--color-on-green);
+    background-color: var(--color-primary-soft);
+    color: var(--color-fg);
   }
 
+  /* Focus ring color switches to the light link blue inside dark zones. */
   :focus-visible {
-    outline: 2px solid var(--color-green);
+    outline: 2px solid var(--focus-ring, var(--color-primary));
     outline-offset: 2px;
     border-radius: 4px;
+  }
+
+  .zone-dark {
+    --focus-ring: var(--color-on-midnight-link);
+  }
+
+  .zone-dark ::selection {
+    background-color: var(--color-midnight-line);
+    color: var(--color-on-midnight);
   }
 
   @media (prefers-reduced-motion: no-preference) {

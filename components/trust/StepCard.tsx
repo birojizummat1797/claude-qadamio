@@ -7,11 +7,11 @@ interface StepCardProps extends ProcessStep {
 export function StepCard({ index, title, body }: StepCardProps) {
   return (
     <div className="h-full rounded-[var(--radius-lg)] border border-line bg-surface p-6">
-      <p aria-hidden="true" className="text-sm font-semibold tabular-nums text-green">
+      <p aria-hidden="true" className="text-sm font-semibold tabular-nums text-primary">
         {String(index).padStart(2, "0")}
       </p>
-      <h3 className="mt-3 text-h3 font-semibold text-ink">{title}</h3>
-      <p className="mt-2 text-ink-2">{body}</p>
+      <h3 className="mt-3 text-h3 font-semibold text-fg">{title}</h3>
+      <p className="mt-2 text-fg-muted">{body}</p>
     </div>
   );
 }

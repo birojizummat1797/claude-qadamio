@@ -40,7 +40,7 @@ export function MobileNavigation({ items, cta, logo }: MobileNavigationProps) {
         aria-haspopup="dialog"
         aria-label={a11yLabels.openMenu}
         onClick={open}
-        className="-mr-2 inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] text-ink hover:bg-green-soft"
+        className="-mr-2 inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] text-fg hover:bg-primary-soft"
       >
         <Menu aria-hidden="true" className="size-6" />
       </button>
@@ -51,7 +51,7 @@ export function MobileNavigation({ items, cta, logo }: MobileNavigationProps) {
         onClose={() => {
           document.documentElement.style.overflow = "";
         }}
-        className="m-0 h-dvh max-h-none w-full max-w-none bg-paper p-0 text-ink backdrop:bg-ink/40"
+        className="m-0 h-dvh max-h-none w-full max-w-none bg-paper p-0 text-fg backdrop:bg-midnight/40"
       >
         <div className="flex h-16 items-center justify-between border-b border-line px-4">
           {logo}
@@ -60,7 +60,7 @@ export function MobileNavigation({ items, cta, logo }: MobileNavigationProps) {
             autoFocus
             aria-label={a11yLabels.closeMenu}
             onClick={close}
-            className="-mr-2 inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] text-ink hover:bg-green-soft"
+            className="-mr-2 inline-flex size-11 items-center justify-center rounded-[var(--radius-sm)] text-fg hover:bg-primary-soft"
           >
             <X aria-hidden="true" className="size-6" />
           </button>
