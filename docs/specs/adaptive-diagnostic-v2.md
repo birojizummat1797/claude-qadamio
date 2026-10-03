@@ -13,7 +13,7 @@ Bog‘liq hujjatlar: `docs/telegram-deeplink-spec.md` (holat kodlari), `docs/num
 | A1 | Har bir keyingi savol oldingi javobga qarab tanlanishi kerak (moslashuvchan oqim) |
 | A2 | Savollar foydalanuvchi holatiga mos bo‘ladi: Boshlayapman / Almashtiraman / O‘smoqchiman |
 | A3 | **Eng kichik yosh — 16** (10-sinf o‘quvchilari ham qamrab olinadi). 16 dan kichikka diagnostika odob bilan to‘xtatiladi |
-| A4 | **Yuqori yosh chegarasi — 33 yoki 35** (yakuniy qaror kutilmoqda, Q1). Konfiguratsiyada bitta qiymat sifatida saqlanadi |
+| A4 | **Yuqori yosh chegarasi — 35** (qaror). Chegaradan kattalar to‘xtatilmaydi, ogohlantirilib davom etadi. Keyinroq 40 gacha kengaytirish ko‘rib chiqilishi mumkin — shuning uchun qiymat faqat konfiguratsiyada (`AGE_MAX`) |
 | A5 | Imkoniyat cheklovlari (masalan, noutbuk yo‘q) hisobga olinadi. Foydalanuvchi to‘xtatib, keyin shu joydan davom ettira oladi |
 
 ---
@@ -44,7 +44,7 @@ Bog‘liq hujjatlar: `docs/telegram-deeplink-spec.md` (holat kodlari), `docs/num
 5. **Qarorni foydalanuvchi qiladi.** “Davom etasizmi yoki keyinroq?” — har doim ikkala tugma.
 6. **Ma’lumotni minimal yig‘ish.** Yosh oralig‘i so‘raladi, tug‘ilgan sana emas. Daromad miqdori so‘ralmaydi.
 7. **Xotirjam ohang (Design DNA: Calm).** Qo‘rqitish, shoshiltirish, ayblash yo‘q. “Sizda … yo‘q” emas, “Hozircha … ekan”.
-8. **Uzunlik chegarasi.** Bir yo‘lda ko‘pi bilan 20 ta savol. Hisob (§4): Boshlayapman 18, Almashtiraman 17–19, O‘smoqchiman 18 — hozirgi 13 tadan ~1,4 baravar uzun. Bot matnidagi “3 daqiqa — 13 savol” yangilanishi kerak. Qisqartirish varianti — Q9.
+8. **Uzunlik chegarasi.** Bir yo‘lda ko‘pi bilan 20 ta savol (maqsad — 16, Q9). Hisob (§4): Boshlayapman 18, Almashtiraman 17–19, O‘smoqchiman 18 — hozirgi 13 tadan ~1,4 baravar uzun. Bot matnidagi “3 daqiqa — 13 savol” yangilanishi kerak. Qisqartirish varianti — Q9.
 
 ---
 
@@ -251,7 +251,7 @@ Javob o‘zgarsa, `show_if` endi bajarilmaydigan savollarning javoblari o‘chir
 - Progress: “Savol 5 / taxminan 15” (tarmoq tufayli aniq son o‘zgaradi, shuning uchun “taxminan”).
 
 ### 8.6 Konfiguratsiya
-`AGE_MIN=16`, `AGE_MAX=33|35`, yosh oraliqlari, `PAUSE_TTL_DAYS=30` — bitta config faylda; kodda raqam yozilmaydi.
+`AGE_MIN=16`, `AGE_MAX=35`, yosh oraliqlari, `PAUSE_TTL_DAYS=30` — bitta config faylda; kodda raqam yozilmaydi.
 
 ---
 
@@ -287,7 +287,7 @@ Har bosqich alohida PR, testlar bilan, oldingi versiya buzilmaydi.
 
 | # | Savol | Tavsiyam |
 |---|---|---|
-| Q1 | Yuqori yosh chegarasi: 33 yoki 35? | Hozircha 35, chegaradan keyin to‘xtatish emas, ogohlantirish |
+| Q1 | Yuqori yosh chegarasi | **Hal qilindi: 35** (A4) |
 | Q2 | 16–17 yoshlilar ma’lumoti: O‘zbekiston qonunchiligida voyaga yetmaganlar shaxsiy ma’lumoti uchun ota-ona roziligi talab qilinadimi? | **Yurist tekshirishi shart** — men aniq bilmayman. Javob kelguncha 16–17 uchun ma’lumot minimal, eslatma yo‘q |
 | Q3 | Sayt va bot matnlarida auditoriya qanday yoziladi (“18–30” brief’da edi)? | Yangi chegara bo‘yicha yangilanadi; saytda hozir yosh raqami yo‘q |
 | Q4 | “Mustaqil o‘rganish” alohida signal bo‘ladimi? | Metodika review’dan keyin (BL-11) |
@@ -295,4 +295,19 @@ Har bosqich alohida PR, testlar bilan, oldingi versiya buzilmaydi.
 | Q6 | Eslatma xabari: umuman bo‘ladimi, rozilik qanday olinadi? | Faqat roziligi bilan, 18+ ga |
 | Q7 | Blok savollari matni (§4) | Egasi va metodika mas’uli ko‘rib chiqadi |
 | Q8 | Chuqur diagnostika (18 savol) ham tarmoqlanadimi? | Avval discovery v2, keyin chuqur diagnostika |
-| Q9 | Diagnostika uzunligi 17–19 savol bo‘ladi. Qabul qilinadimi yoki DISC_Q09–Q10 (ish muhiti, qadriyat) chuqur diagnostikaga ko‘chirilib, 15–17 ga tushiriladimi? | Ko‘chirish: bepul diagnostika qisqa qoladi, bu savollar chuqur diagnostikada allaqachon bor (DD_Q09–Q12) |
+| Q9 | Diagnostika uzunligi | **Qayta ko‘rib chiqish kerak.** Egasi DISC_Q09–Q10 ni chuqur diagnostikaga ko‘chirishga rozi bo‘ldi, lekin tekshiruv ko‘rsatdiki, bu ikki savol signal o‘lchaydi: ularsiz bepul diagnostikada `innovation` va `attention_to_detail` **umuman o‘lchanmaydi** (`attention_to_detail` 18 ta kasbda bor, 16 tasida vazni 4–5). Oldingi tavsiyam (“bu savollar chuqur diagnostikada allaqachon bor”) signal xaritasini tekshirmasdan berilgan va xato edi. Yangi tavsiya: yadro 9 savol o‘zgarmaydi; tarmoq bloklari 2 savolgacha qisqartiriladi (B_03, A_04, O_03 olib tashlanadi), R_04 natijadan keyin so‘raladi → har yo‘lda 16–17 savol |
+
+---
+
+## 12. Tekshiruv: DISC_Q09–Q10 qaysi signallarni o‘lchaydi (2026-10-03)
+
+| Signal | Bepul diagnostikada o‘lchaydigan savollar | Q09–Q10 olib tashlansa |
+|---|---|---|
+| `innovation` | Q09, Q10 | **o‘lchanmaydi** |
+| `attention_to_detail` | Q10 (faqat “Barqarorlik” varianti, 0.5) | **o‘lchanmaydi** |
+| `system_design` | Q08, Q09 | faqat Q08 |
+| `user_empathy`, `business_sense`, `persistence` | Q02, Q07/Q04, Q09, Q10 | 2 ta savol qoladi |
+| boshqalar | Q09–Q10 ga bog‘liq emas | o‘zgarmaydi |
+
+Xulosa: Q09–Q10 ni ko‘chirish ballarni o‘zgartiradi (Fit/coverage), bu metodika o‘zgarishi. Shuning uchun yadro savollari tegilmaydi.
+Alohida topilma (BL-11 ga): `attention_to_detail` bepul diagnostikada hozir ham juda kuchsiz o‘lchanadi — bitta variantning 0.5 hissasi. Holbuki bu signal 18 ta kasbda bor, 5 tasida eng og‘ir vazn (5) bilan.
