@@ -21,6 +21,8 @@ export const hero = {
   eyebrow: "Kasbiy yo’nalish bo’yicha qaror tizimi",
   titleLine1: "Kasb tanlashda taxmin emas.",
   titleLine2: "O’zingizga mos yo’lni tushunishdan boshlang.",
+  // The only Blue segment in the H1 (PM decision R3: headline stays Midnight).
+  titleHighlight: "mos yo’lni",
   lead: "Qadam.io sizga o’zingizni yaxshiroq tushunish, mos professional yo’nalishlarni ko’rish va keyingi qadamlarni aniqroq belgilashga yordam beradi.",
   secondaryLabel: "Qanday ishlaydi?",
   secondaryHref: "/qanday-ishlaydi",

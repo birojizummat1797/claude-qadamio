@@ -1,4 +1,5 @@
 import { describe, expect, it } from "vitest";
+import { splitHighlight } from "@/components/home/Hero";
 import * as home from "@/content/home";
 
 function allStrings(value: unknown): string[] {
@@ -16,6 +17,9 @@ describe("homepage content rules", () => {
     expect(home.hero.titleLine1).toBe("Kasb tanlashda taxmin emas.");
     expect(home.hero.titleLine2).toBe("O’zingizga mos yo’lni tushunishdan boshlang.");
     expect(home.hero.secondaryHref).toBe("/qanday-ishlaydi");
+    // R3: only one short segment of the H1 is Blue, and it must exist in the line.
+    expect(home.hero.titleLine2).toContain(home.hero.titleHighlight);
+    expect(home.hero.titleHighlight.length).toBeLessThan(home.hero.titleLine2.length / 2);
   });
 
   it("has the journey in the agreed order", () => {
@@ -65,5 +69,21 @@ describe("homepage content rules", () => {
   it("has unique FAQ ids", () => {
     const ids = home.faqTeaser.items.map((i) => i.id);
     expect(new Set(ids).size).toBe(ids.length);
+  });
+});
+
+
+describe("splitHighlight", () => {
+  it("splits around the highlight", () => {
+    expect(splitHighlight("O’zingizga mos yo’lni tushunishdan boshlang.", "mos yo’lni")).toEqual([
+      "O’zingizga ",
+      "mos yo’lni",
+      " tushunishdan boshlang.",
+    ]);
+  });
+
+  it("falls back to plain text when the highlight is missing", () => {
+    expect(splitHighlight("Matn", "yo’q")).toEqual(["Matn", "", ""]);
+    expect(splitHighlight("Matn")).toEqual(["Matn", "", ""]);
   });
 });

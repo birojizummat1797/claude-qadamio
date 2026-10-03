@@ -9,6 +9,8 @@ interface HeroProps {
   eyebrow: string;
   titleLine1: string;
   titleLine2: string;
+  /** Substring of titleLine2 shown in Qadam Blue; the rest stays Midnight. */
+  titleHighlight?: string;
   lead: string;
   secondaryLabel: string;
   secondaryHref: string;
@@ -17,16 +19,35 @@ interface HeroProps {
   visual?: ReactNode;
 }
 
-export function Hero({ eyebrow, titleLine1, titleLine2, lead, secondaryLabel, secondaryHref, ctaNote, visual }: HeroProps) {
+export function splitHighlight(text: string, highlight?: string): [string, string, string] {
+  const at = highlight ? text.indexOf(highlight) : -1;
+  if (!highlight || at < 0) return [text, "", ""];
+  return [text.slice(0, at), highlight, text.slice(at + highlight.length)];
+}
+
+export function Hero({
+  eyebrow,
+  titleLine1,
+  titleLine2,
+  titleHighlight,
+  lead,
+  secondaryLabel,
+  secondaryHref,
+  ctaNote,
+  visual,
+}: HeroProps) {
+  const [before, highlight, after] = splitHighlight(titleLine2, titleHighlight);
   return (
     <section aria-labelledby="hero-title" className="border-b border-line bg-paper">
       <Container className="pt-12 pb-14 md:pt-20 md:pb-20">
         <div className="max-w-3xl">
-          <p className="text-sm font-semibold tracking-wide text-accent-text">{eyebrow}</p>
+          <p className="text-sm font-semibold tracking-wide text-primary">{eyebrow}</p>
           <h1 id="hero-title" className="mt-4 text-display font-bold tracking-tight text-balance text-midnight md:text-display-lg">
             {titleLine1}
             <br />
-            <span className="text-primary">{titleLine2}</span>
+            {before}
+            {highlight && <span className="text-primary">{highlight}</span>}
+            {after}
           </h1>
           <p className="mt-6 max-w-prose text-lg text-fg-muted md:text-xl">{lead}</p>
 

@@ -51,8 +51,7 @@ const pairs: Array<[string, string, number, string]> = [
   ["primary-hover", "paper", TEXT, "link hover"],
   ["on-primary", "primary", TEXT, "CTA label"],
   ["on-primary", "primary-hover", TEXT, "CTA hover label"],
-  ["accent-text", "paper", TEXT, "eyebrows"],
-  ["accent-text", "surface", TEXT, "eyebrows on surface sections"],
+  ["primary", "surface", TEXT, "eyebrows on surface sections"],
   ...steps.flatMap((s) => [
     ["midnight", s, TEXT, "journey question"] as [string, string, number, string],
     ["fg-muted", s, TEXT, "journey caption"] as [string, string, number, string],

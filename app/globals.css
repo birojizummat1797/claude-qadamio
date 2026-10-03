@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 /* ───────────────────────────────────────────────────────────────
-   Qadam Brand Color System — proposal v1 (pending product-owner approval).
-   Roles: Blue = action, Midnight = depth, Clay = human warmth,
-   Spark = one "next step" marker per screen. Semantic colors are separate
+   Qadam Brand Color System v1.1 (PM decision 2026-10-03; final merge pending).
+   Roles: Blue = action and section labels, Midnight = depth and headings,
+   Clay = decorative warmth only, Spark = one "next step" marker per screen. Semantic colors are separate
    from the brand. Every text/background pair used in the UI is checked
    for WCAG AA in tests/unit/contrast.test.ts.
    Token names follow the Mini App convention (--color-*, --radius-*).
@@ -23,8 +23,7 @@
   --color-on-midnight-muted: #a8b2cc;
   --color-on-midnight-link: #9db0ff;
 
-  --color-accent: #c07a5a;           /* Clay — graphics only, never text */
-  --color-accent-text: #8f4f33;      /* Clay for small text (eyebrows) */
+  --color-accent: #c07a5a;           /* Clay — decorative graphics only, never text, never logo */
   --color-accent-soft: #f4e7de;
   --color-spark: #f0642a;            /* Energy micro-accent: max one per screen */
 

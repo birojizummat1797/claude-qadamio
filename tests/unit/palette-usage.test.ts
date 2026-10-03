@@ -28,6 +28,20 @@ describe("palette usage rules", () => {
     }
   });
 
+  it("logo uses only Midnight/Blue/Mist (no Clay or Spark)", () => {
+    const logo = source.find(([f]) => f.endsWith(join("layout", "Logo.tsx")))![1];
+    expect(logo).not.toMatch(/\b(?:fill|text|bg)-(?:accent|spark)\b/);
+    expect(logo).toMatch(/\bfill-primary\b/);
+  });
+
+  it("section labels (eyebrows) use Qadam Blue, not Clay (PM decision R1)", () => {
+    for (const [file, text] of source) {
+      expect(text, file).not.toMatch(/\btext-accent-text\b/);
+    }
+    const section = source.find(([f]) => f.endsWith(join("layout", "Section.tsx")))![1];
+    expect(section).toMatch(/"text-primary"/);
+  });
+
   it("Spark appears only in the journey's next-step marker", () => {
     const users = source.filter(([, text]) => /\b(?:bg|ring)-spark\b/.test(text)).map(([f]) => f);
     expect(users).toEqual([join("components", "home", "JourneyVisual.tsx")]);

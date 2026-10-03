@@ -41,7 +41,7 @@ export function Section({
         {(eyebrow || title || intro) && (
           <header className="mb-8 max-w-prose md:mb-12">
             {eyebrow && (
-              <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wide", dark ? "text-on-midnight-muted" : "text-accent-text")}>
+              <p className={cn("mb-3 text-sm font-semibold uppercase tracking-wide", dark ? "text-on-midnight-muted" : "text-primary")}>
                 {eyebrow}
               </p>
             )}
