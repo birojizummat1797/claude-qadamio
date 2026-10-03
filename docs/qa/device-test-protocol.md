@@ -12,8 +12,13 @@ Qurilmalar: kamida **2 ta Android** (bittasi arzon yoki eski bo‘lsa yaxshi; ma
 3. Kompyuter IP manzilini toping (Windows: `ipconfig` → IPv4, masalan `192.168.1.25`).
 4. Telefonda oching: `http://192.168.1.25:3000`. Ochilmasa, Windows Firewall’da 3000-portga ruxsat bering.
 
-**B. Vercel preview (keyingi bosqichlar uchun ham kerak):**
-vercel.com → GitHub bilan kirish → `claude-qadamio` repo’sini import qilish → Vercel har bir branch uchun preview havola beradi. `claude/b2.3-design-dna` havolasini telefonda oching.
+**B. Vercel preview (tavsiya etiladi; loyiha Vercel’ga ulangan: `kelajak-bot/claude-qadamio`):**
+1. Vercel → `claude-qadamio` loyihasi → **Deployments** bo‘limi.
+2. Ro‘yxatdan branch nomi `claude/b2.3-design-dna` bo‘lgan eng yangi deployment’ni toping (Environment: **Preview**). Holati **Ready** bo‘lishini kuting (1–2 daqiqa).
+3. Deployment’ni oching → **Visit** yoki undagi `…vercel.app` havolasini telefonga yuboring.
+4. Telefonda Vercel login so‘rasa, bu **Deployment Protection**: telefonda ham o‘sha Vercel akkaunti bilan kiring yoki Settings → Deployment Protection’da preview himoyasini vaqtincha o‘chiring.
+
+Eslatma: **Production** (`claude-qadamio.vercel.app`) hozir eski branch’ni kuzatadi. PM merge’ni tasdiqlamaguncha uni o‘zgartirmaymiz; test faqat Preview havolada qilinadi. Har bir yangi push o‘z Preview havolasini avtomatik oladi.
 
 ## 2. Tekshiruv ro‘yxati (har bir qurilma uchun)
 
