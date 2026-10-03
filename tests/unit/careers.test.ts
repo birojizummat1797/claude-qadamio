@@ -5,7 +5,6 @@ import {
   formatLearningMonths,
   pathwayLabels,
   plannedCareers,
-  signalPhrases,
 } from "@/content/careers";
 import {
   careerSnapshot,
@@ -16,6 +15,7 @@ import {
   mergeCatalog,
   parseApiCareers,
   parseCatalogQuery,
+  signalLabel,
 } from "@/lib/careers";
 import { START_PAYLOAD_RE, TELEGRAM_START_MAX_LENGTH } from "@/lib/telegram";
 
@@ -37,20 +37,33 @@ const okResponse = (body: unknown) =>
   vi.fn(async () => new Response(JSON.stringify(body), { status: 200 })) as unknown as typeof fetch;
 
 describe("catalog copy", () => {
-  it("has a phrase for exactly the 13 backend signals", () => {
-    expect(Object.keys(signalPhrases).sort()).toEqual([...careerSnapshot.signalKeys].sort());
-  });
-
-  it("phrases carry no numbers, percentages or verdicts", () => {
-    for (const phrase of Object.values(signalPhrases)) {
-      expect(phrase).not.toMatch(/\d|%|siz uchun|aniq mos|eng yaxshi|kafolat/i);
+  it("shows backend signal labels verbatim and nothing else", () => {
+    // Backend signals_v1.json `uz`, copied by the sync script — exact match (PM 2026-10-03).
+    expect(careerSnapshot.signalLabels).toEqual({
+      logical_thinking: "Mantiqiy fikrlash",
+      problem_solving: "Muammo hal qilish",
+      technical_interest: "Texnikaga qiziqish",
+      creative_design: "Ijodiy dizayn",
+      visual_logic: "Vizual mantiq",
+      user_empathy: "Empatiya",
+      system_design: "Tizimli fikrlash",
+      analytical: "Tahliliy fikrlash",
+      persistence: "Qatiyat",
+      math_logic: "Matematik mantiq",
+      attention_to_detail: "Detallarga etibor",
+      business_sense: "Biznes hissi",
+      innovation: "Innovatsiya",
+    });
+    for (const career of all) {
+      for (const key of career.signals) expect(signalLabel(key)).toBe(careerSnapshot.signalLabels[key]);
     }
+    expect(signalLabel("made_up")).toBeNull();
   });
 
   it("labels pathways without technical names", () => {
     expect(pathwayLabels).toEqual({ entry: "Boshlash uchun", role: "Kasb sifatida", advanced: "Keyingi bosqich" });
     // Visible strings only (object keys are data-layer names).
-    const visible = JSON.stringify([catalogCopy, Object.values(pathwayLabels), Object.values(signalPhrases)]);
+    const visible = JSON.stringify([catalogCopy, Object.values(pathwayLabels)]);
     expect(visible).not.toMatch(/\b(entry|role|advanced)\b/i);
   });
 

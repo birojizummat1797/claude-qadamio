@@ -17,6 +17,21 @@
     "business_sense",
     "innovation"
   ],
+  "signalLabels": {
+    "logical_thinking": "Mantiqiy fikrlash",
+    "problem_solving": "Muammo hal qilish",
+    "technical_interest": "Texnikaga qiziqish",
+    "creative_design": "Ijodiy dizayn",
+    "visual_logic": "Vizual mantiq",
+    "user_empathy": "Empatiya",
+    "system_design": "Tizimli fikrlash",
+    "analytical": "Tahliliy fikrlash",
+    "persistence": "Qatiyat",
+    "math_logic": "Matematik mantiq",
+    "attention_to_detail": "Detallarga etibor",
+    "business_sense": "Biznes hissi",
+    "innovation": "Innovatsiya"
+  },
   "clusters": [
     {
       "key": "software",
@@ -71,9 +86,9 @@
       "learningMonths": 6,
       "pathway": "role",
       "signals": [
-        "visual_logic",
         "logical_thinking",
-        "creative_design"
+        "creative_design",
+        "visual_logic"
       ]
     },
     {
@@ -95,8 +110,8 @@
       "learningMonths": 7,
       "pathway": "role",
       "signals": [
-        "problem_solving",
         "logical_thinking",
+        "problem_solving",
         "user_empathy"
       ]
     },
@@ -107,9 +122,9 @@
       "learningMonths": 5,
       "pathway": "role",
       "signals": [
+        "logical_thinking",
         "analytical",
-        "attention_to_detail",
-        "logical_thinking"
+        "attention_to_detail"
       ]
     },
     {
@@ -119,9 +134,9 @@
       "learningMonths": 12,
       "pathway": "advanced",
       "signals": [
+        "logical_thinking",
         "analytical",
-        "math_logic",
-        "logical_thinking"
+        "math_logic"
       ]
     },
     {
@@ -167,9 +182,9 @@
       "learningMonths": 5,
       "pathway": "entry",
       "signals": [
-        "attention_to_detail",
         "logical_thinking",
-        "problem_solving"
+        "problem_solving",
+        "attention_to_detail"
       ]
     },
     {
@@ -192,8 +207,8 @@
       "pathway": "advanced",
       "signals": [
         "creative_design",
-        "user_empathy",
-        "visual_logic"
+        "visual_logic",
+        "user_empathy"
       ]
     },
     {
@@ -227,8 +242,8 @@
       "learningMonths": 3,
       "pathway": "entry",
       "signals": [
-        "user_empathy",
         "creative_design",
+        "user_empathy",
         "business_sense"
       ]
     },
@@ -240,8 +255,8 @@
       "pathway": "role",
       "signals": [
         "analytical",
-        "business_sense",
-        "attention_to_detail"
+        "attention_to_detail",
+        "business_sense"
       ]
     },
     {
@@ -251,9 +266,9 @@
       "learningMonths": 5,
       "pathway": "role",
       "signals": [
+        "analytical",
         "persistence",
-        "attention_to_detail",
-        "analytical"
+        "attention_to_detail"
       ]
     },
     {
@@ -299,9 +314,9 @@
       "learningMonths": 12,
       "pathway": "advanced",
       "signals": [
+        "user_empathy",
         "system_design",
-        "business_sense",
-        "user_empathy"
+        "business_sense"
       ]
     },
     {
@@ -323,9 +338,9 @@
       "learningMonths": 6,
       "pathway": "role",
       "signals": [
+        "logical_thinking",
         "analytical",
-        "attention_to_detail",
-        "logical_thinking"
+        "attention_to_detail"
       ]
     },
     {

@@ -6,26 +6,9 @@
 
 import type { PathwayType } from "@/lib/career-snapshot";
 
-/**
- * Backend signal key → neutral, number-free phrase for “Kimga mos bo’lishi mumkin?”.
- * Each phrase stays literal to the backend label (signals_v1.json `uz`);
- * owner decision 2026-10-03. Never a verdict about the visitor.
- */
-export const signalPhrases: Readonly<Record<string, string>> = {
-  logical_thinking: "Mantiqiy fikrlashni yoqtiradiganlar",
-  problem_solving: "Muammolarni hal qilishga qiziqadiganlar",
-  technical_interest: "Texnika qanday ishlashiga qiziqadiganlar",
-  creative_design: "Ijodiy ishni yoqtiradiganlar",
-  visual_logic: "Vizual tartibni sezadiganlar",
-  user_empathy: "Odamlarni tushunishga intiladiganlar",
-  system_design: "Tizimli fikrlashni yoqtiradiganlar",
-  analytical: "Tahlil qilishni yoqtiradiganlar",
-  persistence: "Uzoq ishda sabr qila oladiganlar",
-  math_logic: "Raqamlar bilan ishlashni yoqtiradiganlar",
-  attention_to_detail: "Detallarga e’tiborli odamlar",
-  business_sense: "Biznes qanday ishlashiga qiziqadiganlar",
-  innovation: "Yangi yechim izlashni yoqtiradiganlar",
-};
+// Signal wording is NOT written here: the public label is the backend label
+// verbatim (`signalLabels` in careers.snapshot.json, from signals_v1.json) —
+// PM direction 2026-10-03 “signal nomlari backend bilan exact match”.
 
 /** PM decision D1: backend pathway values are never shown by their technical name. */
 export const pathwayLabels: Readonly<Record<PathwayType, string>> = {
@@ -76,6 +59,7 @@ export const catalogCopy = {
   pathwayNote: "Yo’l turi kasbga qaysi bosqichdan kirilishini bildiradi, sizning darajangizni emas.",
   learningNote: "O’rganish muddati — Qadam taksonomiyasidagi taxminiy baho. Vaqt va tajribaga qarab o’zgaradi.",
   signalsTitle: "Kimga mos bo’lishi mumkin?",
+  signalsLead: "Quyidagi signallari kuchli odamlarga:",
   signalsNote: "Bu ro’yxat kasb talablaridan olingan. Sizga baho emas.",
   ctaLabel: "O’zimga mosligini tekshirish",
   stateNotes: {

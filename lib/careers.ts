@@ -196,6 +196,11 @@ export function parseCatalogQuery(
   return { ...(state && { state }), ...(cluster && { cluster }) };
 }
 
+/** Public signal label: the backend label verbatim. Unknown key → null (never invented). */
+export function signalLabel(key: string, snapshot: CareerSnapshot = careerSnapshot): string | null {
+  return snapshot.signalLabels[key] ?? null;
+}
+
 export function catalogTelegramUrl(career: CatalogCareer, state?: EntryState): string {
   return buildTelegramUrl({ source: "catalog", career: { slug: career.slug, status: "active" }, state });
 }

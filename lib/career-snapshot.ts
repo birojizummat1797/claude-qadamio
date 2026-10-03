@@ -40,6 +40,8 @@ export interface CareerSnapshot {
   generatedAt: string;
   /** Backend signal keys in canonical order (signals_v1.json). */
   signalKeys: string[];
+  /** Backend signal label (`uz`) per key, verbatim — the only public signal wording. */
+  signalLabels: Record<string, string>;
   clusters: SnapshotCluster[];
   careers: SnapshotCareer[];
 }
@@ -75,8 +77,9 @@ export function normalizeLearningMonths(value: unknown): number | null {
 }
 
 /**
- * Weight desc → canonical order → keep weight >= 4 → at most 3.
- * Unknown signal keys and non-numeric weights are ignored.
+ * Selection: weight desc → canonical order → keep weight >= 4 → at most 3.
+ * Output is in canonical (signals_v1.json) order, so the relative weight
+ * ranking is not exposed either. Unknown keys and non-numeric weights are ignored.
  */
 export function selectDisplaySignals(weights: unknown, canonicalOrder: readonly string[]): string[] {
   if (!isRecord(weights)) return [];
@@ -87,7 +90,8 @@ export function selectDisplaySignals(weights: unknown, canonicalOrder: readonly 
     )
     .sort((a, b) => b[1] - a[1] || canonicalOrder.indexOf(a[0]) - canonicalOrder.indexOf(b[0]))
     .slice(0, DISPLAY_SIGNAL_MAX)
-    .map(([key]) => key);
+    .map(([key]) => key)
+    .sort((a, b) => canonicalOrder.indexOf(a) - canonicalOrder.indexOf(b));
 }
 
 export interface SnapshotResult {
@@ -102,7 +106,14 @@ export function buildCareerSnapshot(
   generatedAt: string,
 ): SnapshotResult {
   const warnings: string[] = [];
-  const signalKeys = isRecord(signals.signals) ? Object.keys(signals.signals) : [];
+  const rawSignals = isRecord(signals.signals) ? signals.signals : {};
+  const signalLabels: Record<string, string> = {};
+  for (const [key, def] of Object.entries(rawSignals)) {
+    const label = isRecord(def) ? cleanText(def.uz) : null;
+    if (label) signalLabels[key] = label;
+    else warnings.push(`signal ${key}: no uz label, skipped`);
+  }
+  const signalKeys = Object.keys(signalLabels);
   if (!signalKeys.length) warnings.push("signals: no signal keys found");
 
   const clusters: SnapshotCluster[] = [];
@@ -148,6 +159,7 @@ export function buildCareerSnapshot(
       signalsVersion: cleanText(signals.version) ?? "unknown",
       generatedAt,
       signalKeys,
+      signalLabels,
       clusters,
       careers,
     },

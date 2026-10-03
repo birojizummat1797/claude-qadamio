@@ -13,13 +13,15 @@ import { careerSnapshot } from "@/lib/careers";
 const ORDER = ["logical_thinking", "problem_solving", "creative_design", "visual_logic", "attention_to_detail"];
 
 describe("selectDisplaySignals", () => {
-  it("keeps weight >= 4, highest first, at most 3, ties in canonical order", () => {
+  it("keeps weight >= 4, picks the 3 heaviest (ties canonical), outputs canonical order", () => {
+    // Picked: visual_logic (5), then logical_thinking and creative_design (4, canonical tie-break).
+    // Output order is canonical, so the weight ranking is not exposed.
     expect(
       selectDisplaySignals(
         { attention_to_detail: 4, visual_logic: 5, logical_thinking: 4, creative_design: 4, problem_solving: 3 },
         ORDER,
       ),
-    ).toEqual(["visual_logic", "logical_thinking", "creative_design"]);
+    ).toEqual(["logical_thinking", "creative_design", "visual_logic"]);
   });
 
   it("drops unknown keys, low weights and non-numbers", () => {
@@ -75,7 +77,7 @@ describe("buildCareerSnapshot", () => {
         cluster: "software",
         learningMonths: 6,
         pathway: "role",
-        signals: ["visual_logic", "logical_thinking"],
+        signals: ["logical_thinking", "visual_logic"],
       },
     ]);
     expect(JSON.stringify(snapshot)).not.toMatch(/salary|prerequisites|weight|"B1"/);
@@ -88,7 +90,30 @@ describe("buildCareerSnapshot", () => {
   });
 });
 
+// Stable public IDs: changing one breaks deep links, bookmarks and analytics.
+const STABLE_SLUGS = [
+  "foundation_programming", "frontend_development", "backend_development", "mobile_development",
+  "data_analytics", "data_science", "ai_engineering",
+  "devops_cloud", "cybersecurity", "qa_automation",
+  "ui_ux_design", "product_design", "graphic_design", "motion_design",
+  "smm_manager", "performance_marketing", "seo", "content_marketing",
+  "video_content", "brand_strategy",
+  "product_management", "project_management", "business_analysis",
+  "it_b2b_sales", "customer_success",
+];
+
 describe("committed snapshot (content/careers.snapshot.json)", () => {
+  it("keeps the 25 slugs stable and in backend (editorial) order", () => {
+    expect(careerSnapshot.careers.map((c) => c.slug)).toEqual(STABLE_SLUGS);
+  });
+
+  it("lists signals in canonical backend order", () => {
+    for (const c of careerSnapshot.careers) {
+      const idx = c.signals.map((s) => careerSnapshot.signalKeys.indexOf(s));
+      expect(idx).toEqual([...idx].sort((a, b) => a - b));
+    }
+  });
+
   const raw = readFileSync(join(process.cwd(), "content", "careers.snapshot.json"), "utf8");
 
   it("matches backend taxonomy v2.2: 25 careers, 8 clusters, 13 signals", () => {
@@ -121,5 +146,16 @@ describe("committed snapshot (content/careers.snapshot.json)", () => {
   it("splits pathways 8 entry / 12 role / 5 advanced", () => {
     const count = (p: string) => careerSnapshot.careers.filter((c) => c.pathway === p).length;
     expect([count("entry"), count("role"), count("advanced")]).toEqual([8, 12, 5]);
+  });
+});
+
+// Optional: QADAM_BACKEND_DATA=<qadam/backend/data> checks the committed snapshot
+// against the backend source (API/snapshot semantic equality). Skipped in CI.
+const backendData = process.env.QADAM_BACKEND_DATA;
+describe.skipIf(!backendData)("snapshot is in sync with the backend source", () => {
+  it("rebuilds to the same public data", () => {
+    const read = (f: string) => JSON.parse(readFileSync(join(backendData!, f), "utf8"));
+    const { snapshot } = buildCareerSnapshot(read("taxonomy_v1.json"), read("signals_v1.json"), careerSnapshot.generatedAt);
+    expect(snapshot).toEqual(careerSnapshot);
   });
 });
