@@ -66,7 +66,16 @@ Bu Qadam’ni marketplace’lardan vizual va ma’no jihatidan ajratadi: **marka
 
 ---
 
-## Raund 3 — Karyera, HR va personal growth (keyingi)
+## Raund 3 — HR va talent intelligence platformalari (2026-10-03)
+
+| Platforma | Kuchli naqsh | Qadam uchun xulosa |
+|---|---|---|
+| **Eightfold.ai** | “Talent intelligence, **human-led**.” “Intelligence reads the signal. **You make the call.**” “AI… **never decides**. Your recruiters do.” Asosiy menyuda “**Trust**” bo‘limi bor. Pastda suzib yuruvchi savol chiplari (“Can we trust AI with talent decisions?”). To‘q kartochkada mahsulot va odam surati. Kuchli binafsha–pushti gradientlar. | Pozitsiya bo‘yicha eng yaqin analog. **Signal → inson qaror qiladi** formulasi Qadam’ning o‘z tilida ishlatilishi mumkin. “Ishonch” menyuda alohida bo‘lim sifatida ko‘rinishi kerak. Gradientlarni **olmaymiz**: brief’dagi “generic AI aesthetic”ning aynan o‘zi. |
+| **SeekOut** | Markazda juda katta sarlavha va ikkinchi qatorda rangli shior. “New:” pill. “**One offering, three ways to use it**”. Iliq krem fon. | “Bitta mahsulot, uch xil kirish” naqshi Coursera’dagi “boshlash / almashtirish / o‘sish” bilan bir xil. Ikkita mustaqil manba bitta xulosani tasdiqlayapti. |
+
+Raund xulosasi: HR-tech AI’ni “inson nazoratida” deb ko‘rsatish orqali ishonch quradi. Qadam uchun bu tasodif emas, balki bozorning yetuk tili. Lekin ular B2B uchun gapiradi (“recruiter qaror qiladi”). Qadam esa B2C: **qarorni sen qilasan**.
+
+## Raund 4 — Karyera qarori va personal growth (keyingi, ixtiyoriy)
 
 Founder rejasi bo‘yicha. Taklif etilgan ro‘yxat (founder o‘zgartiradi):
 
