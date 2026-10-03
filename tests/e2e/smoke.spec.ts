@@ -1,6 +1,6 @@
 import { expect, test } from "@playwright/test";
 
-const TELEGRAM_HREF = /^https:\/\/t\.me\/[A-Za-z][A-Za-z0-9_]{4,31}\?start=w1-[a-z]{2,3}(-[a-z0-9_]{2,40})?$/;
+const TELEGRAM_HREF = /^https:\/\/t\.me\/[A-Za-z][A-Za-z0-9_]{4,31}\?start=(?:w1-[a-z]{2,3}|w2-[a-z]{2,3}-(?:bs|al|os))(-[a-z0-9_]{2,40})?$/;
 
 test("homepage renders the hero and a Telegram CTA with attribution", async ({ page }) => {
   await page.goto("/");
@@ -10,7 +10,7 @@ test("homepage renders the hero and a Telegram CTA with attribution", async ({ p
 
   // First Telegram link in the page body is the first hero situation card (D-1).
   const hero = page.locator('main a[href^="https://t.me/"]').first();
-  await expect(hero).toHaveAttribute("href", /\?start=w1-hr$/);
+  await expect(hero).toHaveAttribute("href", /\?start=w2-hr-bs$/);
   await expect(hero).toHaveAttribute("rel", "noopener noreferrer");
 
   const telegramLinks = page.locator('a[href^="https://t.me/"]');

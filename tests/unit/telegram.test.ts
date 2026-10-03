@@ -3,6 +3,7 @@ import {
   buildStartPayload,
   buildTelegramUrl,
   CTA_SOURCES,
+  ENTRY_STATES,
   START_PAYLOAD_RE,
   TELEGRAM_START_MAX_LENGTH,
   type CtaSource,
@@ -62,5 +63,40 @@ describe("buildTelegramUrl", () => {
 
   it("uses the configured bot by default", () => {
     expect(buildTelegramUrl({ source: "header" })).toMatch(/^https:\/\/t\.me\/[A-Za-z][A-Za-z0-9_]{4,31}\?start=w1-hd$/);
+  });
+});
+
+describe("spec v2: visitor state", () => {
+  it.each([
+    ["start", "w2-hr-bs"],
+    ["switch", "w2-hr-al"],
+    ["grow", "w2-hr-os"],
+  ] as const)("%s → %s", (state, payload) => {
+    expect(buildStartPayload({ source: "hero", state })).toBe(payload);
+    expect(buildTelegramUrl({ source: "hero", state }, BOT)).toBe(`${BOT}?start=${payload}`);
+  });
+
+  it("combines state and an active career", () => {
+    expect(
+      buildStartPayload({ source: "careerDetail", state: "switch", career: { slug: "data_analytics", status: "active" } }),
+    ).toBe("w2-cd-al-data_analytics");
+  });
+
+  it("keeps v1 when there is no state (existing links unchanged)", () => {
+    expect(buildStartPayload({ source: "hero" })).toBe("w1-hr");
+  });
+
+  it("ignores an unknown state at runtime and falls back to v1", () => {
+    expect(buildStartPayload({ source: "hero", state: "admin" as never })).toBe("w1-hr");
+  });
+
+  it("matches the backend whitelist (backend/entry_context.py)", () => {
+    expect(ENTRY_STATES).toEqual({ start: "bs", switch: "al", grow: "os" });
+  });
+
+  it("stays within 64 chars for the longest v2 payload", () => {
+    const p = buildStartPayload({ source: "careerDetail", state: "grow", career: { slug: "x".repeat(40), status: "active" } });
+    expect(p.length).toBeLessThanOrEqual(TELEGRAM_START_MAX_LENGTH);
+    expect(p).toMatch(START_PAYLOAD_RE);
   });
 });

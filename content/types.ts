@@ -130,6 +130,8 @@ export type SituationIcon = "start" | "switch" | "grow";
 export interface SituationCard {
   /** Analytics item id. */
   id: string;
+  /** Sent to Telegram and stored on the diagnostic session (deep-link spec v2). */
+  state: "start" | "switch" | "grow";
   title: string;
   body: string;
   icon: SituationIcon;

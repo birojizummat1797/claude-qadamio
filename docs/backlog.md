@@ -1,0 +1,9 @@
+# Backlog
+
+| ID | Vazifa | Manba | Holat |
+|---|---|---|---|
+| BL-1 | **Qadam Brand Migration — Mini App.** Mini App’ni `#6366F1` indigo’dan Qadam brand system’ga ko‘chirish: palitra v1.1, Onest, Design DNA. Maqsad: WEB → BRAND SYSTEM → MINI APP bir xil vizual tilda. | PM, B2.3 review (R6) | Rejada, B2.3 merge blocker emas |
+| BL-2 | **“Ishonch” sahifasi (/ishonch).** Tuzilmasi: `docs/ishonch-page-outline.md`. AI provider data flow va privacy/consent modeli tasdiqlangandan keyin B5 scope’ida ochiladi. **Hozir publish qilinmaydi.** | PM, D-3 / B2.3 review | Bloklangan: tasdiq kutilmoqda |
+| BL-3 | Mini App UI’da `entry_state`dan foydalanish (masalan, holatga mos kirish matni). Ma’lumot sessiyada allaqachon saqlanadi. | P1 (spec v2) | G‘oya |
+| BL-4 | Illyustratsiya tizimi (D-5, illustration-first). | PM, D-5 | Rejada |
+| BL-5 | Logo review (alohida kichik review). | PM, B2.1 | Rejada |

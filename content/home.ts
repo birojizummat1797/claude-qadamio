@@ -26,32 +26,36 @@ export const hero = {
   titleLine2: "O’zingizga mos yo’lni tushunishdan boshlang.",
   // The only Blue segment in the H1 (PM decision R3: headline stays Midnight).
   titleHighlight: "mos yo’lni",
-  lead: "Qadam.io sizga o’zingizni yaxshiroq tushunish, mos professional yo’nalishlarni ko’rish va keyingi qadamlarni aniqroq belgilashga yordam beradi.",
+  // Shortened for a calm 320px first view (PM item P2); same meaning as the brief.
+  lead: "O’zingizni yaxshiroq tushuning, mos yo’nalishlarni ko’ring va keyingi qadamni aniq belgilang.",
   secondaryLabel: "Qanday ishlaydi?",
   secondaryHref: "/qanday-ishlaydi",
   // Facts confirmed by the current bot (/start text): free, runs in Telegram.
   ctaNote: "Bepul · Telegram’da ochiladi",
   // Design DNA "human-first": the primary entry is the visitor's situation
-  // (PM decision D-1). Every card starts the same free diagnostic; the id is an
-  // analytics hint only (the bot does not receive it — deep-link spec v1).
+  // (PM decision D-1). Each card starts the free diagnostic and carries its state
+  // to Telegram and the diagnostic session (deep-link spec v2, PM item P1).
   entryLabel: "Hozir qaysi holatdasiz?",
   situations: [
     {
       id: "boshlash",
       title: "Boshlayapman",
-      body: "Qaysi yo’nalishdan boshlashni aniqlab olmoqchiman.",
+      body: "Yo’nalishimni aniqlab olmoqchiman.",
+      state: "start",
       icon: "start",
     },
     {
       id: "almashtirish",
       title: "Almashtiraman",
-      body: "Hozirgi ishimdan boshqa yo’lga o’tishni o’ylayapman.",
+      body: "Boshqa sohaga o’tishni o’ylayapman.",
+      state: "switch",
       icon: "switch",
     },
     {
       id: "osish",
       title: "O’smoqchiman",
-      body: "Ishlayapman va keyingi bosqichimni rejalashtirmoqchiman.",
+      body: "Kasbimda keyingi bosqichga chiqmoqchiman.",
+      state: "grow",
       icon: "grow",
     },
   ] satisfies SituationCard[],

@@ -2,7 +2,9 @@
  * Website → Telegram deep links. The ONLY place a bot link is built.
  * Spec: docs/telegram-deeplink-spec.md
  *
- * payload = "w1-" + sourceCode [ "-" + careerSlug ]
+ * v1: "w1-" + sourceCode [ "-" + careerSlug ]
+ * v2: "w2-" + sourceCode + "-" + stateCode [ "-" + careerSlug ]   (visitor situation)
+ * v1 is emitted whenever there is no state, so existing links never change.
  * Telegram accepts [A-Za-z0-9_-], max 64 chars, in the `start` parameter.
  */
 
@@ -25,7 +27,16 @@ export const CTA_SOURCES = {
 
 export type CtaSource = keyof typeof CTA_SOURCES;
 
-export const START_PAYLOAD_RE = /^w1-[a-z]{2,3}(-[a-z0-9_]{2,40})?$/;
+/** Visitor situation (homepage hero cards) → spec v2 state code. Mirrors backend/entry_context.py. */
+export const ENTRY_STATES = {
+  start: "bs",
+  switch: "al",
+  grow: "os",
+} as const;
+
+export type EntryState = keyof typeof ENTRY_STATES;
+
+export const START_PAYLOAD_RE = /^(?:w1-[a-z]{2,3}|w2-[a-z]{2,3}-(?:bs|al|os))(-[a-z0-9_]{2,40})?$/;
 export const TELEGRAM_START_MAX_LENGTH = 64;
 
 const CAREER_SLUG_RE = /^[a-z0-9_]{2,40}$/;
@@ -41,10 +52,14 @@ export interface CareerRef {
 export interface DeepLinkOptions {
   source: CtaSource;
   career?: CareerRef;
+  /** Visitor situation; switches the payload to spec v2. */
+  state?: EntryState;
 }
 
-export function buildStartPayload({ source, career }: DeepLinkOptions): string {
-  const base = `w1-${CTA_SOURCES[source]}`;
+export function buildStartPayload({ source, career, state }: DeepLinkOptions): string {
+  const base = state && state in ENTRY_STATES
+    ? `w2-${CTA_SOURCES[source]}-${ENTRY_STATES[state]}`
+    : `w1-${CTA_SOURCES[source]}`;
   if (!career || career.status !== "active" || !CAREER_SLUG_RE.test(career.slug)) {
     return base;
   }

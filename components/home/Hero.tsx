@@ -56,7 +56,6 @@ export function Hero({
   situationAction,
 }: HeroProps) {
   const [before, highlight, after] = splitHighlight(titleLine2, titleHighlight);
-  const href = buildTelegramUrl({ source: "hero" });
 
   return (
     <section aria-labelledby="hero-title" className="bg-paper pt-3 pb-10 md:pt-6 md:pb-16">
@@ -65,13 +64,14 @@ export function Hero({
           className="rounded-[var(--radius-xl)] border border-line bg-surface px-4 pt-6 pb-6 text-center sm:px-5 md:px-12 md:pt-16 md:pb-12"
           style={{ backgroundImage: DOT_GRID }}
         >
-          <p className="inline-flex items-center rounded-full border border-primary-line bg-primary-soft px-4 py-1 text-xs font-medium text-midnight sm:text-sm">
+          {/* Category badge is hidden on the narrowest phones so the first situation card sits comfortably in view (PM item P2). */}
+          <p className="inline-flex items-center rounded-full border border-primary-line bg-primary-soft px-4 py-1 text-xs font-medium text-midnight max-[380px]:hidden sm:text-sm">
             {eyebrow}
           </p>
 
           <h1
             id="hero-title"
-            className="mx-auto mt-4 max-w-5xl text-display font-extrabold text-balance text-midnight max-[359px]:text-[2rem] sm:text-[2.75rem] md:text-display-lg"
+            className="mx-auto mt-4 max-w-5xl text-display max-[380px]:mt-0 font-extrabold text-balance text-midnight max-[359px]:text-[2rem] sm:text-[2.75rem] md:text-display-lg"
           >
             {titleLine1} {before}
             {highlight && <span className="text-primary">{highlight}</span>}
@@ -87,7 +87,7 @@ export function Hero({
               return (
                 <li key={situation.id}>
                   <TrackedLink
-                    href={href}
+                    href={buildTelegramUrl({ source: "hero", state: situation.state })}
                     external
                     events={["hero_cta_click", "diagnostic_cta_click", "telegram_redirect"]}
                     props={{ source: CTA_SOURCES.hero, item: situation.id }}
@@ -107,7 +107,7 @@ export function Hero({
                         <ArrowUpRight aria-hidden="true" className="size-4" />
                       </span>
                     </span>
-                    <ArrowUpRight aria-hidden="true" className="size-5 shrink-0 text-primary sm:hidden" />
+                    <ArrowUpRight aria-hidden="true" className="size-4 shrink-0 text-primary sm:hidden" />
                     <span className="sr-only">({ctaLabels.opensTelegram})</span>
                   </TrackedLink>
                 </li>

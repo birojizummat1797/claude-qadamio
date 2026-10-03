@@ -10,7 +10,7 @@ test.describe("homepage (B2)", () => {
     await expect(page.locator("h1")).toHaveText(
       /Kasb tanlashda taxmin emas\.\s*O’zingizga mos yo’lni tushunishdan boshlang\./,
     );
-    await expect(hero.getByRole("link", { name: /Boshlayapman/ })).toHaveAttribute("href", /\?start=w1-hr$/);
+    await expect(hero.getByRole("link", { name: /Boshlayapman/ })).toHaveAttribute("href", /\?start=w2-hr-bs$/);
     await expect(hero.getByRole("link", { name: "Qanday ishlaydi?" })).toHaveAttribute("href", "/qanday-ishlaydi");
   });
 
@@ -62,9 +62,10 @@ test.describe("homepage B2.2 additions", () => {
     await expect(hero.getByRole("heading", { name: "Hozir qaysi holatdasiz?" })).toBeVisible();
     const cards = hero.getByRole("list").getByRole("link");
     await expect(cards).toHaveCount(3);
-    for (const [i, title] of ["Boshlayapman", "Almashtiraman", "O’smoqchiman"].entries()) {
+    // P1: each card carries its state to Telegram (deep-link spec v2).
+    for (const [i, [title, code]] of ([["Boshlayapman", "bs"], ["Almashtiraman", "al"], ["O’smoqchiman", "os"]] as const).entries()) {
       await expect(cards.nth(i)).toContainText(title);
-      await expect(cards.nth(i)).toHaveAttribute("href", /\?start=w1-hr$/);
+      await expect(cards.nth(i)).toHaveAttribute("href", new RegExp(`\\?start=w2-hr-${code}$`));
     }
   });
 
