@@ -311,3 +311,12 @@ Har bosqich alohida PR, testlar bilan, oldingi versiya buzilmaydi.
 
 Xulosa: Q09–Q10 ni ko‘chirish ballarni o‘zgartiradi (Fit/coverage), bu metodika o‘zgarishi. Shuning uchun yadro savollari tegilmaydi.
 Alohida topilma (BL-11 ga): `attention_to_detail` bepul diagnostikada hozir ham juda kuchsiz o‘lchanadi — bitta variantning 0.5 hissasi. Holbuki bu signal 18 ta kasbda bor, 5 tasida eng og‘ir vazn (5) bilan.
+
+---
+
+## 13. Bot sinovidan keyingi qo‘shimchalar (2026-10-03)
+
+To‘liq tafsilot: `docs/reviews/2026-10-03-bot-test-findings.md`.
+- **“Boshqa (o‘zim yozaman)”** — vaziyat savollarida; signal savollarida “Bu yerda menga mosi yo‘q” (signal bermaydi). Erkin matn ballga ta’sir qilmaydi.
+- **Ohang** — samimiy, qisqa, “qanchalik” shaklidagi savollar.
+- **Shkala** — 5 nuqta, hammasi so‘z bilan, o‘rtada “Bilmayman”; 1–10 ga o‘tilmaydi.
