@@ -105,7 +105,7 @@ Testlar (B3 branch): lint ✅, typecheck ✅, unit **198 passed + 1 skipped** (s
 
 ### P0 final diff (`origin/main..claude/p0-diagnostic-fixes`)
 
-38 fayl, +1445 / −543. 9 commit:
+38 fayl, +1445 / −543. 8 commit:
 
 | Commit | Mazmun |
 |---|---|
