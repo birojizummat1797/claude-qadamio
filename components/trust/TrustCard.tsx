@@ -13,11 +13,11 @@ const ICONS: Record<TrustIcon, LucideIcon> = {
 export function TrustCard({ icon, title, body }: TrustItem) {
   const Icon = ICONS[icon];
   return (
-    <div className="h-full rounded-[var(--radius-lg)] border border-line bg-surface p-6">
+    <div className="h-full rounded-[var(--radius-xl)] border border-line bg-surface p-6 md:p-7">
       <span className="inline-flex size-10 items-center justify-center rounded-full bg-primary-soft text-primary">
         <Icon aria-hidden="true" className="size-5" />
       </span>
-      <h3 className="mt-4 text-h3 font-semibold text-fg">{title}</h3>
+      <h3 className="mt-5 text-h3 font-bold text-midnight">{title}</h3>
       <p className="mt-2 text-fg-muted">{body}</p>
     </div>
   );

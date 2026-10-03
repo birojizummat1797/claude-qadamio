@@ -1,30 +1,39 @@
 import { ChevronRight } from "lucide-react";
+import { cn } from "@/lib/cn";
 import type { ComparisonRow } from "@/content/types";
 
 interface ComparisonBlockProps {
+  /** "primary" when placed on the full-bleed Qadam Blue section. */
+  tone?: "light" | "primary";
   chain: readonly string[];
   columns: { common: string; qadam: string };
   rows: readonly ComparisonRow[];
 }
 
 /** Neutral approach comparison — describes approaches, never names or attacks anyone. */
-export function ComparisonBlock({ chain, columns, rows }: ComparisonBlockProps) {
+export function ComparisonBlock({ chain, columns, rows, tone = "light" }: ComparisonBlockProps) {
+  const onBlue = tone === "primary";
   return (
     <div className="space-y-8">
       <ol className="flex flex-col gap-2 md:flex-row md:flex-wrap md:items-center">
         {chain.map((item, i) => (
           <li key={item} className="flex items-center gap-2">
-            <span className="inline-flex min-h-10 items-center rounded-full border border-primary-line bg-primary-soft px-4 text-[15px] font-medium text-fg">
+            <span
+              className={cn(
+                "inline-flex min-h-11 items-center rounded-full px-5 text-[15px] font-semibold",
+                onBlue ? "bg-surface text-midnight" : "border border-primary-line bg-primary-soft text-fg",
+              )}
+            >
               {item}
             </span>
             {i < chain.length - 1 && (
-              <ChevronRight aria-hidden="true" className="hidden size-4 shrink-0 text-primary md:block" />
+              <ChevronRight aria-hidden="true" className={cn("hidden size-4 shrink-0 md:block", onBlue ? "text-on-primary" : "text-primary")} />
             )}
           </li>
         ))}
       </ol>
 
-      <div className="overflow-hidden rounded-[var(--radius-lg)] border border-line bg-surface">
+      <div className="overflow-hidden rounded-[var(--radius-xl)] border border-line bg-surface text-fg">
         <div className="hidden grid-cols-2 border-b border-line bg-paper md:grid" aria-hidden="true">
           <p className="px-6 py-3 text-sm font-semibold text-fg-muted">{columns.common}</p>
           <p className="border-l border-line px-6 py-3 text-sm font-semibold text-primary">{columns.qadam}</p>

@@ -13,7 +13,7 @@ interface FAQProps {
 /** Accordion on native <details>: keyboard and screen-reader support for free. */
 export function FAQ({ items, source }: FAQProps) {
   return (
-    <div className="divide-y divide-line rounded-[var(--radius-lg)] border border-line bg-surface">
+    <div className="divide-y divide-line rounded-[var(--radius-xl)] border border-line bg-surface">
       {items.map((item) => (
         <details
           key={item.id}

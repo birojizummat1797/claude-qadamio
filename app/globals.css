@@ -51,11 +51,12 @@
   --color-error: #b42828;
   --color-error-soft: #fcebea;
 
-  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-sans: var(--font-onest), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
 
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 20px;
+  --radius-xl: 32px;
 
   --shadow-card: 0 1px 2px rgb(14 23 51 / 0.04), 0 4px 16px rgb(14 23 51 / 0.05);
 
@@ -63,14 +64,19 @@
   --container-prose: 720px;
 
   /* Type scale: mobile values; desktop sizes are set per component with md:. */
+  /* Bold display scale (B2.2): heavy, tight headlines like a product launch, not a document. */
   --text-display: 2.125rem;
-  --text-display--line-height: 1.12;
-  --text-display-lg: 3.5rem;
-  --text-display-lg--line-height: 1.06;
-  --text-h2: 1.625rem;
-  --text-h2--line-height: 1.2;
-  --text-h2-lg: 2.375rem;
-  --text-h2-lg--line-height: 1.15;
+  --text-display--line-height: 1.04;
+  --text-display--letter-spacing: -0.035em;
+  --text-display-lg: 4.75rem;
+  --text-display-lg--line-height: 0.98;
+  --text-display-lg--letter-spacing: -0.045em;
+  --text-h2: 2rem;
+  --text-h2--line-height: 1.08;
+  --text-h2--letter-spacing: -0.03em;
+  --text-h2-lg: 3.25rem;
+  --text-h2-lg--line-height: 1.02;
+  --text-h2-lg--letter-spacing: -0.04em;
   --text-h3: 1.1875rem;
   --text-h3--line-height: 1.3;
 }

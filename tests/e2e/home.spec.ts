@@ -23,7 +23,7 @@ test.describe("homepage (B2)", () => {
 
   test("all homepage sections are present with one h1", async ({ page }) => {
     await expect(page.locator("h1")).toHaveCount(1);
-    for (const id of ["savollar", "qanday-ishlaydi", "nega-qadam", "tamoyillar", "natijalar", "faq"]) {
+    for (const id of ["natija", "savollar", "yol", "qanday-ishlaydi", "nega-qadam", "tamoyillar", "natijalar", "faq"]) {
       await expect(page.locator(`section#${id} h2`)).toBeVisible();
     }
     await expect(page.locator("#savollar li")).toHaveCount(6);
@@ -52,5 +52,27 @@ test.describe("homepage (B2)", () => {
   test("no horizontal overflow on the full page", async ({ page }) => {
     const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
     expect(overflow).toBeLessThanOrEqual(0);
+  });
+});
+
+test.describe("homepage B2.2 additions", () => {
+  test("hero question chips start the diagnostic in Telegram", async ({ page }) => {
+    await page.goto("/");
+    const hero = page.locator("section", { has: page.locator("#hero-title") });
+    const chips = hero.getByRole("list").getByRole("link");
+    await expect(chips).toHaveCount(5);
+    for (let i = 0; i < 5; i++) {
+      await expect(chips.nth(i)).toHaveAttribute("href", /\?start=w1-hr$/);
+    }
+  });
+
+  test("result preview is clearly labelled as a sample and shows no numbers", async ({ page }) => {
+    await page.goto("/");
+    const preview = page.locator("section#natija figure");
+    await expect(preview).toContainText("Namuna");
+    await expect(preview).toContainText("Haqiqiy foydalanuvchi natijasi emas");
+    await expect(preview).toContainText("ma’lumot yetarli emas");
+    const text = await preview.innerText();
+    expect(text).not.toMatch(/\d/);
   });
 });

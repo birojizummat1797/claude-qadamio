@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { IBM_Plex_Sans } from "next/font/google";
+import { Onest } from "next/font/google";
 import type { ReactNode } from "react";
 import { PageViewTracker } from "@/components/analytics/PageViewTracker";
 import { Footer } from "@/components/layout/Footer";
@@ -9,10 +9,11 @@ import { siteConfig } from "@/lib/config";
 import { DEFAULT_LOCALE, OG_LOCALE } from "@/lib/i18n";
 import "./globals.css";
 
-const plexSans = IBM_Plex_Sans({
-  subsets: ["latin", "latin-ext"],
-  weight: ["400", "500", "600", "700"],
-  variable: "--font-plex-sans",
+// Onest: a heavy, contemporary grotesk for display weights that stays calm at
+// body sizes; covers Latin-ext (Uzbek) and Cyrillic (future ru locale).
+const onest = Onest({
+  subsets: ["latin", "latin-ext", "cyrillic"],
+  variable: "--font-onest",
   display: "swap",
 });
 
@@ -46,7 +47,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang={DEFAULT_LOCALE} className={plexSans.variable}>
+    <html lang={DEFAULT_LOCALE} className={onest.variable}>
       <body className="flex min-h-dvh flex-col">
         <a
           href="#main"

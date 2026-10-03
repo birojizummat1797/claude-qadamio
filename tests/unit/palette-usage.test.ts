@@ -42,8 +42,8 @@ describe("palette usage rules", () => {
     expect(section).toMatch(/"text-primary"/);
   });
 
-  it("Spark appears only in the journey's next-step marker", () => {
-    const users = source.filter(([, text]) => /\b(?:bg|ring)-spark\b/.test(text)).map(([f]) => f);
-    expect(users).toEqual([join("components", "home", "JourneyVisual.tsx")]);
+  it("Spark appears only as a next-step marker (journey, result preview)", () => {
+    const users = source.filter(([, text]) => /\b(?:bg|ring)-spark\b/.test(text)).map(([f]) => f).sort();
+    expect(users).toEqual([join("components", "home", "JourneyVisual.tsx"), join("components", "home", "ResultPreview.tsx")]);
   });
 });

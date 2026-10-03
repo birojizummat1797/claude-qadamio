@@ -81,3 +81,42 @@ export interface SocialProofData {
   stats: readonly Stat[];
   partners: readonly Partner[];
 }
+
+/* ─── B2.2: hero entry chips and the result preview ─────────── */
+
+export interface HeroChip {
+  /** Stable id for analytics (item prop). */
+  id: string;
+  label: string;
+}
+
+/**
+ * Qualitative only — the preview never shows scores or percentages.
+ * "unknown" demonstrates the no-fake-precision principle.
+ */
+export type SignalLevel = "strong" | "medium" | "unknown";
+
+export interface PreviewSignal {
+  label: string;
+  level: SignalLevel;
+}
+
+export interface PreviewDirection {
+  title: string;
+  why: string;
+  readiness: string;
+}
+
+export interface ResultPreviewData {
+  /** Shown on the window: this is an illustration, not a real user's result. */
+  sampleBadge: string;
+  sampleNote: string;
+  tabs: readonly string[];
+  signalsTitle: string;
+  levelLabels: Record<SignalLevel, string>;
+  signals: readonly PreviewSignal[];
+  directionsTitle: string;
+  whyLabel: string;
+  directions: readonly PreviewDirection[];
+  nextStep: { label: string; text: string };
+}

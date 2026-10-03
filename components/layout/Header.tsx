@@ -7,11 +7,11 @@ import { NavLinks } from "./NavLinks";
 
 export function Header() {
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper">
-      <Container className="flex h-16 items-center justify-between gap-4">
+    <header className="sticky top-0 z-50 border-b border-line/70 bg-paper/95 backdrop-blur-sm">
+      <Container className="flex h-16 items-center justify-between gap-4 md:h-20">
         <Logo />
 
-        <nav aria-label={a11yLabels.mainNav} className="hidden md:block">
+        <nav aria-label={a11yLabels.mainNav} className="hidden rounded-full border border-line bg-surface p-1 lg:block">
           <NavLinks items={mainNav} />
         </nav>
 

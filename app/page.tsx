@@ -7,6 +7,7 @@ import { ComparisonBlock } from "@/components/home/ComparisonBlock";
 import { Hero } from "@/components/home/Hero";
 import { JourneyVisual } from "@/components/home/JourneyVisual";
 import { ProblemGrid } from "@/components/home/ProblemGrid";
+import { ResultPreview } from "@/components/home/ResultPreview";
 import { Section } from "@/components/layout/Section";
 import { SocialProof } from "@/components/social/SocialProof";
 import { StepList } from "@/components/trust/StepCard";
@@ -19,6 +20,7 @@ import {
   howItWorks,
   journey,
   problems,
+  resultPreview,
   socialProof,
   trust,
 } from "@/content/home";
@@ -35,10 +37,19 @@ function MoreLink({ href, label }: { href: string; label: string }) {
 export default function HomePage() {
   return (
     <>
-      <Hero {...hero} visual={<JourneyVisual label={journey.label} steps={journey.steps} />} />
+      <Hero {...hero} />
 
-      <Section {...problems.section}>
+      {/* Product showcase: what a result looks like (clearly a sample). */}
+      <Section {...resultPreview.section} tone="midnight" align="center">
+        <ResultPreview data={resultPreview.data} />
+      </Section>
+
+      <Section {...problems.section} tone="surface">
         <ProblemGrid items={problems.items} />
+      </Section>
+
+      <Section {...journey.section}>
+        <JourneyVisual label={journey.label} steps={journey.steps} />
       </Section>
 
       <Section {...howItWorks.section} tone="surface">
@@ -50,19 +61,19 @@ export default function HomePage() {
         </div>
       </Section>
 
-      <Section {...comparison.section}>
-        <ComparisonBlock chain={comparison.chain} columns={comparison.columns} rows={comparison.rows} />
+      <Section {...comparison.section} tone="primary">
+        <ComparisonBlock chain={comparison.chain} columns={comparison.columns} rows={comparison.rows} tone="primary" />
       </Section>
 
-      <Section {...trust.section} tone="surface">
+      <Section {...trust.section}>
         <TrustGrid items={trust.items} />
       </Section>
 
-      <Section {...socialProof.section}>
+      <Section {...socialProof.section} tone="surface">
         <SocialProof data={socialProof.data} emptyState={socialProof.emptyState} labels={socialProof.labels} />
       </Section>
 
-      <Section {...faqTeaser.section} tone="surface">
+      <Section {...faqTeaser.section}>
         <div className="max-w-3xl">
           <FAQ items={faqTeaser.items} source="home" />
           <div className="mt-6">

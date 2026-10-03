@@ -8,6 +8,8 @@
 
 import type {
   ComparisonRow,
+  HeroChip,
+  ResultPreviewData,
   FaqItem,
   JourneyStep,
   ProblemItem,
@@ -28,9 +30,63 @@ export const hero = {
   secondaryHref: "/qanday-ishlaydi",
   // Facts confirmed by the current bot (/start text): free, runs in Telegram.
   ctaNote: "Bepul · Telegram’da ochiladi",
+  // Edubaza/Skillfactory-style entry: the visitor recognises their own question.
+  // Every chip starts the same free diagnostic; the chip id is only an analytics hint.
+  entryLabel: "Qaysi savol sizga tanish?",
+  chips: [
+    { id: "it", label: "IT’ga o’tsammi?" },
+    { id: "mos-kasb", label: "Qaysi kasb menga mos?" },
+    { id: "kurs", label: "Qaysi kursga pul sarflay?" },
+    { id: "diplom", label: "Diplomdan keyin nima?" },
+    { id: "almashtirish", label: "Kasbimni almashtirsammi?" },
+  ] satisfies HeroChip[],
+} as const;
+
+export const resultPreview = {
+  section: {
+    id: "natija",
+    eyebrow: "Natija qanday ko’rinadi",
+    title: "Kasb nomi emas. Sabab, tayyorgarlik va keyingi qadam.",
+    intro: "Qadam bitta javob bermaydi. Signallaringizni, mos bo’lishi mumkin bo’lgan yo’nalishlarni va nimadan boshlashni bir joyda ko’rsatadi.",
+  } satisfies SectionCopy,
+  data: {
+    sampleBadge: "Namuna",
+    sampleNote: "Bu natija tuzilishini ko’rsatish uchun o’ylab topilgan misol. Haqiqiy foydalanuvchi natijasi emas.",
+    tabs: ["Signallar", "Yo’nalishlar", "Yo’l xaritasi"],
+    signalsTitle: "Javoblardan olingan signallar",
+    levelLabels: { strong: "kuchli", medium: "o’rtacha", unknown: "ma’lumot yetarli emas" },
+    signals: [
+      { label: "Tizimli fikrlash", level: "strong" },
+      { label: "Raqamlar bilan ishlash", level: "strong" },
+      { label: "Odamlar bilan muloqot", level: "medium" },
+      { label: "Vizual did", level: "medium" },
+      { label: "Ingliz tili", level: "unknown" },
+    ],
+    directionsTitle: "Mos bo’lishi mumkin bo’lgan yo’nalishlar",
+    whyLabel: "Nega?",
+    directions: [
+      {
+        title: "Data Analytics",
+        why: "Tizimli fikrlash va raqamlar bilan ishlash signallari kuchli.",
+        readiness: "Tayyorgarlik: boshlang’ich. SQL va Excel asoslari kerak.",
+      },
+      {
+        title: "Business Analysis",
+        why: "Tizimli fikrlash va muloqot signallari birga kelgan.",
+        readiness: "Tayyorgarlik: boshlang’ich. Jarayonlarni tasvirlashni o’rganish kerak.",
+      },
+    ],
+    nextStep: { label: "Keyingi qadam", text: "Ikki hafta: SQL asoslari va bitta kichik amaliy loyiha." },
+  } satisfies ResultPreviewData,
 } as const;
 
 export const journey = {
+  section: {
+    id: "yol",
+    eyebrow: "Qadam yo’li",
+    title: "Oltita savol. Bitta aniq yo’l.",
+    intro: "Qadam sizni “Men kimman?” savolidan “Bugun nimadan boshlayman?” savoligacha bosqichma-bosqich olib boradi.",
+  } satisfies SectionCopy,
   label: "Qadam yo’li",
   steps: [
     { question: "Men kimman?", caption: "Qiziqishlar, fikrlash uslubi va qadriyatlar" },

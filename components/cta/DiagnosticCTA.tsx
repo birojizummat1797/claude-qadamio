@@ -1,5 +1,6 @@
 import { ArrowUpRight } from "lucide-react";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
+import { cn } from "@/lib/cn";
 import { buttonClasses, type ButtonSize, type ButtonVariant } from "@/components/ui/Button";
 import { ctaLabels } from "@/content/site";
 import type { AnalyticsEvent } from "@/lib/analytics";
@@ -41,10 +42,25 @@ export function DiagnosticCTA({
       external
       events={events}
       props={{ source: CTA_SOURCES[source], slug }}
-      className={buttonClasses({ variant, size, fullWidth, className })}
+      className={buttonClasses({
+        variant,
+        size,
+        fullWidth,
+        // Arrow sits in its own circle at the right edge of the pill.
+        className: cn(size === "lg" ? "gap-4 pr-2" : "gap-3 pr-1.5", className),
+      })}
     >
       <span>{label}</span>
-      <ArrowUpRight aria-hidden="true" className="size-4 shrink-0" />
+      <span
+        aria-hidden="true"
+        className={cn(
+          "inline-flex shrink-0 items-center justify-center rounded-full",
+          size === "lg" ? "size-10" : "size-8",
+          variant === "inverse" ? "bg-primary text-on-primary" : "bg-on-primary text-primary",
+        )}
+      >
+        <ArrowUpRight className="size-4" />
+      </span>
       <span className="sr-only">({ctaLabels.opensTelegram})</span>
     </TrackedLink>
   );
