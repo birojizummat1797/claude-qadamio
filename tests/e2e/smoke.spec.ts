@@ -8,7 +8,7 @@ test("homepage renders the hero and a Telegram CTA with attribution", async ({ p
   await expect(page).toHaveTitle(/Qadam\.io/);
   await expect(page.locator("html")).toHaveAttribute("lang", "uz");
 
-  const hero = page.locator("main").getByRole("link", { name: /Diagnostikani boshlash/ });
+  const hero = page.locator("main").getByRole("link", { name: /Diagnostikani boshlash/ }).first();
   await expect(hero).toHaveAttribute("href", /\?start=w1-hr$/);
   await expect(hero).toHaveAttribute("rel", "noopener noreferrer");
 
