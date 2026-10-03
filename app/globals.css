@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+/* ───────────────────────────────────────────────────────────────
+   Qadam design tokens — public web.
+   Token names follow the Mini App convention (--color-*, --radius-*)
+   so both surfaces share one design language (D5).
+   Contrast (WCAG AA) checked against --color-paper and white:
+   ink 17.9:1, ink-2 9.0:1, ink-3 5.5:1, green 5.2:1 (on paper);
+   white text on green 5.4:1.
+   ─────────────────────────────────────────────────────────────── */
+@theme {
+  --color-ink: #111214;
+  --color-ink-2: #43464d;
+  --color-ink-3: #62666f;
+  --color-paper: #fafaf7;
+  --color-surface: #ffffff;
+  --color-line: #e4e4de;
+  --color-line-strong: #cfcfc6;
+  --color-green: #17794e;
+  --color-green-hover: #11603e;
+  --color-green-soft: #e8f2ec;
+  --color-on-green: #ffffff;
+
+  --font-sans: var(--font-plex-sans), ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+
+  --shadow-card: 0 1px 2px rgb(17 18 20 / 0.04), 0 4px 16px rgb(17 18 20 / 0.05);
+
+  --container-content: 1200px;
+  --container-prose: 720px;
+
+  /* Type scale: mobile values; desktop sizes are set per component with md:. */
+  --text-display: 2.125rem;
+  --text-display--line-height: 1.12;
+  --text-display-lg: 3.5rem;
+  --text-display-lg--line-height: 1.06;
+  --text-h2: 1.625rem;
+  --text-h2--line-height: 1.2;
+  --text-h2-lg: 2.375rem;
+  --text-h2-lg--line-height: 1.15;
+  --text-h3: 1.1875rem;
+  --text-h3--line-height: 1.3;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: var(--color-green);
+    color: var(--color-on-green);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-green);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: no-preference) {
+    html {
+      scroll-behavior: smooth;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
