@@ -67,3 +67,30 @@ Tartib: backup → recompute dry run → natijani ko‘rib chiqish → `--apply`
 - Real Telegram oqimini telefonda o‘tkaza olmayman.
 - Production log’larini ko‘ra olmayman (`/compare` va v0 ga real trafik bor-yo‘qligi).
 - KB’dagi raqamsiz baholovchi gaplar va saqlangan eski AI matnlari editorial review talab qiladi.
+
+---
+
+## F. Production check natijasi (2026-10-03)
+
+Host: `https://qadam-backend-deepseek.onrender.com` (OpenAPI: “QADAM API 1.0.0”). Faqat o‘qish so‘rovlari yuborilgan. `/diagnostic/stage1` ga soxta `init_data` bilan bitta POST yuborildi — u javoblar validatsiyasida 400 bilan rad etildi, hech narsa yozilmadi.
+Production’da hozir **eski `main`** ishlayapti (P0 deploy qilinmagan), shuning uchun 5–9 FAIL — kutilgan natija.
+
+| # | Tekshiruv | Natija | Izoh |
+|---|---|---|---|
+| 1 | production-check real production’da | PASS (ishga tushdi) | |
+| 2 | API ↔ snapshot parity | **PASS** | 25 / 25 bir xil |
+| 3 | DB taxonomy versiyasi | **FAIL (faqat label)** | Label `v1.0`, mazmun esa v2.2 JSON bilan aynan bir xil (2 va 4 PASS). Mazmun muammosi yo‘q |
+| 4 | Scoring/signal mosligi | **PASS** | Production vaznlaridan hisoblangan signallar snapshot bilan bir xil |
+| 5 | `/compare` yo‘q | FAIL (kutilgan) | Eski kod |
+| 6 | `/dev-unlock` → 410 | FAIL (kutilgan) + **XAVFSIZLIK** | §G |
+| 7 | `/stage1`, `/stage2` → 410 | FAIL (kutilgan) | stage1 → 400 |
+| 8 | Public taxonomy’da maosh yo‘q | FAIL (kutilgan) | Eski kod `salary_usd` qaytaradi |
+| 9 | PDF endpoint | FAIL (kutilgan) | Eski kod |
+| 10 | Bot → Mini App deep-link | BLOCKED | Bot PR #2 deploy + telefon |
+
+## G. Kritik topilma — production’da `ENV=development`
+
+`/diagnostic/stage1` ga soxta, 10 belgidan qisqa `init_data` yuborilganda javob 401 emas, 400 bo‘ldi. Bu `verify_init_data` dev rejimida ishlayotganini ko‘rsatadi (`auth.py`: `ENV` o‘rnatilmasa, default `"development"`; qisqa `init_data` → mock foydalanuvchi). Natija: **Telegram autentifikatsiyasi production’da chetlab o‘tilishi mumkin**, `/dev-unlock` esa to‘lovsiz “paid” belgisini qo‘yishi mumkin. P0 `dev-unlock` ni yopadi, lekin `auth.py` dagi dev rejim P0 da o‘zgarmagan.
+Tasdiqlash uchun boshqa so‘rov yuborilmadi (ekspluatatsiya qilinmadi). Xulosa javob kodidan chiqarilgan — kuchli dalil, lekin bilvosita.
+
+**Darhol, kodsiz:** Render → backend service → Environment → `ENV=production` qo‘shish → redeploy. Keyin `production-check.ts` qayta ishga tushiriladi: soxta `init_data` bilan 401 qaytishi kerak.
