@@ -7,3 +7,4 @@
 | BL-3 | Mini App UI’da `entry_state`dan foydalanish (masalan, holatga mos kirish matni). Ma’lumot sessiyada allaqachon saqlanadi. | P1 (spec v2) | G‘oya |
 | BL-4 | Illyustratsiya tizimi (D-5, illustration-first). | PM, D-5 | Rejada |
 | BL-5 | Logo review (alohida kichik review). | PM, B2.1 | Rejada |
+| BL-6 | **Real device matrix before production release.** P3 covered 2 × Redmi 13 (Android 16) only. Before public launch: at least one older/low-end Android (e.g. Android 10–12, 2–3 GB RAM), one iPhone (Safari), one tablet; repeat `docs/qa/device-test-protocol.md`. | PM, B2.3 merge review | Release blocker (not a merge blocker) |
