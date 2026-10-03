@@ -48,6 +48,12 @@ Journey staircase (desktop ≥1024px only): `--color-step-1…5` `#F5F7FF → #D
 | R5 Android readability | Check now | ✅ see below |
 | R6 Mini App migration | Out of web scope | — |
 
+## Zone rules (PM decision D-4, 2026-10-03)
+
+- Midnight: at most **2** major zones per page — (1) result/sample block, (2) final CTA + footer.
+- Dominant Qadam Blue block: at most **1** per page. Overall Blue share ≈ 10–15%.
+- No gradients anywhere (Design DNA v1, `docs/design-dna.md`).
+
 ## R5 check (2026-10-03)
 
 - Emulated Moto G4, Galaxy S9+ (320px), Galaxy A55, Pixel 7: no horizontal overflow, hero CTA ≥44px and above the fold, no text below 12px.

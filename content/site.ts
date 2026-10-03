@@ -15,10 +15,17 @@ export const site = {
     "Qadam.io javoblaringiz va mavjud ma’lumotlar asosida sizga mos bo’lishi mumkin bo’lgan professional yo’nalishlarni ko’rish va keyingi qadamni aniqroq belgilashga yordam beradi.",
 } as const;
 
+/**
+ * Qadam's core AI/product principle — LOCKED (PM decision D-2, 2026-10-03).
+ * Change only with an explicit product-owner decision.
+ */
+export const PRODUCT_PRINCIPLE = "Signallarni Qadam o’qiydi. Qarorni siz qilasiz.";
+
+// The logo links home, so "Bosh sahifa" is not a menu item (Design Direction v1).
 export const mainNav: readonly NavItem[] = [
-  { label: "Bosh sahifa", href: "/" },
   { label: "Qanday ishlaydi?", href: "/qanday-ishlaydi" },
   { label: "Yo’nalishlar", href: "/yonalishlar" },
+  { label: "Ishonch", href: "/ishonch" },
   { label: "Qadam haqida", href: "/qadam-haqida" },
   { label: "FAQ", href: "/faq" },
 ];
@@ -46,7 +53,7 @@ export interface FooterColumn {
 
 export const footer = {
   columns: [
-    { title: "Platforma", links: mainNav.slice(1) },
+    { title: "Platforma", links: mainNav },
     {
       title: "Ma’lumot",
       links: [

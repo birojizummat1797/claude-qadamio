@@ -47,6 +47,7 @@ Examples:
 | `fc` | Final CTA block (any page) |
 | `ft` | Footer |
 | `ar` | Article / content page |
+| `pq` | “Tanish savollar” cards on the homepage (secondary discovery, B2.3) |
 
 The list lives in one file (`lib/telegram.ts`) and is unit-tested against the regex.
 

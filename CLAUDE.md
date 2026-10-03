@@ -10,6 +10,10 @@
 - Never invent data: no user counts, testimonials, partners, salaries, outcomes or accuracy claims.
 - Backend source of truth: `qadam-loyiha-deepseek`. No scoring or diagnostic logic in this repo.
 
+## Design DNA v1 (locked)
+Human-first · Intelligent · Calm · Evidence-led · Progressive. See `docs/design-dna.md`.
+Product principle (locked, do not edit without owner decision): “Signallarni Qadam o’qiydi. Qarorni siz qilasiz.” (`PRODUCT_PRINCIPLE` in `content/site.ts`).
+
 ## Checks before every push
 `npm run check` (lint, typecheck, unit, build) and
 `PW_CHROMIUM_PATH=/opt/pw-browsers/chromium npm run test:e2e`.

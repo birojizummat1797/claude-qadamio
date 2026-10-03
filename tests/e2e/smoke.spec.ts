@@ -8,7 +8,8 @@ test("homepage renders the hero and a Telegram CTA with attribution", async ({ p
   await expect(page).toHaveTitle(/Qadam\.io/);
   await expect(page.locator("html")).toHaveAttribute("lang", "uz");
 
-  const hero = page.locator("main").getByRole("link", { name: /Diagnostikani boshlash/ }).first();
+  // First Telegram link in the page body is the first hero situation card (D-1).
+  const hero = page.locator('main a[href^="https://t.me/"]').first();
   await expect(hero).toHaveAttribute("href", /\?start=w1-hr$/);
   await expect(hero).toHaveAttribute("rel", "noopener noreferrer");
 
@@ -69,7 +70,7 @@ test("mobile menu closes after navigating", async ({ page }, testInfo) => {
   await page.goto("/mavjud-emas");
   await page.getByRole("button", { name: "Menyuni ochish" }).click();
   const dialog = page.getByRole("dialog", { name: "Asosiy navigatsiya" });
-  await dialog.getByRole("link", { name: "Bosh sahifa", exact: true }).click();
+  await dialog.getByRole("link", { name: "Qadam.io bosh sahifasi" }).click();
   await expect(page).toHaveURL(/\/$/);
   await expect(dialog).toBeHidden();
   const overflow = await page.evaluate(() => document.documentElement.style.overflow);
@@ -80,7 +81,8 @@ test("desktop header shows navigation and header CTA", async ({ page }, testInfo
   test.skip(testInfo.project.name !== "desktop", "desktop only");
   await page.goto("/");
   const nav = page.getByRole("navigation", { name: "Asosiy navigatsiya" });
-  await expect(nav.getByRole("link", { name: "Bosh sahifa" })).toHaveAttribute("aria-current", "page");
+  await expect(nav.getByRole("link", { name: "Ishonch" })).toHaveAttribute("href", "/ishonch");
+  await expect(nav.getByRole("link", { name: "Bosh sahifa" })).toHaveCount(0);
   await expect(page.locator("header").getByRole("link", { name: /Diagnostikani boshlash/ })).toHaveAttribute(
     "href",
     /\?start=w1-hd$/,

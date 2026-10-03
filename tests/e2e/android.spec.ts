@@ -21,7 +21,8 @@ for (const name of ANDROID) {
       const overflow = await page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth);
       expect(overflow).toBeLessThanOrEqual(0);
 
-      const cta = page.locator("#hero-title ~ div").getByRole("link", { name: /Diagnostikani boshlash/ });
+      // Primary hero interaction (D-1): the first situation card.
+      const cta = page.locator("section", { has: page.locator("#hero-title") }).getByRole("link", { name: /Boshlayapman/ });
       await expect(cta).toBeVisible();
       const box = await cta.boundingBox();
       expect(box!.height).toBeGreaterThanOrEqual(44);

@@ -5,12 +5,12 @@ test.describe("homepage (B2)", () => {
     await page.goto("/");
   });
 
-  test("hero: positioning, primary CTA to Telegram, secondary CTA to how-it-works", async ({ page }) => {
+  test("hero: positioning, situation cards to Telegram, secondary link to how-it-works", async ({ page }) => {
     const hero = page.locator("section", { has: page.locator("#hero-title") });
     await expect(page.locator("h1")).toHaveText(
       /Kasb tanlashda taxmin emas\.\s*O’zingizga mos yo’lni tushunishdan boshlang\./,
     );
-    await expect(hero.getByRole("link", { name: /Diagnostikani boshlash/ })).toHaveAttribute("href", /\?start=w1-hr$/);
+    await expect(hero.getByRole("link", { name: /Boshlayapman/ })).toHaveAttribute("href", /\?start=w1-hr$/);
     await expect(hero.getByRole("link", { name: "Qanday ishlaydi?" })).toHaveAttribute("href", "/qanday-ishlaydi");
   });
 
@@ -56,14 +56,43 @@ test.describe("homepage (B2)", () => {
 });
 
 test.describe("homepage B2.2 additions", () => {
-  test("hero question chips start the diagnostic in Telegram", async ({ page }) => {
+  test("hero offers exactly three situations, each starting the diagnostic (D-1)", async ({ page }) => {
     await page.goto("/");
     const hero = page.locator("section", { has: page.locator("#hero-title") });
-    const chips = hero.getByRole("list").getByRole("link");
-    await expect(chips).toHaveCount(5);
-    for (let i = 0; i < 5; i++) {
-      await expect(chips.nth(i)).toHaveAttribute("href", /\?start=w1-hr$/);
+    await expect(hero.getByRole("heading", { name: "Hozir qaysi holatdasiz?" })).toBeVisible();
+    const cards = hero.getByRole("list").getByRole("link");
+    await expect(cards).toHaveCount(3);
+    for (const [i, title] of ["Boshlayapman", "Almashtiraman", "O’smoqchiman"].entries()) {
+      await expect(cards.nth(i)).toContainText(title);
+      await expect(cards.nth(i)).toHaveAttribute("href", /\?start=w1-hr$/);
     }
+  });
+
+  test("question cards are secondary discovery with their own source code", async ({ page }) => {
+    await page.goto("/");
+    const links = page.locator("section#savollar").getByRole("link", { name: /Shu savoldan boshlash/ });
+    await expect(links).toHaveCount(6);
+    await expect(links.first()).toHaveAttribute("href", /\?start=w1-pq$/);
+  });
+
+  test("shows the locked product principle (D-2)", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.locator("section#natija h2")).toHaveText("Signallarni Qadam o’qiydi. Qarorni siz qilasiz.");
+  });
+
+  test("uses at most two Midnight zones and one Blue block (D-4)", async ({ page }) => {
+    await page.goto("/");
+    const counts = await page.evaluate(() => {
+      const midnight = "rgb(14, 23, 51)";
+      const blue = "rgb(47, 79, 224)";
+      const zones = [...document.querySelectorAll("main > section, body > footer")].map(
+        (el) => getComputedStyle(el).backgroundColor,
+      );
+      return { midnight: zones.filter((c) => c === midnight).length, blue: zones.filter((c) => c === blue).length };
+    });
+    // Midnight: result preview + final CTA (the footer continues the final CTA zone).
+    expect(counts.midnight).toBe(3);
+    expect(counts.blue).toBe(1);
   });
 
   test("result preview is clearly labelled as a sample and shows no numbers", async ({ page }) => {

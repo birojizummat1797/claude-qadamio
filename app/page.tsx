@@ -39,13 +39,14 @@ export default function HomePage() {
     <>
       <Hero {...hero} />
 
-      {/* Product showcase: what a result looks like (clearly a sample). */}
-      <Section {...resultPreview.section} tone="midnight" align="center">
-        <ResultPreview data={resultPreview.data} />
+      {/* Secondary discovery right after the hero (PM decision D-1). */}
+      <Section {...problems.section} tone="surface">
+        <ProblemGrid items={problems.items} startLabel={problems.startLabel} />
       </Section>
 
-      <Section {...problems.section} tone="surface">
-        <ProblemGrid items={problems.items} />
+      {/* Midnight zone 1 of 2: product principle + sample result (PM decision D-4). */}
+      <Section {...resultPreview.section} tone="midnight" align="center">
+        <ResultPreview data={resultPreview.data} />
       </Section>
 
       <Section {...journey.section}>
@@ -61,12 +62,16 @@ export default function HomePage() {
         </div>
       </Section>
 
+      {/* The single dominant Blue block (PM decision D-4). */}
       <Section {...comparison.section} tone="primary">
         <ComparisonBlock chain={comparison.chain} columns={comparison.columns} rows={comparison.rows} tone="primary" />
       </Section>
 
       <Section {...trust.section}>
         <TrustGrid items={trust.items} />
+        <div className="mt-8">
+          <MoreLink href={trust.moreHref} label={trust.moreLabel} />
+        </div>
       </Section>
 
       <Section {...socialProof.section} tone="surface">

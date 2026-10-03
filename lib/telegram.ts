@@ -20,6 +20,7 @@ export const CTA_SOURCES = {
   finalCta: "fc",
   footer: "ft",
   article: "ar",
+  problems: "pq",
 } as const;
 
 export type CtaSource = keyof typeof CTA_SOURCES;

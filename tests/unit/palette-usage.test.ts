@@ -47,3 +47,23 @@ describe("palette usage rules", () => {
     expect(users).toEqual([join("components", "home", "JourneyVisual.tsx"), join("components", "home", "ResultPreview.tsx")]);
   });
 });
+
+describe("Design DNA v1 rules (PM 2026-10-03)", () => {
+  it("never uses gradients (CSS or Tailwind)", () => {
+    const css = readFileSync(join(process.cwd(), "app/globals.css"), "utf8");
+    for (const [file, text] of [...source, ["app/globals.css", css] as const]) {
+      expect(text, file).not.toMatch(/(?:linear|radial|conic)-gradient\(|\bbg-(?:linear|radial|conic|gradient)\b/i);
+    }
+  });
+
+  it("uses ExtraBold only at the top of the hierarchy (D-6)", () => {
+    const allowed = [
+      join("app", "not-found.tsx"), // H1
+      join("components", "home", "Hero.tsx"), // H1
+      join("components", "layout", "Section.tsx"), // section H2
+      join("components", "cta", "FinalCTA.tsx"), // closing H2
+    ].sort();
+    const users = source.filter(([, text]) => /\bfont-extrabold\b/.test(text)).map(([f]) => f).sort();
+    expect(users).toEqual(allowed);
+  });
+});

@@ -1,10 +1,10 @@
-import { ArrowRight } from "lucide-react";
+import { ArrowLeftRight, ArrowRight, ArrowUpRight, Sprout, TrendingUp, type LucideIcon } from "lucide-react";
 import Link from "next/link";
 import { TrackedLink } from "@/components/analytics/TrackedLink";
-import { DiagnosticCTA } from "@/components/cta/DiagnosticCTA";
 import { Container } from "@/components/layout/Container";
 import { buttonClasses } from "@/components/ui/Button";
-import type { HeroChip } from "@/content/types";
+import { ctaLabels } from "@/content/site";
+import type { SituationCard, SituationIcon } from "@/content/types";
 import { buildTelegramUrl, CTA_SOURCES } from "@/lib/telegram";
 
 interface HeroProps {
@@ -18,8 +18,19 @@ interface HeroProps {
   secondaryHref: string;
   ctaNote: string;
   entryLabel: string;
-  chips: readonly HeroChip[];
+  situations: readonly SituationCard[];
+  situationAction: string;
 }
+
+const ICONS: Record<SituationIcon, LucideIcon> = {
+  start: Sprout,
+  switch: ArrowLeftRight,
+  grow: TrendingUp,
+};
+
+// Dot-grid texture as an SVG pattern (Design DNA: no gradients anywhere).
+const DOT_GRID =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='22' height='22'%3E%3Ccircle cx='1' cy='1' r='1' fill='%23e3dfd7'/%3E%3C/svg%3E\")";
 
 export function splitHighlight(text: string, highlight?: string): [string, string, string] {
   const at = highlight ? text.indexOf(highlight) : -1;
@@ -28,8 +39,8 @@ export function splitHighlight(text: string, highlight?: string): [string, strin
 }
 
 /**
- * Centered launch-style hero inside a large rounded stage: badge, heavy headline,
- * "which question is yours?" chips (each starts the diagnostic) and the CTAs.
+ * Human-first hero: the primary interaction is "which situation are you in?"
+ * (three cards). Each card starts the free diagnostic in Telegram.
  */
 export function Hero({
   eyebrow,
@@ -41,62 +52,75 @@ export function Hero({
   secondaryHref,
   ctaNote,
   entryLabel,
-  chips,
+  situations,
+  situationAction,
 }: HeroProps) {
   const [before, highlight, after] = splitHighlight(titleLine2, titleHighlight);
-  const chipHref = buildTelegramUrl({ source: "hero" });
+  const href = buildTelegramUrl({ source: "hero" });
 
   return (
     <section aria-labelledby="hero-title" className="bg-paper pt-3 pb-10 md:pt-6 md:pb-16">
       <Container>
-        <div className="relative overflow-hidden rounded-[var(--radius-xl)] border border-line bg-surface bg-[radial-gradient(var(--color-line)_1px,transparent_1px)] [background-size:22px_22px] px-5 pt-8 pb-10 text-center md:px-12 md:py-20">
-          <p className="inline-flex items-center gap-2 rounded-full border border-primary-line bg-primary-soft py-1 pr-4 pl-4 text-xs font-medium text-midnight sm:pl-1 sm:text-sm">
-            <span className="hidden rounded-full bg-primary px-2.5 py-0.5 text-xs font-semibold text-on-primary sm:inline">Qadam</span>
+        <div
+          className="rounded-[var(--radius-xl)] border border-line bg-surface px-4 pt-6 pb-6 text-center sm:px-5 md:px-12 md:pt-16 md:pb-12"
+          style={{ backgroundImage: DOT_GRID }}
+        >
+          <p className="inline-flex items-center rounded-full border border-primary-line bg-primary-soft px-4 py-1 text-xs font-medium text-midnight sm:text-sm">
             {eyebrow}
           </p>
 
           <h1
             id="hero-title"
-            className="mx-auto mt-5 max-w-5xl text-display font-extrabold text-balance text-midnight sm:text-[2.75rem] md:text-display-lg"
+            className="mx-auto mt-4 max-w-5xl text-display font-extrabold text-balance text-midnight max-[359px]:text-[2rem] sm:text-[2.75rem] md:text-display-lg"
           >
             {titleLine1} {before}
             {highlight && <span className="text-primary">{highlight}</span>}
             {after}
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-base text-fg-muted md:mt-6 md:text-xl">{lead}</p>
+          <p className="mx-auto mt-4 max-w-2xl text-[15px] leading-relaxed text-fg-muted sm:text-base md:mt-6 md:text-xl">{lead}</p>
 
-          {/* Phones: CTA first so it stays above the fold; desktop: chips first (search-like entry). */}
-          <div className="flex flex-col">
-            <div className="order-2 mt-8 md:order-1 md:mt-10">
-              <p className="text-sm font-semibold text-midnight">{entryLabel}</p>
-              <ul className="mx-auto mt-3 flex max-w-3xl flex-wrap justify-center gap-2">
-                {chips.map((chip) => (
-                  <li key={chip.id}>
-                    <TrackedLink
-                      href={chipHref}
-                      external
-                      events={["hero_cta_click", "diagnostic_cta_click", "telegram_redirect"]}
-                      props={{ source: CTA_SOURCES.hero, item: chip.id }}
-                      className="inline-flex min-h-11 items-center rounded-full border border-line bg-surface px-4 text-[15px] font-medium text-fg transition-colors hover:border-primary hover:text-primary"
+          <h2 className="mt-6 text-sm font-semibold text-midnight md:mt-12">{entryLabel}</h2>
+          <ul className="mx-auto mt-3 grid max-w-5xl gap-2.5 text-left sm:grid-cols-3 md:mt-4 md:gap-4">
+            {situations.map((situation) => {
+              const Icon = ICONS[situation.icon];
+              return (
+                <li key={situation.id}>
+                  <TrackedLink
+                    href={href}
+                    external
+                    events={["hero_cta_click", "diagnostic_cta_click", "telegram_redirect"]}
+                    props={{ source: CTA_SOURCES.hero, item: situation.id }}
+                    className="group flex h-full items-center gap-3 rounded-[var(--radius-lg)] border border-line bg-surface px-4 py-3 transition-colors hover:border-primary sm:flex-col sm:items-start sm:gap-4 sm:p-6"
+                  >
+                    <span
+                      aria-hidden="true"
+                      className="flex size-10 shrink-0 items-center justify-center rounded-full bg-primary-soft text-primary sm:size-12"
                     >
-                      {chip.label}
-                    </TrackedLink>
-                  </li>
-                ))}
-              </ul>
-            </div>
+                      <Icon className="size-5 sm:size-6" />
+                    </span>
+                    <span className="flex min-w-0 flex-1 flex-col">
+                      <span className="text-lg font-bold text-midnight sm:text-xl">{situation.title}</span>
+                      <span className="mt-0.5 text-sm leading-snug text-fg-muted sm:mt-1 sm:text-[15px]">{situation.body}</span>
+                      <span className="mt-3 hidden items-center gap-1.5 text-sm font-semibold text-primary group-hover:text-primary-hover sm:inline-flex">
+                        {situationAction}
+                        <ArrowUpRight aria-hidden="true" className="size-4" />
+                      </span>
+                    </span>
+                    <ArrowUpRight aria-hidden="true" className="size-5 shrink-0 text-primary sm:hidden" />
+                    <span className="sr-only">({ctaLabels.opensTelegram})</span>
+                  </TrackedLink>
+                </li>
+              );
+            })}
+          </ul>
 
-            <div className="order-1 mt-6 md:order-2 md:mt-8">
-              <div className="flex flex-col items-stretch justify-center gap-3 sm:flex-row sm:items-center">
-                <DiagnosticCTA source="hero" size="lg" />
-                <Link href={secondaryHref} className={buttonClasses({ variant: "secondary", size: "lg" })}>
-                  {secondaryLabel}
-                  <ArrowRight aria-hidden="true" className="size-4" />
-                </Link>
-              </div>
-              <p className="mt-4 text-sm text-fg-muted">{ctaNote}</p>
-            </div>
+          <div className="mt-6 flex flex-col items-center gap-2 sm:flex-row sm:justify-center sm:gap-4 md:mt-8">
+            <Link href={secondaryHref} className={buttonClasses({ variant: "ghost", size: "md" })}>
+              {secondaryLabel}
+              <ArrowRight aria-hidden="true" className="size-4" />
+            </Link>
+            <p className="text-sm text-fg-muted">{ctaNote}</p>
           </div>
         </div>
       </Container>

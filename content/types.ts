@@ -16,6 +16,8 @@ export interface JourneyStep {
 }
 
 export interface ProblemItem {
+  /** Stable id for analytics (secondary discovery link). */
+  id: string;
   /** The user's own question, shown as a quote. */
   question: string;
   /** How Qadam approaches it — calm, no promises. */
@@ -119,4 +121,16 @@ export interface ResultPreviewData {
   whyLabel: string;
   directions: readonly PreviewDirection[];
   nextStep: { label: string; text: string };
+}
+
+/* ─── B2.3: hero situations (Design DNA: human-first) ───────── */
+
+export type SituationIcon = "start" | "switch" | "grow";
+
+export interface SituationCard {
+  /** Analytics item id. */
+  id: string;
+  title: string;
+  body: string;
+  icon: SituationIcon;
 }

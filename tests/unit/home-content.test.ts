@@ -1,6 +1,7 @@
 import { describe, expect, it } from "vitest";
 import { splitHighlight } from "@/components/home/Hero";
 import * as home from "@/content/home";
+import { mainNav, PRODUCT_PRINCIPLE } from "@/content/site";
 
 function allStrings(value: unknown): string[] {
   if (typeof value === "string") return [value];
@@ -85,5 +86,27 @@ describe("splitHighlight", () => {
   it("falls back to plain text when the highlight is missing", () => {
     expect(splitHighlight("Matn", "yo’q")).toEqual(["Matn", "", ""]);
     expect(splitHighlight("Matn")).toEqual(["Matn", "", ""]);
+  });
+});
+
+describe("PM decisions D-1…D-3 in content", () => {
+  it("locks the product principle (D-2)", () => {
+    expect(PRODUCT_PRINCIPLE).toBe("Signallarni Qadam o’qiydi. Qarorni siz qilasiz.");
+    expect(home.resultPreview.section.title).toBe(PRODUCT_PRINCIPLE);
+  });
+
+  it("offers exactly three situations as the hero entry (D-1)", () => {
+    expect(home.hero.situations.map((s) => s.title)).toEqual(["Boshlayapman", "Almashtiraman", "O’smoqchiman"]);
+    expect(home.hero).not.toHaveProperty("chips");
+  });
+
+  it("gives every problem card a unique id (secondary discovery)", () => {
+    const ids = home.problems.items.map((i) => i.id);
+    expect(new Set(ids).size).toBe(ids.length);
+  });
+
+  it("has Ishonch in the main navigation and no Bosh sahifa item (D-3)", () => {
+    expect(mainNav.map((n) => n.label)).toEqual(["Qanday ishlaydi?", "Yo’nalishlar", "Ishonch", "Qadam haqida", "FAQ"]);
+    expect(mainNav.find((n) => n.label === "Ishonch")?.href).toBe("/ishonch");
   });
 });

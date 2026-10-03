@@ -8,7 +8,7 @@
 
 import type {
   ComparisonRow,
-  HeroChip,
+  SituationCard,
   ResultPreviewData,
   FaqItem,
   JourneyStep,
@@ -18,6 +18,7 @@ import type {
   SocialProofData,
   TrustItem,
 } from "./types";
+import { PRODUCT_PRINCIPLE } from "./site";
 
 export const hero = {
   eyebrow: "Kasbiy yo’nalish bo’yicha qaror tizimi",
@@ -30,24 +31,40 @@ export const hero = {
   secondaryHref: "/qanday-ishlaydi",
   // Facts confirmed by the current bot (/start text): free, runs in Telegram.
   ctaNote: "Bepul · Telegram’da ochiladi",
-  // Edubaza/Skillfactory-style entry: the visitor recognises their own question.
-  // Every chip starts the same free diagnostic; the chip id is only an analytics hint.
-  entryLabel: "Qaysi savol sizga tanish?",
-  chips: [
-    { id: "it", label: "IT’ga o’tsammi?" },
-    { id: "mos-kasb", label: "Qaysi kasb menga mos?" },
-    { id: "kurs", label: "Qaysi kursga pul sarflay?" },
-    { id: "diplom", label: "Diplomdan keyin nima?" },
-    { id: "almashtirish", label: "Kasbimni almashtirsammi?" },
-  ] satisfies HeroChip[],
+  // Design DNA "human-first": the primary entry is the visitor's situation
+  // (PM decision D-1). Every card starts the same free diagnostic; the id is an
+  // analytics hint only (the bot does not receive it — deep-link spec v1).
+  entryLabel: "Hozir qaysi holatdasiz?",
+  situations: [
+    {
+      id: "boshlash",
+      title: "Boshlayapman",
+      body: "Qaysi yo’nalishdan boshlashni aniqlab olmoqchiman.",
+      icon: "start",
+    },
+    {
+      id: "almashtirish",
+      title: "Almashtiraman",
+      body: "Hozirgi ishimdan boshqa yo’lga o’tishni o’ylayapman.",
+      icon: "switch",
+    },
+    {
+      id: "osish",
+      title: "O’smoqchiman",
+      body: "Ishlayapman va keyingi bosqichimni rejalashtirmoqchiman.",
+      icon: "grow",
+    },
+  ] satisfies SituationCard[],
+  situationAction: "Diagnostikani boshlash",
 } as const;
 
 export const resultPreview = {
   section: {
     id: "natija",
     eyebrow: "Natija qanday ko’rinadi",
-    title: "Kasb nomi emas. Sabab, tayyorgarlik va keyingi qadam.",
-    intro: "Qadam bitta javob bermaydi. Signallaringizni, mos bo’lishi mumkin bo’lgan yo’nalishlarni va nimadan boshlashni bir joyda ko’rsatadi.",
+    // Locked product principle (PM decision D-2).
+    title: PRODUCT_PRINCIPLE,
+    intro: "Qadam tayyor javob bermaydi. Signallaringiz, mos bo’lishi mumkin bo’lgan yo’nalishlar, ularning sababi va keyingi qadam bir joyda ko’rinadi.",
   } satisfies SectionCopy,
   data: {
     sampleBadge: "Namuna",
@@ -105,28 +122,36 @@ export const problems = {
     title: "Muhim qaror oldida savollar ko’p bo’lishi tabiiy",
     intro: "Ko’pchilik shu savollar bilan yolg’iz qoladi. Qadam ularga birgalikda, tartib bilan javob izlashga yordam beradi.",
   } satisfies SectionCopy,
+  // Secondary discovery (PM decision D-1): each question links to the diagnostic.
+  startLabel: "Shu savoldan boshlash",
   items: [
     {
+      id: "it",
       question: "IT’ga o’tsammi?",
       answer: "IT bitta kasb emas. Qaysi yo’nalishi sizning qiziqish va sharoitingizga yaqinroq ekanini ko’rish mumkin.",
     },
     {
+      id: "mos-kasb",
       question: "Qaysi kasb menga mos?",
       answer: "Bitta “to’g’ri javob” o’rniga — bir nechta mos variant va har birining sababi.",
     },
     {
+      id: "kurs",
       question: "Qaysi kursga pul sarflashim kerak?",
       answer: "Avval yo’nalishni tushunish, keyin qanday ta’lim kerakligini hal qilish — pulni tejaydigan tartib.",
     },
     {
+      id: "diplom",
       question: "Universitetni tugatdim. Endi nima?",
       answer: "Diplomingizdagi bilim va ko’nikmalar qaysi yo’llarda foydali bo’lishi mumkinligini ko’rib chiqamiz.",
     },
     {
+      id: "almashtirish",
       question: "Ishim bor, lekin bu yo’lda qolishni istaymanmi?",
       answer: "O’zgarish shoshilinch qaror emas. Hozirgi tajribangizni hisobga olgan holda variantlarni solishtirish mumkin.",
     },
     {
+      id: "boshlash-joyi",
       question: "Ko’p yo’nalish bor. Qaysisidan boshlashni bilmayman.",
       answer: "Variantlarni toraytirish va birinchi aniq qadamni belgilash — shundan boshlanadi.",
     },
@@ -247,6 +272,8 @@ export const trust = {
       body: "Kasb tavsiflari va metodika jamoa tomonidan ko’rib chiqiladi va yangilanadi.",
     },
   ] satisfies TrustItem[],
+  moreLabel: "Qadam qanday ishlashi va nimani bilmasligi haqida",
+  moreHref: "/ishonch",
 } as const;
 
 export const socialProof = {
