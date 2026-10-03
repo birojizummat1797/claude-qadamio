@@ -37,7 +37,16 @@ Bu metodika o‘zgarishi: barcha fit qiymatlari o‘zgaradi. Egasi va PM qarori,
 
 ## 3. Davomiylik
 
-Bot va metadata: bepul diagnostika “3 daqiqa — 13 savol”, chuqur diagnostika 7 daqiqa (18 savol). Asoschi sinovida ~7 daqiqa ketdi. **Ochiq savol:** 7 daqiqa faqat bepul qism uchunmi, yoki ikkalasi birgami? Agar faqat bepul qism bo‘lsa, “3 daqiqa” va’dasi noto‘g‘ri va bot matni tuzatilishi kerak.
+Asoschi: bepul (13) + chuqur (18) = **31 savol ~7 daqiqada**, ya’ni bir savolga ~13–14 soniya. Demak bepul qism uchun “3 daqiqa — 13 savol” va’dasi realistik. Muammo emas.
+
+## 3b. Asoschining real natijasi
+
+Natija: **SMM — moslik 100%, tayyorlik 70%.** Asoschi buni tushunmadi.
+- “Moslik” (`fit`) — javoblar kasb uchun muhim deb belgilangan signallarga qanchalik yaqinligini bildiruvchi **indeks**. Bu ehtimol ham, kafolat ham emas. Lekin “100%” yozuvi “aynan shu kasb” degan hukm kabi o‘qiladi.
+- §2 dagi xato tufayli signal qiymatlari 10 dan oshishi mumkin, fit esa hech qayerda cheklanmagan (`min(100, …)` yo‘q). Shuning uchun 100 yoki undan yuqori qiymat chiqishi mumkin. Aynan asoschi javoblarini tiklab bo‘lmaydi, shuning uchun bu holatda aynan shu xato sabab bo‘lganini **aniq aytib bo‘lmaydi**.
+- “Tayyorlik” (`readiness`) = 100 × qurilma × ingliz tili × vaqt ko‘paytuvchilari (`engine/readiness.py`). 70% — hozirgi sharoit (masalan, ingliz tili darajasi yoki kunlik vaqt) talabdan biroz pastligini bildiradi.
+- **Qo‘shimcha xato:** kasblarni solishtirish endpoint’i (`api/v1/career_intelligence.py`, ~165-qator) foydalanuvchining haqiqiy sharoitini emas, qotirilgan qiymatlarni ishlatadi: `{"device": "laptop", "english": "b1", "time": "2_3h"}`. U yerdagi tayyorlik foizi foydalanuvchiga tegishli emas.
+- Xulosa: asoschi tushunmagan bo‘lsa, foydalanuvchilar ham tushunmaydi. Bu BL-13 (foiz o‘rniga daraja va oddiy izoh) uchun real dalil.
 
 ## 4. Diagnostika v2 ga qo‘shimchalar
 
