@@ -48,9 +48,9 @@ describe("catalog copy", () => {
       user_empathy: "Empatiya",
       system_design: "Tizimli fikrlash",
       analytical: "Tahliliy fikrlash",
-      persistence: "Qatiyat",
+      persistence: "Qat’iyat",
       math_logic: "Matematik mantiq",
-      attention_to_detail: "Detallarga etibor",
+      attention_to_detail: "Detallarga e’tibor",
       business_sense: "Biznes hissi",
       innovation: "Innovatsiya",
     });
@@ -70,6 +70,12 @@ describe("catalog copy", () => {
   it("makes no salary, percentage or certainty claims", () => {
     const copy = JSON.stringify(catalogCopy);
     expect(copy).not.toMatch(/maosh|daromad|so’m|\$|%|kafolat|eng aniq|siz uchun/i);
+  });
+
+  it("catalog ≠ recommendation: no promise that a catalog career will be checked or recommended", () => {
+    expect(catalogCopy.ctaLabel).toBe("Diagnostikani boshlash");
+    const copy = JSON.stringify(catalogCopy);
+    expect(copy).not.toMatch(/mosligini tekshir|diagnostika ko’rsatadi|sizga mos|tavsiya qilamiz|eng mos/i);
   });
 
   it("formats months as an estimate", () => {

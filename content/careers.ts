@@ -52,7 +52,7 @@ export const catalogCopy = {
   eyebrow: "Yo’nalishlar",
   title: "Qaysi yo’nalishlar bor?",
   intro:
-    "Qadam metodikasidagi yo’nalishlar. Har birida kasb talablaridan olingan signallar bor. Qaysi biri sizga yaqinligini diagnostika ko’rsatadi.",
+    "Qadam metodikasidagi yo’nalishlar va kasb talablaridan olingan signallar. Katalog tavsiya emas: tartib va filtrlar sizga baho bermaydi.",
   allLabel: "Hammasi",
   stateLabel: "Hozir qaysi holatdasiz?",
   clusterLabel: "Soha",
@@ -61,11 +61,13 @@ export const catalogCopy = {
   signalsTitle: "Kimga mos bo’lishi mumkin?",
   signalsLead: "Quyidagi signallari kuchli odamlarga:",
   signalsNote: "Bu ro’yxat kasb talablaridan olingan. Sizga baho emas.",
-  ctaLabel: "O’zimga mosligini tekshirish",
+  // PM gate 2026-10-03: catalog ≠ recommendation. The diagnostic currently
+  // recommends only careers with a roadmap, so the CTA promises no career-specific check.
+  ctaLabel: "Diagnostikani boshlash",
   stateNotes: {
     start: "Boshlash uchun belgilangan yo’nalishlar.",
     switch:
-      "Soha almashtirish uchun alohida belgi yo’q, shuning uchun barcha yo’nalishlar ko’rsatiladi. Qaysi biri sizga yaqinligini diagnostika ko’rsatadi.",
+      "Soha almashtirish uchun alohida belgi yo’q, shuning uchun barcha yo’nalishlar ko’rsatiladi.",
     grow: "O’sish yo’li hozirgi sohangiz ichida ko’rsatiladi.",
   },
   growClusterPrompt: "Hozirgi sohangiz qaysi?",
