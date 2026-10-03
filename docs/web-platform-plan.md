@@ -179,3 +179,13 @@ Each batch is one commit (or a few), pushed to `claude/qadam-public-web-platform
 | 7 Providers | `CareerContent.education` is a typed list of education *types*, not vendors; providers can be attached later without pay-to-rank |
 | 8–10 Jobs / skills / growth | Catalog + slug scheme reusable as navigation spine |
 | i18n | Locale type + content modules per locale; routes can gain `/ru`, `/en` prefixes without moving files under `app/[locale]` until needed |
+
+## 12. Accepted decisions (2026-10-03)
+
+| ID | Decision |
+|---|---|
+| D1 | `qadam-loyiha-deepseek` is the backend / source of truth. `qadam-backend-v2` and `qadam-miniapp-v2` are legacy/experimental — **not modified, not deleted, not depended on**. |
+| D3 | CTA target = the current working bot (env `NEXT_PUBLIC_TELEGRAM_BOT_URL`). Deep-link attribution per [`telegram-deeplink-spec.md`](./telegram-deeplink-spec.md). Bot-side parsing is a separate, approval-gated change. |
+| D4 | No public prices. Pricing lives in `content/pricing.ts`, rendered only when `NEXT_PUBLIC_SHOW_PRICING=true`. |
+| D5 | Light background + deep green. Shared Qadam design language with the Mini App via common token names (`--color-*`, `--radius-*`), not identical UI. |
+| Taxonomy | Backend taxonomy is used as-is. Brief careers missing from backend are marked `status: "planned"` + `// TODO: taxonomy gap` in content, shown as "Tayyorlanmoqda", never linked to the diagnostic, never presented as production data. |

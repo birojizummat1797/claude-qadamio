@@ -172,6 +172,8 @@ Full plan: [`web-platform-plan.md`](./web-platform-plan.md).
 
 ## 12. OPEN DECISIONS
 
+> D1, D3, D4, D5 were decided on 2026-10-03 — see `web-platform-plan.md` §12.
+
 | ID | Decision | Safe default taken |
 |---|---|---|
 | D1 | Which backend is canonical: `qadam-loyiha-deepseek` (live) or `qadam-backend-v2`? | `qadam-loyiha-deepseek`. Website only depends on `GET /api/v1/taxonomy/careers` via an adapter, so switching is a one-file change. |
