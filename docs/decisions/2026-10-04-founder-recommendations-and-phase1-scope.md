@@ -40,7 +40,9 @@ Bu — default va yagona amalga oshiriladigan qoida. Ro‘yxat hech qachon 5 gac
 
 **Chegara qiymati — Founder qarori (2026-10-04): 51.** Founder so‘zi: "eng minimal ball 51 bo‘lsin… agar 50 bo‘lsa ham halol javob beriladi." Asos: `docs/reviews/2026-10-04-threshold-audit-report.md`. - Chegara: **ball ≥ 51.0** → tavsiya; 50.99 va pasti → tavsiya emas (Founder, variant "a").
 - Qo‘llanadigan joylar (Founder Claude tavsiyasini qabul qildi): **dastlabki natija, Career Intelligence, chuqur tahlil natijasi va PDF**. Roadmap (tanlangan bitta kasbning rejasi) — qo‘llanmaydi.
-- Ochiq: halol xabardagi katalog havolasi (katalog sahifasi hali yo‘q) va xabarga chuqur tahlil taklifi qo‘shilishi — Founder qarori kutilmoqda.
+- Katalog havolasi (Founder, variant "a"): katalog sahifasi hali yo‘q, shuning uchun xabar hozircha havolasiz chiqadi; `/yonalishlar` tayyor bo‘lgach `NEXT_PUBLIC_CATALOG_URL` sozlanadi va havola paydo bo‘ladi.
+- Chuqur tahlil taklifi: qo‘shimcha o‘zgarish kerak emas — dastlabki natija sahifasida "Chuqur tahlilni boshlash" kartasi allaqachon bor.
+- Kod: `qadam-loyiha-deepseek`, branch `claude/bl14-min-score`.
 
 *Audit oldidagi holat (tarix uchun):* "Raqam o‘ylab topilmaydi" qoidasiga ko‘ra: read-only audit (har bir nomzod qiymatda nechta foydalanuvchi nechta tavsiya oladi, nechtasi "aniq yo‘nalish yo‘q" oladi) → **asoschi tasdig‘i** → real foydalanuvchi fikri bo‘yicha kalibrlash. Qiymat tasdiqlanmaguncha kod yozilmaydi.
 
