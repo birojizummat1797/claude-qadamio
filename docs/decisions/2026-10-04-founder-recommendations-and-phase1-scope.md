@@ -38,7 +38,9 @@ actual_count = tasdiqlangan minimal balldan (≥ threshold) o‘tgan kasblar son
 
 Bu — default va yagona amalga oshiriladigan qoida. Ro‘yxat hech qachon 5 gacha "to‘ldirilmaydi".
 
-**Chegara qiymati — Founder qarori (2026-10-04): 51.** Founder so‘zi: "eng minimal ball 51 bo‘lsin… agar 50 bo‘lsa ham halol javob beriladi." Asos: `docs/reviews/2026-10-04-threshold-audit-report.md`. Ochiq: kasr ballar (masalan 50.5) va aynan 51.0 qaysi tomonga tushishi — Founder’dan aniqlashtirilmoqda; qo‘llanadigan sahifalar — aniqlashtirilmoqda.
+**Chegara qiymati — Founder qarori (2026-10-04): 51.** Founder so‘zi: "eng minimal ball 51 bo‘lsin… agar 50 bo‘lsa ham halol javob beriladi." Asos: `docs/reviews/2026-10-04-threshold-audit-report.md`. - Chegara: **ball ≥ 51.0** → tavsiya; 50.99 va pasti → tavsiya emas (Founder, variant "a").
+- Qo‘llanadigan joylar (Founder Claude tavsiyasini qabul qildi): **dastlabki natija, Career Intelligence, chuqur tahlil natijasi va PDF**. Roadmap (tanlangan bitta kasbning rejasi) — qo‘llanmaydi.
+- Ochiq: halol xabardagi katalog havolasi (katalog sahifasi hali yo‘q) va xabarga chuqur tahlil taklifi qo‘shilishi — Founder qarori kutilmoqda.
 
 *Audit oldidagi holat (tarix uchun):* "Raqam o‘ylab topilmaydi" qoidasiga ko‘ra: read-only audit (har bir nomzod qiymatda nechta foydalanuvchi nechta tavsiya oladi, nechtasi "aniq yo‘nalish yo‘q" oladi) → **asoschi tasdig‘i** → real foydalanuvchi fikri bo‘yicha kalibrlash. Qiymat tasdiqlanmaguncha kod yozilmaydi.
 
