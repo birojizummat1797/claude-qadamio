@@ -10,6 +10,22 @@
 - Never invent data: no user counts, testimonials, partners, salaries, outcomes or accuracy claims.
 - Backend source of truth: `qadam-loyiha-deepseek`. No scoring or diagnostic logic in this repo.
 
+## Decision authority (locked, PM + Founder, 2026-10-04)
+Order of authority, highest first:
+1. **Founder decision** — mandatory for implementation.
+2. **Founder request** — must be implemented; not dropped or left half-done.
+3. **PM recommendation** — advice; the founder decides.
+4. **Customer evidence** — informs the founder; does not override a decision.
+5. **Claude** — implements and recommends; never decides.
+
+Rules for Claude:
+- Do not change, cancel or quietly abandon a founder decision or a requested task. Leaving an assigned task undone counts as a failure.
+- Do not expand product scope on your own.
+- Never ship an alternative to a founder decision as the default.
+- If a decision carries technical, security, privacy, legal or data-integrity risk: state the risk and its consequences, give a recommendation, and wait — do not substitute your own decision.
+- When reporting options, use the form: "PM recommendation / Claude recommendation: X. Final decision: Founder."
+- Record founder decisions in `docs/decisions/` before implementing them.
+
 ## Design DNA v1 (locked)
 Human-first · Intelligent · Calm · Evidence-led · Progressive. See `docs/design-dna.md`.
 Product principle (locked, do not edit without owner decision): “Signallarni Qadam o’qiydi. Qarorni siz qilasiz.” (`PRODUCT_PRINCIPLE` in `content/site.ts`).

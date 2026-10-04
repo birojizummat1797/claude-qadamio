@@ -1,7 +1,7 @@
 # Asoschi qarorlari — tavsiyalar soni va 1-bosqich doirasi (2026-10-04)
 
 Muallif: Nemo (loyiha asoschisi va g‘oya muallifi). Yozib olgan: Claude.
-Holat: **qaror qabul qilingan (tamoyil)**; amalga oshirish usuli va chegara qiymati — PM bilan, read-only auditdan keyin.
+Holat: **qaror qabul qilingan, implementatsiya uchun majburiy** (`CLAUDE.md` → Decision authority). Faqat chegara qiymati ochiq — read-only auditdan keyin asoschi tasdiqlaydi.
 
 ## Q1. Tavsiyalar soni: 5 — yuqori chegara, majburiy son emas
 
@@ -26,12 +26,21 @@ Holat: **qaror qabul qilingan (tamoyil)**; amalga oshirish usuli va chegara qiym
 
 (Matn — asoschi so‘zlari asosida loyiha; yakuniy tahrir egasi bilan. Havola: veb-saytdagi yo‘nalishlar katalogi — `/yonalishlar` sahifasi PM ko‘rib chiqqandan keyin chiqadi; ungacha Mini App ichidagi ro‘yxat.)
 
-**Chegara qiymati hali belgilanmagan.** "Raqam o‘ylab topilmaydi" qoidasiga ko‘ra: ehtiyotkor boshlang‘ich qiymat → hozirgi sessiyalarda read-only audit (nechta foydalanuvchi nechta tavsiya oladi, nechtasi "aniq yo‘nalish yo‘q" oladi) → PM tasdig‘i → real foydalanuvchi fikri bo‘yicha kalibrlash.
+**Implementatsiya qoidasi (asoschi qarori, PM formulasi bilan tasdiqlangan):**
 
-Variantlar (spetsifikatsiyada batafsil):
-1. Mutlaq chegara (moslik ≥ X).
-2. Nisbiy chegara (birinchi tavsiyadan ≤ Y farq).
-3. Ikkalasi birga (tavsiya: mutlaq chegara "kamida 1" ni, nisbiy chegara "nechta" ni hal qiladi).
+```
+MAX = 5
+actual_count = tasdiqlangan minimal balldan (≥ threshold) o‘tgan kasblar soni
+0      → halol xabar (yuqoridagi matn + katalog havolasi), tavsiya yo‘q
+1..5   → o‘sha kasblarning hammasi
+5 dan ko‘p → eng yuqori 5 tasi
+```
+
+Bu — default va yagona amalga oshiriladigan qoida. Ro‘yxat hech qachon 5 gacha "to‘ldirilmaydi".
+
+**Chegara qiymati (threshold) hali tasdiqlanmagan.** "Raqam o‘ylab topilmaydi" qoidasiga ko‘ra: read-only audit (har bir nomzod qiymatda nechta foydalanuvchi nechta tavsiya oladi, nechtasi "aniq yo‘nalish yo‘q" oladi) → **asoschi tasdig‘i** → real foydalanuvchi fikri bo‘yicha kalibrlash. Qiymat tasdiqlanmaguncha kod yozilmaydi.
+
+*Faqat tavsiya (default emas):* qo‘shimcha nisbiy chegara (birinchi tavsiyadan ≤ Y farq) "nechta"ni yanada toraytirishi mumkin. Qo‘llash yoki qo‘llamaslik — asoschi qarori; so‘ralmaguncha implement qilinmaydi.
 
 ## Q3. 1-bosqich doirasi: IT va zamonaviy kasblar
 
@@ -60,7 +69,7 @@ Hozirgi tizim kasblarni faqat signal mosligi bo‘yicha taqqoslaydi; sohalar ora
 ## Ketma-ketlik
 
 1. Hozirgi `--apply` va verification (bu qarorlarga bog‘liq emas).
-2. Spetsifikatsiya: Q1 + Q2 (variantlar, audit rejasi, matnlar).
-3. Read-only audit: hozirgi sessiyalarda har bir variant nechta tavsiya beradi.
-4. PM tasdig‘i → kod.
+2. Spetsifikatsiya: Q1 + Q2 (yuqoridagi formula, audit rejasi, matnlar).
+3. Read-only audit: hozirgi sessiyalarda har bir nomzod chegara qiymati nechta tavsiya beradi.
+4. Asoschi chegara qiymatini tasdiqlaydi (PM tavsiyasi bilan) → kod.
 5. Q3 taksonomiya kengaytmasi va Q4 — keyingi bosqichlar.
