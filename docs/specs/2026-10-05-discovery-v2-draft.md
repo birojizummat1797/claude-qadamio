@@ -1,143 +1,113 @@
-# Qisqa test v2 — 13 savol qoralamasi (2026-10-05, 2-versiya)
+# Qisqa test v2 — 13 savol qoralamasi (2026-10-05, 3-versiya)
 
 Holat: **QORALAMA** — Founder va PM tasdig‘i kerak. Kodga hali o‘tkazilmagan.
-Asos: Founder qarori `docs/decisions/2026-10-05-catalog-9x25.md`; tahlil `docs/reviews/2026-10-04-catalog-and-questions-research.md`.
+Asos: `docs/decisions/2026-10-05-catalog-9x25.md`, `docs/reviews/2026-10-04-catalog-and-questions-research.md`.
 
-## Founder qarorlari (2026-10-05)
-- Har savolda **5 ta variant** (ish) + **"Bilmayman / bu yerda menga mosi yo‘q"**.
-- Natija qoidasi: aniq katalog = **≥ 3 ball** va keyingisidan **≥ 1 ball** ustun — tasdiqlangan.
-- Ochiq: 1 bosish (faqat "eng qiziq") yoki 2 bosish ("eng qiziq" + "eng kam qiziq") — 5-bo‘limga qarang.
+## Founder talablari (2026-10-05)
+- Har savolda **jami 5 variant**: 4 ta javob + **"Bilmayman / bu yerda menga mosi yo‘q"**.
+- **Har savol boshqacha so‘raladi** — bir xil shablon yo‘q (zavq, nimani yaxshi bajarish, bolalik, maktab, kelajak…).
+- Javoblar **samimiy, sodda, qisqa, o‘ta tushunarli** — IT va zamonaviy kasbni bilmaydigan odam ham javob bera oladi.
+- Natija qoidasi: aniq katalog = **≥ 3 ball** va keyingisidan **≥ 1 ball** ustun.
 
-## 1. Vazifa
-Qisqa test bitta savolga javob beradi: **9 katalogdan qaysi biri bu odamga yaqin?** Kasbni katalog ichida chuqur tahlil aniqlaydi.
+## 1. Tuzilma
+- **9 ta yo‘nalish savoli** (quyida) + **4 ta sharoit savoli** (hozirgilar: hayot bosqichi, kunlik vaqt, qurilma, ingliz tili) = 13.
+- Har savolda bitta tanlov. Har katalog **4 marta** uchraydi; har ikki katalog kamida bir marta yonma-yon keladi.
+- Katalog nomi foydalanuvchiga **ko‘rsatilmaydi** (pastda faqat ko‘rib chiquvchilar uchun yozilgan).
 
-## 2. Tuzilma
-- **9 ta faoliyat savoli**, har birida 5 ta aniq ish + "Bilmayman / bu yerda menga mosi yo‘q".
-  - Har katalog **5 marta** uchraydi; har ikki katalog kamida **2 marta** yonma-yon keladi.
-  - Faqat aniq ishlar — kasb nomi, "IT", jargon yo‘q.
-  - Katalog nomi foydalanuvchiga **ko‘rsatilmaydi** (pastda faqat ko‘rib chiquvchilar uchun).
-  - "Bilmayman / mosi yo‘q" tanlansa — bu savol hisobga olinmaydi (hech bir katalogga ball yo‘q).
-- **4 ta sharoit savoli** — hozirgilar: hayot bosqichi, kunlik vaqt, qurilma, ingliz tili.
-
-## 3. Hisob
-- Eng qiziq: **+1**; eng kam qiziq (agar 2 bosish tanlansa): **−1**. Har katalog: −5…+5.
-- **Aniq yo‘nalish:** 1-katalog ≥ 3 va 2-katalogdan ≥ 1 ball yuqori.
+## 2. Hisob
+- Tanlangan javob katalogiga **+1** (har katalog 0–4). "Bilmayman / mosi yo‘q" — ball yo‘q.
+- **Aniq yo‘nalish:** 1-katalog ≥ 3 va 2-katalogdan ≥ 1 yuqori.
 - **Ikki yo‘nalish teng:** ikkalasi ko‘rsatiladi, chuqur tahlil ajratadi.
 - **Aniq emas:** 1-katalog < 3 → halol xabar (Founder matni).
 
-## 4. Savollar
+## 3. Savollar
 
-**1-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**1. Bo‘sh vaqtingizda qaysi biri sizga ko‘proq zavq beradi?**
 
-- A) Mijoz bilan gaplashib, unga mos mahsulotni taklif qilish va kelishuvga erishish — *Sotuv va mijozlar bilan ishlash*
-- B) Mobil ilova ekranini chizib, tugma va matnlarni qulay joylashtirish — *Raqamli dizayn*
-- C) Ofisdagi kompyuterlarni internetga ulab, tarmoqni sozlash — *Tizimlar, tarmoq va xavfsizlik*
-- D) Kompaniyaning kirim-chiqimini hisobga olib, oylik hisobot tayyorlash — *Moliya va raqamli ofis*
-- E) Sayt yoki ilovada tugma bosilganda nima bo‘lishini buyruqlar bilan yozish — *Dasturlash*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Xarajatlarimni yozib, pulimni rejalashtirish — *Moliya va raqamli ofis*
+- B) Video olib, uni chiroyli montaj qilish — *Kontent va media*
+- C) Rasm chizish yoki biror narsani bezash — *Raqamli dizayn*
+- D) Ijtimoiy tarmoqda sahifa yuritib, obunachi yig‘ish — *Raqamli marketing*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**2-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**2. Qaysi ishni boshqalardan yaxshiroq bajarasiz?**
 
-- A) Kafe uchun logotip va menyu dizaynini yaratish — *Raqamli dizayn*
-- B) Do‘konning oylik savdo jadvalidan qaysi mahsulot ko‘proq sotilganini aniqlash — *Ma’lumotlar va sun’iy intellekt*
-- C) Instagram sahifasi uchun bir oylik post rejasini tuzish — *Raqamli marketing*
-- D) Excel’da formulalar bilan katta jadvalni o‘zi hisoblaydigan qilish — *Moliya va raqamli ofis*
-- E) Ishlamay qolgan dasturdagi xatoning sababini qadamma-qadam topish — *Dasturlash*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Biror narsani odamlarga qiziqarli qilib e’lon qilish — *Raqamli marketing*
+- B) Odamni gapimga ishontirib, kelishib olish — *Sotuv va mijozlar bilan ishlash*
+- C) Qiziqarli hikoya yoki post yozish — *Kontent va media*
+- D) Buzilgan kompyuter yoki internetni tuzatish — *Tizimlar, tarmoq va xavfsizlik*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**3-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**3. Bolaligingizda nimani ko‘proq yoqtirib qilardingiz?**
 
-- A) Reklamaga sarflangan pul qancha mijoz olib kelganini hisoblab, reklamani sozlash — *Raqamli marketing*
-- B) Onlayn to‘lov yoki bank ilovasi qanday ishlashini o‘rganib, uni yaxshilash — *Moliya va raqamli ofis*
-- C) Ko‘p ma’lumotdan qonuniyat topib, keyingi oy nima bo‘lishini taxmin qilish — *Ma’lumotlar va sun’iy intellekt*
-- D) Telefonda qisqa video suratga olib, montaj qilish — *Kontent va media*
-- E) Norozi mijozning muammosini hal qilib, uni yana xursand qilish — *Sotuv va mijozlar bilan ishlash*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Pul yig‘ib, hisob-kitob qilish — *Moliya va raqamli ofis*
+- B) Texnikani ochib, ichi qanday ishlashini ko‘rish — *Tizimlar, tarmoq va xavfsizlik*
+- C) Rasm chizish, rang tanlash — *Raqamli dizayn*
+- D) E’lon yoki plakat tayyorlab, hammani tadbirga chaqirish — *Raqamli marketing*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**4-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**4. Qaysi topshiriqqa birinchi bo‘lib qo‘l urardingiz?**
 
-- A) Kompaniya ma’lumotlarini xakerlardan himoya qilish yo‘llarini topish — *Tizimlar, tarmoq va xavfsizlik*
-- B) Yangi mijozlar topish uchun qo‘ng‘iroq va uchrashuvlar o‘tkazish — *Sotuv va mijozlar bilan ishlash*
-- C) Saytni Google qidiruvida birinchi sahifaga chiqarish ustida ishlash — *Raqamli marketing*
-- D) Jamoa ishini rejalashtirib, har kim vazifasini vaqtida bajarishini kuzatish — *Mahsulot va loyiha boshqaruvi*
-- E) Soliq va to‘lov hujjatlarini tartibda yuritish — *Moliya va raqamli ofis*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Kompyuterga buyruq yozib, uni xohlagan ishimni qildirish — *Dasturlash*
+- B) Ko‘p raqamlar ichidan muhim xulosani topish — *Ma’lumotlar va sun’iy intellekt*
+- C) Sayt yoki ilova ko‘rinishini chiroyli va qulay qilish — *Raqamli dizayn*
+- D) Hujjat va hisob-kitoblarni tartibga keltirish — *Moliya va raqamli ofis*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**5-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**5. Do‘stlaringiz sizdan ko‘pincha qanday yordam so‘raydi?**
 
-- A) Serverlar uzluksiz ishlashini kuzatib, nosozlikni tezda tiklash — *Tizimlar, tarmoq va xavfsizlik*
-- B) Kundalik takroriy ishni o‘zi bajaradigan kichik dastur yozish — *Dasturlash*
-- C) Sun’iy intellektga misollar berib, uni biror ishni bajarishga o‘rgatish — *Ma’lumotlar va sun’iy intellekt*
-- D) Foydalanuvchi saytda qayerda adashayotganini kuzatib, ko‘rinishni soddalashtirish — *Raqamli dizayn*
-- E) Mijozlar nima istashini o‘rganib, ilovaga qaysi yangi imkoniyat kerakligini hal qilish — *Mahsulot va loyiha boshqaruvi*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Tadbir yoki safarni rejalashtirib, hammani uyushtirishni — *Mahsulot va loyiha boshqaruvi*
+- B) Narxlarni solishtirib, eng foydalisini topib berishni — *Ma’lumotlar va sun’iy intellekt*
+- C) Rasm yoki videoni chiroyli qilib berishni — *Kontent va media*
+- D) Telefon, kompyuter yoki Wi-Fi’ni sozlab berishni — *Tizimlar, tarmoq va xavfsizlik*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**6-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**6. Sizni bir kunlik sinov ishiga chaqirishsa, qaysi birini tanlardingiz?**
 
-- A) Ilova uchun rang va ikonkalar to‘plamini tanlash — *Raqamli dizayn*
-- B) Mahsulot haqida qiziqarli matn yoki video ssenariy yozish — *Kontent va media*
-- C) So‘rovnoma natijalarini grafikka aylantirib, xulosa chiqarish — *Ma’lumotlar va sun’iy intellekt*
-- D) Kompaniyadagi ish jarayonini tahlil qilib, uni yaxshilash bo‘yicha taklif yozish — *Mahsulot va loyiha boshqaruvi*
-- E) Kompaniya nomidan mijozlarga mahsulot taqdimotini o‘tkazish — *Sotuv va mijozlar bilan ishlash*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Jamoaga bosh bo‘lib, ishni taqsimlash — *Mahsulot va loyiha boshqaruvi*
+- B) Xaridorlar bilan gaplashib, mahsulot sotish — *Sotuv va mijozlar bilan ishlash*
+- C) Jadvaldagi ma’lumotlarni o‘rganib, hisobot tayyorlash — *Ma’lumotlar va sun’iy intellekt*
+- D) Yangi mahsulot uchun qadoq dizaynini chizish — *Raqamli dizayn*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**7-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**7. Qaysi natijadan ko‘proq faxrlanardingiz?**
 
-- A) Videoga animatsiya va effektlar qo‘shish — *Kontent va media*
-- B) Plakat yoki banner uchun chiroyli kompozitsiya yaratish — *Raqamli dizayn*
-- C) Do‘konga kelgan xaridorga mahsulotni tushuntirib, sotish — *Sotuv va mijozlar bilan ishlash*
-- D) Oddiy o‘yin yoki saytni noldan o‘zim yaratib ko‘rish — *Dasturlash*
-- E) Yangi mahsulot uchun reklama kampaniyasini rejalashtirish — *Raqamli marketing*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Men boshqargan loyiha vaqtida va yaxshi tugadi — *Mahsulot va loyiha boshqaruvi*
+- B) Men topgan raqamlar tufayli to‘g‘ri qaror qabul qilindi — *Ma’lumotlar va sun’iy intellekt*
+- C) Men yozgan dasturdan minglab odam foydalanyapti — *Dasturlash*
+- D) Men qilgan reklama tufayli mijozlar ko‘paydi — *Raqamli marketing*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**8-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**8. Maktabda qaysi mashg‘ulot sizga ko‘proq yoqardi?**
 
-- A) Raqobatchilar reklamasini o‘rganib, o‘zimiznikini yaxshiroq qilish — *Raqamli marketing*
-- B) Telegram bot yozib, u savollarga o‘zi javob beradigan qilish — *Dasturlash*
-- C) Tadbirni suratga olib, ijtimoiy tarmoq uchun kontent tayyorlash — *Kontent va media*
-- D) Yangi loyiha uchun reja, muddat va byudjet tuzish — *Mahsulot va loyiha boshqaruvi*
-- E) Yangi kompyuterga tizim o‘rnatib, hammasini ishlaydigan qilib sozlash — *Tizimlar, tarmoq va xavfsizlik*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Aniq hisob-kitob talab qiladigan matematika masalalari — *Moliya va raqamli ofis*
+- B) Informatika darsida kompyuterda masala yechish — *Dasturlash*
+- C) Guruh loyihasida reja tuzib, hammani ishga solish — *Mahsulot va loyiha boshqaruvi*
+- D) Sinf oldida chiqib, fikrimni tushuntirish va himoya qilish — *Sotuv va mijozlar bilan ishlash*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-**9-savol.** Quyidagi ishlardan qaysi biri sizga **eng qiziq**, qaysi biri **eng kam qiziq**?
+**9. Kelajakda kuningiz qaysi ish bilan o‘tishini xohlardingiz?**
 
-- A) Transport yoki ob-havo ma’lumotlaridan foydali qonuniyatlar topish — *Ma’lumotlar va sun’iy intellekt*
-- B) YouTube kanal uchun video g‘oyalari ro‘yxatini tuzib, kanalni olib borish — *Kontent va media*
-- C) Jamoa yig‘ilishini boshqarib, kim nima qilishini kelishib olish — *Mahsulot va loyiha boshqaruvi*
-- D) Kichik biznes byudjetini rejalashtirib, ortiqcha xarajatlarni kamaytirish — *Moliya va raqamli ofis*
-- E) Wi-Fi nima uchun sekin ishlayotganini aniqlab, tuzatish — *Tizimlar, tarmoq va xavfsizlik*
-- F) Bilmayman / bu yerda menga mosi yo‘q
+- A) Kompaniya kompyuterlari to‘xtovsiz va xavfsiz ishlashini ta’minlash — *Tizimlar, tarmoq va xavfsizlik*
+- B) Har kuni yangi odamlar bilan uchrashib, kelishuvlar qilish — *Sotuv va mijozlar bilan ishlash*
+- C) Video, matn va suratlar bilan kontent yaratish — *Kontent va media*
+- D) Kompyuterda yangi dasturlar yaratish — *Dasturlash*
+- E) Bilmayman / bu yerda menga mosi yo‘q
 
-### Katalog bo‘yicha barcha ishlar (tahrir uchun qulay ko‘rinish)
-- **Dasturlash:** Sayt yoki ilovada tugma bosilganda nima bo‘lishini buyruqlar bilan yozish · Ishlamay qolgan dasturdagi xatoning sababini qadamma-qadam topish · Kundalik takroriy ishni o‘zi bajaradigan kichik dastur yozish · Oddiy o‘yin yoki saytni noldan o‘zim yaratib ko‘rish · Telegram bot yozib, u savollarga o‘zi javob beradigan qilish
-- **Ma’lumotlar va sun’iy intellekt:** Do‘konning oylik savdo jadvalidan qaysi mahsulot ko‘proq sotilganini aniqlash · Ko‘p ma’lumotdan qonuniyat topib, keyingi oy nima bo‘lishini taxmin qilish · Sun’iy intellektga misollar berib, uni biror ishni bajarishga o‘rgatish · So‘rovnoma natijalarini grafikka aylantirib, xulosa chiqarish · Transport yoki ob-havo ma’lumotlaridan foydali qonuniyatlar topish
-- **Tizimlar, tarmoq va xavfsizlik:** Ofisdagi kompyuterlarni internetga ulab, tarmoqni sozlash · Kompaniya ma’lumotlarini xakerlardan himoya qilish yo‘llarini topish · Serverlar uzluksiz ishlashini kuzatib, nosozlikni tezda tiklash · Yangi kompyuterga tizim o‘rnatib, hammasini ishlaydigan qilib sozlash · Wi-Fi nima uchun sekin ishlayotganini aniqlab, tuzatish
-- **Raqamli dizayn:** Mobil ilova ekranini chizib, tugma va matnlarni qulay joylashtirish · Kafe uchun logotip va menyu dizaynini yaratish · Foydalanuvchi saytda qayerda adashayotganini kuzatib, ko‘rinishni soddalashtirish · Ilova uchun rang va ikonkalar to‘plamini tanlash · Plakat yoki banner uchun chiroyli kompozitsiya yaratish
-- **Raqamli marketing:** Instagram sahifasi uchun bir oylik post rejasini tuzish · Reklamaga sarflangan pul qancha mijoz olib kelganini hisoblab, reklamani sozlash · Saytni Google qidiruvida birinchi sahifaga chiqarish ustida ishlash · Yangi mahsulot uchun reklama kampaniyasini rejalashtirish · Raqobatchilar reklamasini o‘rganib, o‘zimiznikini yaxshiroq qilish
-- **Kontent va media:** Telefonda qisqa video suratga olib, montaj qilish · Mahsulot haqida qiziqarli matn yoki video ssenariy yozish · Videoga animatsiya va effektlar qo‘shish · Tadbirni suratga olib, ijtimoiy tarmoq uchun kontent tayyorlash · YouTube kanal uchun video g‘oyalari ro‘yxatini tuzib, kanalni olib borish
-- **Mahsulot va loyiha boshqaruvi:** Jamoa ishini rejalashtirib, har kim vazifasini vaqtida bajarishini kuzatish · Mijozlar nima istashini o‘rganib, ilovaga qaysi yangi imkoniyat kerakligini hal qilish · Kompaniyadagi ish jarayonini tahlil qilib, uni yaxshilash bo‘yicha taklif yozish · Yangi loyiha uchun reja, muddat va byudjet tuzish · Jamoa yig‘ilishini boshqarib, kim nima qilishini kelishib olish
-- **Sotuv va mijozlar bilan ishlash:** Mijoz bilan gaplashib, unga mos mahsulotni taklif qilish va kelishuvga erishish · Norozi mijozning muammosini hal qilib, uni yana xursand qilish · Yangi mijozlar topish uchun qo‘ng‘iroq va uchrashuvlar o‘tkazish · Kompaniya nomidan mijozlarga mahsulot taqdimotini o‘tkazish · Do‘konga kelgan xaridorga mahsulotni tushuntirib, sotish
-- **Moliya va raqamli ofis:** Kompaniyaning kirim-chiqimini hisobga olib, oylik hisobot tayyorlash · Excel’da formulalar bilan katta jadvalni o‘zi hisoblaydigan qilish · Onlayn to‘lov yoki bank ilovasi qanday ishlashini o‘rganib, uni yaxshilash · Soliq va to‘lov hujjatlarini tartibda yuritish · Kichik biznes byudjetini rejalashtirib, ortiqcha xarajatlarni kamaytirish
+## 4. Simulyatsiya natijasi (model — real sinov shart)
+6 000 ta "virtual odam", har birining asosiy katalogi oldindan ma’lum; ular javobga ishonchsizlik bilan (real odamdek) javob beradi.
 
-## 5. Simulyatsiya natijasi (model, real sinov shart)
-Qoida: ≥ 3 ball, ≥ 1 farq (Founder tasdiqlagan).
+| Odam qanchalik izchil | Asosiy katalog topildi | Ikki katalog teng (asosiysi ichida) | Halol "aniq emas" | Noto‘g‘ri |
+|---|---|---|---|---|
+| Yuqori | **94%** | 4% | 0% | 2% |
+| O‘rta | **81%** | 12% | 1% | 7% |
+| Past | 70% | 11% | 8% | 10% |
+| Juda past | 51% | 9% | 25% | 15% |
 
-| Izchillik | 2 bosish: asosiy katalog topildi / noto‘g‘ri | 1 bosish: topildi / noto‘g‘ri |
-|---|---|---|
-| Yuqori | **96%** / 0% | **96%** / 0% |
-| O‘rta | **88%** / 4% | **88%** / 3% |
-| Past | 78% / 8% | 77% / 9% |
-| Juda past | 60% / 13% | 61% / 14% |
-| Tasodifiy bosgan → aniq natija oladi | **20%** | **28%** |
-| Hech narsaga qiziqmagan → aniq natija oladi | 30% | 38% |
+- Tasodifiy bosgan odam aniq katalog oladi: **23%**. Hech narsaga qiziqmagan: 27%.
+- Taqqoslash: hozirgi 13 savol **mukammal** javobda ham to‘g‘ri sohani 52% topadi.
 
-Xulosa: 5 variantda **1 bosish deyarli bir xil aniq**, lekin tasodifiy bosganlarni kamroq to‘xtatadi.
-
-Ma’lumot uchun (qaror Founder’niki): chegarani **≥ 4** qilinsa, tasodifiy bosganlarning faqat **3%** i aniq natija oladi, lekin izchilligi past odamlarda halol "aniq emas" ko‘payadi (o‘rta izchillikda 6–8%, past izchillikda ~28%).
-
-Taqqoslash: hozirgi 13 savol mukammal javobda ham to‘g‘ri sohani 52% topadi.
-
-## 6. Keyingi qadamlar
-1. Founder: ish matnlari tahriri; 1 yoki 2 bosish.
-2. 5–10 kishida sinov (Telegram/qog‘oz): tushunarlimi, natija ularning fikriga mosmi.
-3. Kod: yangi savollar, katalog hisobi, natija sahifasi. 18 savollik chuqur tahlil — alohida qoralama.
+## 5. Keyingi qadamlar
+1. Founder: savol va javob matnlari tahriri.
+2. 5–10 kishida sinov: tushunarlimi, natija ularning fikriga mosmi.
+3. Kod; 18 savollik chuqur tahlil — alohida qoralama.
