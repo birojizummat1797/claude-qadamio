@@ -1,0 +1,371 @@
+{
+  "taxonomyVersion": "v2.2",
+  "signalsVersion": "v1.0",
+  "generatedAt": "2026-10-03",
+  "signalKeys": [
+    "logical_thinking",
+    "problem_solving",
+    "technical_interest",
+    "creative_design",
+    "visual_logic",
+    "user_empathy",
+    "system_design",
+    "analytical",
+    "persistence",
+    "math_logic",
+    "attention_to_detail",
+    "business_sense",
+    "innovation"
+  ],
+  "signalLabels": {
+    "logical_thinking": "Mantiqiy fikrlash",
+    "problem_solving": "Muammo hal qilish",
+    "technical_interest": "Texnikaga qiziqish",
+    "creative_design": "Ijodiy dizayn",
+    "visual_logic": "Vizual mantiq",
+    "user_empathy": "Empatiya",
+    "system_design": "Tizimli fikrlash",
+    "analytical": "Tahliliy fikrlash",
+    "persistence": "Qat’iyat",
+    "math_logic": "Matematik mantiq",
+    "attention_to_detail": "Detallarga e’tibor",
+    "business_sense": "Biznes hissi",
+    "innovation": "Innovatsiya"
+  },
+  "clusters": [
+    {
+      "key": "software",
+      "title": "Dasturlash"
+    },
+    {
+      "key": "data_ai",
+      "title": "Data & AI"
+    },
+    {
+      "key": "infra_security",
+      "title": "Infra & Security"
+    },
+    {
+      "key": "design_creative",
+      "title": "Dizayn"
+    },
+    {
+      "key": "digital_marketing",
+      "title": "Marketing"
+    },
+    {
+      "key": "content_media",
+      "title": "Media"
+    },
+    {
+      "key": "product_project",
+      "title": "Product & Project"
+    },
+    {
+      "key": "business_sales",
+      "title": "Business & Sales"
+    }
+  ],
+  "careers": [
+    {
+      "slug": "foundation_programming",
+      "title": "Foundation Programming",
+      "cluster": "software",
+      "learningMonths": 4,
+      "pathway": "entry",
+      "signals": [
+        "logical_thinking",
+        "problem_solving",
+        "persistence"
+      ]
+    },
+    {
+      "slug": "frontend_development",
+      "title": "Frontend Development",
+      "cluster": "software",
+      "learningMonths": 6,
+      "pathway": "role",
+      "signals": [
+        "logical_thinking",
+        "creative_design",
+        "visual_logic"
+      ]
+    },
+    {
+      "slug": "backend_development",
+      "title": "Backend Development",
+      "cluster": "software",
+      "learningMonths": 8,
+      "pathway": "role",
+      "signals": [
+        "logical_thinking",
+        "problem_solving",
+        "system_design"
+      ]
+    },
+    {
+      "slug": "mobile_development",
+      "title": "Mobile Development",
+      "cluster": "software",
+      "learningMonths": 7,
+      "pathway": "role",
+      "signals": [
+        "logical_thinking",
+        "problem_solving",
+        "user_empathy"
+      ]
+    },
+    {
+      "slug": "data_analytics",
+      "title": "Data Analytics",
+      "cluster": "data_ai",
+      "learningMonths": 5,
+      "pathway": "role",
+      "signals": [
+        "logical_thinking",
+        "analytical",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "data_science",
+      "title": "Data Science",
+      "cluster": "data_ai",
+      "learningMonths": 12,
+      "pathway": "advanced",
+      "signals": [
+        "logical_thinking",
+        "analytical",
+        "math_logic"
+      ]
+    },
+    {
+      "slug": "ai_engineering",
+      "title": "AI Engineering",
+      "cluster": "data_ai",
+      "learningMonths": 12,
+      "pathway": "advanced",
+      "signals": [
+        "logical_thinking",
+        "problem_solving",
+        "system_design"
+      ]
+    },
+    {
+      "slug": "devops_cloud",
+      "title": "DevOps / Cloud",
+      "cluster": "infra_security",
+      "learningMonths": 10,
+      "pathway": "role",
+      "signals": [
+        "technical_interest",
+        "system_design",
+        "analytical"
+      ]
+    },
+    {
+      "slug": "cybersecurity",
+      "title": "Cybersecurity",
+      "cluster": "infra_security",
+      "learningMonths": 10,
+      "pathway": "role",
+      "signals": [
+        "analytical",
+        "persistence",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "qa_automation",
+      "title": "QA / Test Automation",
+      "cluster": "infra_security",
+      "learningMonths": 5,
+      "pathway": "entry",
+      "signals": [
+        "logical_thinking",
+        "problem_solving",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "ui_ux_design",
+      "title": "UI/UX Design",
+      "cluster": "design_creative",
+      "learningMonths": 6,
+      "pathway": "role",
+      "signals": [
+        "creative_design",
+        "visual_logic",
+        "user_empathy"
+      ]
+    },
+    {
+      "slug": "product_design",
+      "title": "Product Design",
+      "cluster": "design_creative",
+      "learningMonths": 10,
+      "pathway": "advanced",
+      "signals": [
+        "creative_design",
+        "visual_logic",
+        "user_empathy"
+      ]
+    },
+    {
+      "slug": "graphic_design",
+      "title": "Graphic Design",
+      "cluster": "design_creative",
+      "learningMonths": 4,
+      "pathway": "entry",
+      "signals": [
+        "creative_design",
+        "visual_logic",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "motion_design",
+      "title": "Motion Design",
+      "cluster": "design_creative",
+      "learningMonths": 6,
+      "pathway": "role",
+      "signals": [
+        "creative_design",
+        "visual_logic",
+        "persistence"
+      ]
+    },
+    {
+      "slug": "smm_manager",
+      "title": "SMM Manager",
+      "cluster": "digital_marketing",
+      "learningMonths": 3,
+      "pathway": "entry",
+      "signals": [
+        "creative_design",
+        "user_empathy",
+        "business_sense"
+      ]
+    },
+    {
+      "slug": "performance_marketing",
+      "title": "Performance Marketing",
+      "cluster": "digital_marketing",
+      "learningMonths": 5,
+      "pathway": "role",
+      "signals": [
+        "analytical",
+        "attention_to_detail",
+        "business_sense"
+      ]
+    },
+    {
+      "slug": "seo",
+      "title": "SEO Specialist",
+      "cluster": "digital_marketing",
+      "learningMonths": 5,
+      "pathway": "role",
+      "signals": [
+        "analytical",
+        "persistence",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "content_marketing",
+      "title": "Content Marketing",
+      "cluster": "digital_marketing",
+      "learningMonths": 3,
+      "pathway": "entry",
+      "signals": [
+        "creative_design",
+        "user_empathy",
+        "persistence"
+      ]
+    },
+    {
+      "slug": "video_content",
+      "title": "Video Content",
+      "cluster": "content_media",
+      "learningMonths": 4,
+      "pathway": "entry",
+      "signals": [
+        "creative_design",
+        "visual_logic",
+        "persistence"
+      ]
+    },
+    {
+      "slug": "brand_strategy",
+      "title": "Brand Strategy",
+      "cluster": "content_media",
+      "learningMonths": 8,
+      "pathway": "advanced",
+      "signals": [
+        "creative_design",
+        "user_empathy",
+        "business_sense"
+      ]
+    },
+    {
+      "slug": "product_management",
+      "title": "Product Management",
+      "cluster": "product_project",
+      "learningMonths": 12,
+      "pathway": "advanced",
+      "signals": [
+        "user_empathy",
+        "system_design",
+        "business_sense"
+      ]
+    },
+    {
+      "slug": "project_management",
+      "title": "Project Management",
+      "cluster": "product_project",
+      "learningMonths": 6,
+      "pathway": "role",
+      "signals": [
+        "system_design",
+        "persistence",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "business_analysis",
+      "title": "Business Analysis",
+      "cluster": "product_project",
+      "learningMonths": 6,
+      "pathway": "role",
+      "signals": [
+        "logical_thinking",
+        "analytical",
+        "attention_to_detail"
+      ]
+    },
+    {
+      "slug": "it_b2b_sales",
+      "title": "IT / B2B Sales",
+      "cluster": "business_sales",
+      "learningMonths": 4,
+      "pathway": "entry",
+      "signals": [
+        "user_empathy",
+        "persistence",
+        "business_sense"
+      ]
+    },
+    {
+      "slug": "customer_success",
+      "title": "Customer Success",
+      "cluster": "business_sales",
+      "learningMonths": 4,
+      "pathway": "entry",
+      "signals": [
+        "user_empathy",
+        "persistence",
+        "attention_to_detail"
+      ]
+    }
+  ]
+}
