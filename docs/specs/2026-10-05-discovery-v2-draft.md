@@ -1,6 +1,6 @@
 # Qisqa test v2 — 13 savol qoralamasi (2026-10-05, 3-versiya)
 
-Holat: **QORALAMA** — Founder va PM tasdig‘i kerak. Kodga hali o‘tkazilmagan.
+Holat: **Founder: "endi ancha ma’qul" (2026-10-05)** — real sinovga tayyor qoralama; PM ko‘rib chiqadi. Kodga hali o‘tkazilmagan.
 Asos: `docs/decisions/2026-10-05-catalog-9x25.md`, `docs/reviews/2026-10-04-catalog-and-questions-research.md`.
 
 ## Founder talablari (2026-10-05)
