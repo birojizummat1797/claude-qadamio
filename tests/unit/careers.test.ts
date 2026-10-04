@@ -84,8 +84,9 @@ describe("catalog copy", () => {
 });
 
 describe("planned careers", () => {
-  it("lists the 5 brief-only careers, none of them in the backend snapshot", () => {
-    expect(plannedCareers).toHaveLength(5);
+  it("lists the 11 planned careers (brief + founder phase-1 list), none of them in the backend snapshot", () => {
+    expect(plannedCareers).toHaveLength(11);
+    expect(new Set(plannedCareers.map((p) => p.id)).size).toBe(11);
     const titles = new Set(all.map((c) => c.title.toLowerCase()));
     const slugs = new Set(all.map((c) => c.slug));
     for (const p of plannedCareers) {

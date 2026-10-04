@@ -38,6 +38,15 @@ export const plannedCareers: readonly PlannedCareer[] = [
   { id: "copywriting", title: "Copywriting", status: "planned" },
   { id: "content_creation", title: "Content Creation", status: "planned" },
   { id: "growth_marketing", title: "Growth Marketing", status: "planned" },
+  // Founder decision 2026-10-04: phase 1 = IT and modern professions, i.e. every field
+  // tightly bound to digital technology. Not in the backend taxonomy yet (no signals,
+  // months or roadmap are assumed). IT / B2B Sales and DevOps / Cloud already exist.
+  { id: "sales_manager", title: "Sotuv menejeri", status: "planned" },
+  { id: "system_network_admin", title: "Tizim va tarmoq ma’muri", status: "planned" },
+  { id: "spreadsheet_specialist", title: "Excel va Google Sheets mutaxassisi", status: "planned" },
+  { id: "database_specialist", title: "Ma’lumotlar bazasi mutaxassisi", status: "planned" },
+  { id: "accountant", title: "Buxgalter", status: "planned" },
+  { id: "fintech_specialist", title: "Fintech mutaxassisi", status: "planned" },
 ];
 
 export function formatLearningMonths(months: number): string {
