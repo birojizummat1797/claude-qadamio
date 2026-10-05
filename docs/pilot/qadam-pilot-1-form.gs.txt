@@ -162,10 +162,10 @@ const DATA = {
   {
    "q": "Qaysi maqtov sizni ko‘proq quvontirardi?",
    "o": [
-    "\"Saytingiz juda chiroyli va qulay ekan\"",
-    "\"Tizimingiz hech qachon to‘xtamaydi\"",
-    "\"Ilovangizni telefonimga o‘rnatdim, har kuni ishlataman\"",
-    "\"Siz tufayli mijozlar birorta ham xatoga duch kelmadi\"",
+    "«Saytingiz juda chiroyli va qulay ekan»",
+    "«Tizimingiz hech qachon to‘xtamaydi»",
+    "«Ilovangizni telefonimga o‘rnatdim, har kuni ishlataman»",
+    "«Siz tufayli mijozlar birorta ham xatoga duch kelmadi»",
     "Bilmayman / bu yerda menga mosi yo‘q"
    ]
   },
@@ -245,7 +245,7 @@ const DATA = {
     "Chiroyli sayt va ekran namunalarini ko‘rsatadigan sahifalar",
     "Katta kompaniyalar tizimi ichidan qanday ishlashi haqidagi bloglar",
     "Yangi telefon va ilovalar sharhlari",
-    "\"Bu ilovada qanday xato topildi\" kabi qiziq hikoyalar",
+    "«Bu ilovada qanday xato topildi» kabi qiziq hikoyalar",
     "Bilmayman / bu yerda menga mosi yo‘q"
    ]
   }
@@ -376,6 +376,7 @@ const DATA = {
  ]
 };
 
+const NL = String.fromCharCode(10); // yangi qator (backslash ishlatmaslik uchun)
 const EASE = ['Oson va qiziq', 'Oson, lekin zerikarli', 'Qiyin, lekin qiziq', 'Qiyin va zerikarli'];
 
 function addChoices_(form, items, start) {
@@ -391,9 +392,9 @@ function createQadamPilotForm() {
   const form = FormApp.create('Qadam — o‘zingizni kashf qiling (sinov)');
   form.setDescription(
     'Assalomu alaykum! Qadam — insonga o‘zini yaxshiroq tushunish va o‘ziga mos yo‘nalishni topishda ' +
-    'yordam beradigan loyiha. Yangi savollarimizni sinab ko‘ryapmiz.\n\n' +
-    '• 15–20 daqiqa.\n• Ismingiz so‘ralmaydi; javoblar faqat savollarni yaxshilash uchun ishlatiladi va hech kimga berilmaydi.\n' +
-    '• Sinov faqat 18 yoshdan kattalar uchun.\n• To‘g‘ri yoki noto‘g‘ri javob yo‘q — o‘zingizga eng yaqinini tanlang.');
+    'yordam beradigan loyiha. Yangi savollarimizni sinab ko‘ryapmiz.' + NL + NL +
+    '• 15–20 daqiqa.' + NL + '• Ismingiz so‘ralmaydi; javoblar faqat savollarni yaxshilash uchun ishlatiladi va hech kimga berilmaydi.' + NL +
+    '• Sinov faqat 18 yoshdan kattalar uchun.' + NL + '• To‘g‘ri yoki noto‘g‘ri javob yo‘q — o‘zingizga eng yaqinini tanlang.');
   form.setCollectEmail(false);
   form.setAllowResponseEdits(false);
   form.setLimitOneResponsePerUser(false); // true bo'lsa Google akkaunt talab qilinadi — anonimlik uchun false
@@ -426,7 +427,7 @@ function createQadamPilotForm() {
   });
 
   form.addPageBreakItem().setTitle('5-qism: yangi narsa o‘rganamiz')
-    .setHelpText('📘 Qisqa dars: Robotga yangi buyruq o‘rgatamiz — TAKRORLA.\n' +
+    .setHelpText('📘 Qisqa dars: Robotga yangi buyruq o‘rgatamiz — TAKRORLA.' + NL +
                  'Masalan: TAKRORLA 3 marta: [1 qadam yur] — robot 3 qadam yuradi.');
   form.addMultipleChoiceItem()
     .setTitle('1. TAKRORLA 2 marta: [2 qadam oldinga, 1 qadam orqaga]. Robot boshlang‘ich joyidan necha qadam oldinda bo‘ladi?')
