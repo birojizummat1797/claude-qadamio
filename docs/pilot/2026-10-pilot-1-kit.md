@@ -1,15 +1,16 @@
 # 1-pilot: Dasturlash namunasi — Telegram sinov to‘plami (2026-10)
 
-Holat: **TAYYOR** — Founder o‘tkazadi (PDP IT akademiyasi bitiruvchilari va boshqalar).
+Holat: **TAYYOR** — Founder o‘tkazadi (PDP IT akademiyasining hozirgi o‘quvchilari va boshqalar).
 Asos: `docs/methodology/qadam-metodologiyasi-v0.1.md`, `docs/specs/2026-10-05-dasturlash-golden-sample.md`.
 
 ## Maqsad
 Aniqlik emas — **tushunarlilik va mantiq** tekshiriladi: savollar tushunarlimi, javoblar farqlanadimi, odam «to‘g‘ri javob»ni qidiradimi, topshiriqlar me’yoridami, natijada o‘zini taniydimi.
 
 ## Kimlar
-- 5–10 kishi, **faqat 18+**.
-- PDP bitiruvchilari — Dasturlash qismi uchun ideal. Iloji bo‘lsa **2–3 nafar IT’dan uzoq odam** ham qo‘shing (masalan, sotuv yoki buxgalteriyadan) — qisqa test boshqa yo‘nalishni ham topa oladimi, shu ko‘rinadi.
-- Bilib qo‘yish kerak: PDP bitiruvchilari dasturlashni allaqachon tanlagan — ularning natijasi «Dasturlash» chiqishi kutiladi; bu testning to‘g‘riligini emas, **tushunarliligini** tekshiradi.
+- 5–10 kishi, **faqat 18+** — PDP’da hozir o‘qiyotgan o‘quvchilar (Founder tanlovi). Ular orasida 18 dan kichiklar bo‘lishi mumkin — **yoshini oldindan aniqlang**, 18 dan kichiklar qatnashmaydi.
+- Iloji bo‘lsa **2–3 nafar IT’dan uzoq odam** ham qo‘shing (sotuv, buxgalteriya…) — qisqa test boshqa yo‘nalishni ham topa oladimi, shu ko‘rinadi.
+- Bilib qo‘yish kerak: o‘quvchilar allaqachon biror yo‘nalishda (frontend, backend…) o‘qiyapti — javoblariga hozirgi kursi ta’sir qilishi mumkin. Shuning uchun **oxirida** (test tugagach, natijadan oldin) qaysi yo‘nalishda o‘qiyotgani so‘raladi (Xabar 6, 7-savol): test natijasi va o‘zi tanlagan yo‘l solishtiriladi. Oldindan so‘ralmaydi — javoblarga ta’sir qilmasligi uchun.
+- Akademiya ichida o‘tkazilsa — o‘qituvchi yoki ma’muriyatga oldindan aytib qo‘yish odobli bo‘ladi.
 
 ## Qanday o‘tkaziladi
 1. Har bir odamga xabarlarni **ketma-ket** yuboring: 0 → (rozilik) → 1 → 2 → 3 → 4 → 5 → 6.
@@ -23,7 +24,7 @@ P1
 3-qism: 1-B, … 8-A
 4-qism: 1-A-1, 2-A-3, 3-D-2, 4-A-1
 5-qism: 1-A-1, 2-C-3; dars qayta o‘qildi: Yo‘q
-6-xabar javoblari: (qisqacha)
+6-xabar javoblari: (qisqacha; 7-savol — hozirgi yo‘nalishi va mamnunligi)
 ```
 5. Men har biriga natija matnini tayyorlab beraman → siz yuborasiz → **Xabar 7** savollarini berasiz → javoblarni menga yuborasiz.
 6. Oxirida umumiy hisobot: qaysi savollar ishlamadi, nimani o‘zgartirish kerak.
@@ -371,6 +372,7 @@ Rahmat! 🙏 Oxirgi bir necha savol (o‘z so‘zingiz bilan, qisqa):
 4. Topshiriqlar qanday bo‘ldi: oson / me’yorida / qiyin / qo‘rqinchli?
 5. Qisqa dars (TAKRORLA) tushunarli bo‘ldimi?
 6. O‘zingiz uchun eng to‘g‘ri yo‘nalish qaysi deb o‘ylaysiz va nega?
+7. Hozir qaysi yo‘nalishda o‘qiyapsiz va undan qanchalik mamnunsiz? (juda / o‘rtacha / unchalik emas)
 ```
 
 ## Xabar 7 — natija yuborilgandan keyin
