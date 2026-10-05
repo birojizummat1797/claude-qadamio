@@ -26,6 +26,12 @@ Rules for Claude:
 - When reporting options, use the form: "PM recommendation / Claude recommendation: X. Final decision: Founder."
 - Record founder decisions in `docs/decisions/` before implementing them.
 
+## Diagnostic methodology (locked, Founder, 2026-10-05)
+- "Qadam insonni bir kunda hukm qilmaydi": first diagnostic = snapshot; long-term evidence = trajectory.
+- Never claim talent ("iqtidor", "iste’dod") or verdicts; report only the level of evidence. No accuracy percentages, no IQ-like scores.
+- Interest ≠ ability; "Bilmayman" = unmeasured, never 0 or negative.
+- Details: `docs/methodology/qadam-metodologiyasi-v0.1.md`, decisions in `docs/decisions/2026-10-05-methodology-founder-decisions.md`.
+
 ## Design DNA v1 (locked)
 Human-first · Intelligent · Calm · Evidence-led · Progressive. See `docs/design-dna.md`.
 Product principle (locked, do not edit without owner decision): “Signallarni Qadam o’qiydi. Qarorni siz qilasiz.” (`PRODUCT_PRINCIPLE` in `content/site.ts`).
