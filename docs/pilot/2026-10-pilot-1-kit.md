@@ -7,13 +7,15 @@ Asos: `docs/methodology/qadam-metodologiyasi-v0.1.md`, `docs/specs/2026-10-05-da
 Aniqlik emas — **tushunarlilik va mantiq** tekshiriladi: savollar tushunarlimi, javoblar farqlanadimi, odam «to‘g‘ri javob»ni qidiradimi, topshiriqlar me’yoridami, natijada o‘zini taniydimi.
 
 ## Kimlar
-- 5–10 kishi, **faqat 18+** — PDP’da hozir o‘qiyotgan o‘quvchilar (Founder tanlovi). Ular orasida 18 dan kichiklar bo‘lishi mumkin — **yoshini oldindan aniqlang**, 18 dan kichiklar qatnashmaydi.
+- 5–10 kishi, **faqat 18 yosh va undan kattalar** — PDP’da hozir o‘qiyotgan o‘quvchilar orasidan (Founder qarori, 2026-10-05: qonunni chetlab o‘tmaymiz).
+- PDP o‘quvchilarining qariyb yarmi 16–17 yoshli maktab o‘quvchilari — **ular bu sinovda qatnashmaydi**. Taklifni faqat 18+ o‘quvchilarga yuboring; Xabar 0 da odam o‘zi ham "18 yoshdan kattaman" deb tasdiqlaydi (tug‘ilgan sana so‘ralmaydi — ortiqcha ma’lumot yig‘ilmaydi).
+- Agar kimdir 18 dan kichik ekani keyin ma’lum bo‘lsa — uning javoblari darhol o‘chiriladi va tahlilga kirmaydi.
 - Iloji bo‘lsa **2–3 nafar IT’dan uzoq odam** ham qo‘shing (sotuv, buxgalteriya…) — qisqa test boshqa yo‘nalishni ham topa oladimi, shu ko‘rinadi.
 - Bilib qo‘yish kerak: o‘quvchilar allaqachon biror yo‘nalishda (frontend, backend…) o‘qiyapti — javoblariga hozirgi kursi ta’sir qilishi mumkin. Shuning uchun **oxirida** (test tugagach, natijadan oldin) qaysi yo‘nalishda o‘qiyotgani so‘raladi (Xabar 6, 7-savol): test natijasi va o‘zi tanlagan yo‘l solishtiriladi. Oldindan so‘ralmaydi — javoblarga ta’sir qilmasligi uchun.
 - Akademiya ichida o‘tkazilsa — o‘qituvchi yoki ma’muriyatga oldindan aytib qo‘yish odobli bo‘ladi.
 
 ## Qanday o‘tkaziladi
-1. Har bir odamga xabarlarni **ketma-ket** yuboring: 0 → (rozilik) → 1 → 2 → 3 → 4 → 5 → 6.
+1. Har bir odamga xabarlarni **ketma-ket** yuboring: 0 → ("Roziman, 18 yoshdan kattaman" javobi) → 1 → 2 → 3 → 4 → 5 → 6.
 2. Har bir qismdan keyin javobini kuting (bir kunda yoki ikki kunda — ikkalasi ham mumkin).
 3. Har odamga **raqam** bering: P1, P2… Ismini menga yubormang.
 4. Barcha javoblar kelgach, menga shu ko‘rinishda yuboring:
@@ -43,11 +45,11 @@ Biz Qadam — insonga o‘zini yaxshiroq tushunish va o‘ziga mos yo‘nalishni
 
 • 5 ta qisqa xabar, jami 15–20 daqiqa.
 • Ismingiz yozilmaydi; javoblar faqat savollarni yaxshilash uchun ishlatiladi va hech kimga berilmaydi.
-• Faqat 18 yoshdan katta bo‘lsangiz qatnashing.
+• Sinov faqat 18 yoshdan kattalar uchun.
 • Istalgan vaqtda to‘xtashingiz mumkin.
 • Oxirida natijangizni yuboramiz va u haqda fikringizni so‘raymiz.
 
-Rozi bo‘lsangiz, "Roziman" deb yozing.
+Rozi bo‘lsangiz va 18 yoshdan katta bo‘lsangiz, "Roziman, 18 yoshdan kattaman" deb yozing.
 ```
 
 ## Xabar 1 — 1-qism: qisqa test (13)
