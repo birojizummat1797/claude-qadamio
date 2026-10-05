@@ -24,3 +24,11 @@ Qadam "senga mana shu kasb mos" testi emas: avval insonni tushunish → potensia
 14. **Market intelligence:** tavsiyadan keyin har kasb uchun: bugungi bozor, talab dinamikasi, ish beruvchilar, geografiya/remote, kirish talablari, ko‘nikmalar, AI ta’siri, xavflar, 3–5 yillik kutilma, kelajak ko‘nikmalari. Bozor potensialni bekor qilmaydi. Manbalar birlamchi/autoritet; prognoz "prognoz" deb belgilanadi. Natija — decision intelligence: sabablar, dalillar, bozor, kutilma, xavf, kerakli ko‘nikmalar, boshlashning real yo‘li.
 
 PM yakuniy formulasi: INSONNI TUSHUNISH → POTENSIAL → MOSLIK → REAL SHAROIT → BOZOR → DALILLARNI BIRLASHTIRISH → ASOSLI YO‘L → HARAKAT → NATIJANI KUZATISH → QAYTA O‘RGANISH.
+
+## Qo‘shimcha PM taklifi (2026-10-05, Claude tahlilidan keyin)
+- **Iqtidor va iste’dodni aniqlash** — bir martalik diagnostika funksiyasi emas, ekotizimning uzoq muddatli ilmiy vazifasi. MVP va Deep v2’ga zo‘rlab kiritilmaydi.
+- **Uch bosqich:** (1) hozir — mavjud dalillar asosida nima deyish mumkin; (2) keyingi — "O‘rgan → bajar": yangi narsani qanday o‘rganadi va bajaradi; (3) ekotizim — vaqt davomida qaysi kuchli qobiliyatlar qayta-qayta namoyon bo‘lmoqda.
+- **Ehtiyotkor til zinapoyasi:** "Sizda ushbu qobiliyat bo‘yicha kuchli signal kuzatildi" → "So‘nggi 6 oyda 4 ta turli amaliy vazifada bir xil kuchli signal kuzatildi" → "Bu qobiliyat sizning barqaror kuchli tomoningiz bo‘lishi mumkin". "Iste’dodingizni aniqladik" — hech qachon.
+- **LOCK taklifi:** "Qadam insonni bir kunda hukm qilmaydi." Birinchi diagnostika — **snapshot** ("hozir nimani bilamiz"); ekotizimdagi kuzatuv — **trajectory** ("vaqt davomida nima tasdiqlandi").
+- **Moat:** foydalanuvchi roziligi va maxfiyligi asosida saqlangan real outcome/evidence tarixi.
+- Yo‘nalish nomi: "Human Potential Discovery & Career Decision Intelligence".
