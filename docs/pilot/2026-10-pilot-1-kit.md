@@ -31,6 +31,28 @@ P1
 5. Men har biriga natija matnini tayyorlab beraman → siz yuborasiz → **Xabar 7** savollarini berasiz → javoblarni menga yuborasiz.
 6. Oxirida umumiy hisobot: qaysi savollar ishlamadi, nimani o‘zgartirish kerak.
 
+
+## Google Forms varianti (tavsiya etiladi)
+Forma avtomatik yaratiladi — 43 ta savolni qo‘lda kiritish shart emas. Skript: `docs/pilot/qadam-pilot-1-form.gs.txt`.
+
+**Qadamlar (kompyuterda, ~5 daqiqa):**
+1. Google akkauntingiz bilan **script.google.com** ni oching → **New project / Yangi loyiha**.
+2. Kod oynasidagi hamma narsani o‘chirib, fayl matnini to‘liq joylang → **Save**.
+3. Yuqoridagi ro‘yxatdan `createQadamPilotForm` ni tanlab, **Run / Ishga tushirish** ni bosing.
+4. Birinchi marta Google ruxsat so‘raydi. "This app isn’t verified" chiqsa: **Advanced → Go to … (unsafe)** — bu sizning o‘z skriptingiz, faqat sizning Drive’ingizda forma yaratadi.
+5. Pastdagi **Execution log**da ikkita havola chiqadi: tahrirlash havolasi (o‘zingiz uchun) va qatnashchilar havolasi.
+6. Formani bir marta o‘zingiz ochib ko‘ring. **Settings → Responses**: "Collect email addresses" — **o‘chiq**, "Limit to 1 response" — **o‘chiq** (aks holda Google akkaunt talab qilinadi va anonimlik yo‘qoladi).
+7. Qatnashchilar havolasini 18+ o‘quvchilarga yuboring.
+8. Javoblar yig‘ilgach: **Responses → Download responses (.csv)** → menga yuboring.
+9. Natijalarni men har bir **kod so‘z** bo‘yicha tayyorlayman; qatnashchi o‘z kod so‘zini sizga yozadi — siz unga natijasini yuborasiz, keyin Xabar 7 savollarini berasiz.
+
+**Formada nima bor:** rozilik va 18+ tasdig‘i (18 ga to‘lmaganlar savollarsiz yakuniy sahifaga o‘tadi), kod so‘z, 1–5-qismlar, topshiriqlardan keyin osonlik savoli, oxirida 7 ta ochiq savol. Email yig‘ilmaydi.
+
+**Maxfiylik:** forma anonim — ism va email so‘ralmaydi. Ma’lumot Google serverlarida saqlanadi; shuning uchun qatnashchilardan ochiq javoblarda ham ism yozmaslikni so‘rang. (Bilishimcha, O‘zbekistonda fuqarolarning shaxsga doir ma’lumotlarini mamlakat ichida saqlash talabi bor — anonim forma bu talabga tushmasligi kerak; bu yuridik xulosa emas.)
+**Cheklov:** Google Forms har bir savolga sarflangan vaqtni o‘lchamaydi va javoblar tartibini "Bilmayman"ni oxirida qoldirib aralashtira olmaydi — shuning uchun bu sinovda aralashtirish yo‘q.
+
+Telegram varianti (pastdagi xabarlar) zaxira sifatida qoladi.
+
 ## Muhim
 - Odamga «to‘g‘ri javob» aytilmasin, natija kelguncha topshiriqlarni muhokama qilinmasin.
 - Hech kimni majburlamang; istalgan qismda to‘xtashi mumkin.
