@@ -7,12 +7,13 @@
  */
 
 // ===== SOZLAMALAR (faqat shu yerni o'zgartiring) =====
-// 11-savol (narx): 'research' — va'dasiz tadqiqot savoli (Claude tavsiyasi); 'remove' — umuman yo'q. Yakuniy qaror: Founder.
-const PRICE_QUESTION = 'research';
-// Ikki yangi savol (Kashfiyot yo'li vaqti va eng katta ehtiyoj): true — qo'shiladi, false — yo'q.
+// CustDev qoidasi: faraziy savollar ("to'lardingizmi?", "tayyormisiz?") ishonchsiz — o'tgan xulq so'raladi.
+// 11-savol (narx): 'remove' — yo'q (Claude tavsiyasi; real to'lov 7-savolda bor); 'research' — va'dasiz faraziy savol. Yakuniy qaror: Founder.
+const PRICE_QUESTION = 'remove';
+// O'tgan qaror haqida 2 savol (qaror nimaga asoslangan va natijasi): true — qo'shiladi, false — yo'q.
 const NEW_QUESTIONS = true;
-// Bonus matni: bo'sh qolsa ko'rsatilmaydi. Bonus tayyor bo'lgandan keyingina yozing (va'da = majburiyat).
-const BONUS_TEXT = '';
+// Bonus e'loni (kirish qismida). Bonus sahifasi tayyor bo'lgandan keyingina BONUS_LINK ni to'ldiring.
+const BONUS_TEXT = '5–7 daqiqa ajrating — yakunda siz uchun foydali bonus bor: kasb tanlashdan oldin o‘zingizga berishingiz kerak bo‘lgan 10 savol va O‘zbekistondagi raqamli kasblar bozori bo‘yicha qisqa, manbali sharh. Kontakt kerak emas.';
 // Bonus havolasi (masalan, qo'llanma PDF). Bo'sh qolsa ko'rsatilmaydi.
 const BONUS_LINK = '';
 // ======================================================
@@ -38,22 +39,22 @@ function scale_(form, title, low, high) {
 }
 
 function createQadamSurvey() {
-  const n = 14 + (NEW_QUESTIONS ? 2 : 0) - (PRICE_QUESTION === 'remove' ? 1 : 0);
+  const n = 14 + (NEW_QUESTIONS ? 2 : 0) - (PRICE_QUESTION === 'remove' ? 1 : 0); // 14 = 1–11 + kontakt, suhbat, manba
   const form = FormApp.create('Qadam.io — Kasb tanlash bo‘yicha so‘rovnoma');
   let desc = 'Assalomu alaykum! 👋' + NL + NL +
     'Qadam.io jamoasi yoshlar kasb va yo‘nalish tanlashda qanday qiyinchiliklarga duch kelishini o‘rganyapti.' + NL + NL +
-    '⏱ ' + n + ' ta qisqa savol, 5–7 daqiqa' + NL +
+    '⏱ ' + n + ' ta asosiy savol (ba’zilarida qisqa qo‘shimcha savol), 5–7 daqiqa' + NL +
     '🔒 Kontakt qoldirmasangiz, javoblaringiz anonim. Kontakt faqat sizga natija yuborish uchun ishlatiladi.' + NL +
     '🚫 Hech narsa sotmaymiz' + NL +
     '🔞 So‘rovnoma 18 yoshdan kattalar uchun';
-  if (BONUS_TEXT) desc += NL + NL + '🎁 ' + BONUS_TEXT;
+  if (BONUS_TEXT && BONUS_LINK) desc += NL + NL + '🎁 ' + BONUS_TEXT;
   form.setDescription(desc);
   form.setCollectEmail(false);
   form.setLimitOneResponsePerUser(false);
   form.setAllowResponseEdits(false);
   form.setProgressBar(true);
   let thanks = 'Rahmat! 🙏 Javoblaringiz biz uchun juda qimmatli.';
-  if (BONUS_TEXT && BONUS_LINK) thanks += NL + NL + '🎁 ' + BONUS_TEXT + ': ' + BONUS_LINK;
+  if (BONUS_TEXT && BONUS_LINK) thanks += NL + NL + '🎁 Bonusingiz: ' + BONUS_LINK;
   form.setConfirmationMessage(thanks);
 
   // 1-sahifa
@@ -101,18 +102,19 @@ function createQadamSurvey() {
       { help: 'Bu faqat tadqiqot savoli — hozir bunday xizmat sotilmaydi.' });
   }
   if (NEW_QUESTIONS) {
-    choice_(form, (PRICE_QUESTION === 'research' ? '12' : '11') + '. O‘zingizni yaxshiroq tushunish uchun bir necha kun davomida kuniga 5–10 daqiqa ajratishga tayyormisiz?',
-      ['Ha, bemalol', 'Ha, agar natija foydali bo‘lsa', 'Bir martada tugatgan ma’qul', 'Yo‘q']);
-    checks_(form, (PRICE_QUESTION === 'research' ? '13' : '12') + '. Kasb tanlashda sizga eng ko‘p nima kerak?',
-      ['O‘zimni yaxshiroq tushunish', 'Bozor haqida aniq ma’lumot (qaysi kasbga talab bor)', 'Qayerda va nimani o‘qish',
-       'Amaliyot va birinchi ish'], 2, { help: 'Eng muhim 2 tagacha' });
+    const k = PRICE_QUESTION === 'research' ? 12 : 11;
+    choice_(form, k + '. So‘nggi marta kasb yoki o‘qish bo‘yicha muhim qaror qabul qilganingizda (masalan, kursga yozilish yoki ish almashtirish), uni asosan nimaga asoslab qildingiz?',
+      ['O‘z qiziqishimga', 'Oila yoki tanishlar maslahatiga', 'Bozordagi talab va maoshga', 'Reklama yoki blogerlarga',
+       'Test yoki AI natijasiga', 'Tasodifan bo‘lib qoldi', 'Hali bunday qaror qilmaganman'], { other: true });
+    choice_(form, (k + 1) + '. O‘sha qaror qanday natija berdi?',
+      ['Kutganimdek bo‘ldi', 'Qisman', 'Afsuslanaman', 'Hali noma’lum', 'Hali bunday qaror qilmaganman']);
   }
 
   const pLast = form.addPageBreakItem().setTitle('Oxirgi qadam');
-  form.addTextItem().setTitle('Natijalarni yoki bepul qisqa kasb diagnostikasini olishni xohlasangiz — Telegram username yoki telefon raqamingiz')
+  form.addTextItem().setTitle('So‘rovnoma natijalarini olishni yoki qisqa suhbatga taklif qilinishni xohlasangiz — Telegram username yoki telefon raqamingiz')
     .setHelpText('Ixtiyoriy. Qoldirsangiz, faqat shu maqsadda bog‘lanamiz; boshqa hech kimga berilmaydi. Qoldirmasangiz ham bo‘ladi.').setRequired(false);
   form.addTextItem().setTitle('15 daqiqalik onlayn suhbatda tajribangiz bilan bo‘lishishga tayyormisiz? Tayyor bo‘lsangiz, qulay vaqtni yozing')
-    .setHelpText('Ixtiyoriy. Masalan: «ertaga 18:00 dan keyin»').setRequired(false);
+    .setHelpText('Ixtiyoriy, lekin biz uchun eng qimmatli yordam shu. Masalan: «ertaga 18:00 dan keyin». Hech narsa sotmaymiz — faqat tajribangizni tinglaymiz.').setRequired(false);
   choice_(form, 'So‘rovnoma haqida qayerdan bildingiz?',
     ['Telegram kanal', 'Telegram guruh', 'Instagram', 'Do‘stim yubordi', 'Universitet / o‘quv markazi'], { optional: true, other: true });
 
