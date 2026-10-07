@@ -1,0 +1,139 @@
+// QADAM-SURVEY BOSHI: bu qator eng birinchi qator bo'lishi kerak.
+/**
+ * Qadam.io — "Kasb tanlash bo'yicha so'rovnoma" (mijozni o'rganish) — Founder uchun yangi versiya.
+ * Ishlatish: script.google.com -> Yangi loyiha -> shu matnni joylang -> Save -> "createQadamSurvey" -> Run.
+ * Tuzatishlar (docs/reviews/2026-10-07-customer-survey-review.md): 18 dan kichiklar darhol yakunga o'tadi;
+ * "anonim" va'dasi halollashtirildi; savollar soni to'g'ri; 4b, 7b shart bo'yicha; 9-savolda "Hali kasbim yo'q".
+ */
+
+// ===== SOZLAMALAR (faqat shu yerni o'zgartiring) =====
+// 11-savol (narx): 'research' — va'dasiz tadqiqot savoli (Claude tavsiyasi); 'remove' — umuman yo'q. Yakuniy qaror: Founder.
+const PRICE_QUESTION = 'research';
+// Ikki yangi savol (Kashfiyot yo'li vaqti va eng katta ehtiyoj): true — qo'shiladi, false — yo'q.
+const NEW_QUESTIONS = true;
+// Bonus matni: bo'sh qolsa ko'rsatilmaydi. Bonus tayyor bo'lgandan keyingina yozing (va'da = majburiyat).
+const BONUS_TEXT = '';
+// Bonus havolasi (masalan, qo'llanma PDF). Bo'sh qolsa ko'rsatilmaydi.
+const BONUS_LINK = '';
+// ======================================================
+
+const NL = String.fromCharCode(10);
+
+function choice_(form, title, options, opts) {
+  const it = form.addMultipleChoiceItem().setTitle(title).setChoiceValues(options).setRequired(!(opts && opts.optional));
+  if (opts && opts.other) it.showOtherOption(true);
+  if (opts && opts.help) it.setHelpText(opts.help);
+  return it;
+}
+
+function checks_(form, title, options, atMost, opts) {
+  const it = form.addCheckboxItem().setTitle(title).setChoiceValues(options).setRequired(true).showOtherOption(true);
+  if (atMost) it.setValidation(FormApp.createCheckboxValidation().requireSelectAtMost(atMost).build());
+  if (opts && opts.help) it.setHelpText(opts.help);
+  return it;
+}
+
+function scale_(form, title, low, high) {
+  return form.addScaleItem().setTitle(title).setBounds(1, 5).setLabels(low, high).setRequired(true);
+}
+
+function createQadamSurvey() {
+  const n = 14 + (NEW_QUESTIONS ? 2 : 0) - (PRICE_QUESTION === 'remove' ? 1 : 0);
+  const form = FormApp.create('Qadam.io — Kasb tanlash bo‘yicha so‘rovnoma');
+  let desc = 'Assalomu alaykum! 👋' + NL + NL +
+    'Qadam.io jamoasi yoshlar kasb va yo‘nalish tanlashda qanday qiyinchiliklarga duch kelishini o‘rganyapti.' + NL + NL +
+    '⏱ ' + n + ' ta qisqa savol, 5–7 daqiqa' + NL +
+    '🔒 Kontakt qoldirmasangiz, javoblaringiz anonim. Kontakt faqat sizga natija yuborish uchun ishlatiladi.' + NL +
+    '🚫 Hech narsa sotmaymiz' + NL +
+    '🔞 So‘rovnoma 18 yoshdan kattalar uchun';
+  if (BONUS_TEXT) desc += NL + NL + '🎁 ' + BONUS_TEXT;
+  form.setDescription(desc);
+  form.setCollectEmail(false);
+  form.setLimitOneResponsePerUser(false);
+  form.setAllowResponseEdits(false);
+  form.setProgressBar(true);
+  let thanks = 'Rahmat! 🙏 Javoblaringiz biz uchun juda qimmatli.';
+  if (BONUS_TEXT && BONUS_LINK) thanks += NL + NL + '🎁 ' + BONUS_TEXT + ': ' + BONUS_LINK;
+  form.setConfirmationMessage(thanks);
+
+  // 1-sahifa
+  const q1 = form.addMultipleChoiceItem().setTitle('1. Yoshingiz nechada?').setRequired(true);
+
+  const pStatus = form.addPageBreakItem().setTitle('Hozirgi holatingiz');
+  choice_(form, '2. Hozir asosan nima bilan bandsiz?',
+    ['Talabaman', 'Mutaxassisligim bo‘yicha ishlayman', 'Boshqa sohada ishlayman', 'Ish qidiryapman', 'O‘z ishim / biznesim bor'], { other: true });
+  choice_(form, '3. Qayerda yashaysiz?',
+    ['Toshkent shahri', 'Toshkent viloyati', 'Boshqa viloyat markazi', 'Tuman yoki qishloq', 'Xorijda']);
+  const q4 = form.addMultipleChoiceItem().setTitle('4. So‘nggi 12 oyda kasbingiz yoki yo‘nalishingizni o‘zgartirish haqida jiddiy o‘yladingizmi?').setRequired(true);
+
+  const pReason = form.addPageBreakItem().setTitle('Sabab');
+  checks_(form, '4b. Bunga nima sabab bo‘ldi?',
+    ['Ishimdan noroziman', 'Ishsiz qoldim', 'O‘qishni tugatdim', 'Oylik kam', 'IT yoki yangi sohaga qiziqib qoldim',
+     'Kursga yozilmoqchi edim, lekin ikkilandim', 'Oila yoki yaqinlar maslahati'], 2, { help: 'Eng muhim 2 tagacha variantni tanlang' });
+
+  const pSearch = form.addPageBreakItem().setTitle('Javob izlash');
+  checks_(form, '5. Kasb yoki yo‘nalish bo‘yicha javob izlab nima qildingiz?',
+    ['Hech narsa qilmadim', 'Oila va tanishlar bilan maslahatlashdim', 'YouTube / Instagram / Telegram’dan izladim',
+     'Onlayn test topshirdim', 'O‘quv markazida maslahat oldim', 'Pullik konsultatsiya oldim', 'AI’dan so‘radim (ChatGPT va b.)'], 0,
+    { help: 'Bir nechtasini tanlashingiz mumkin' });
+  choice_(form, '5b. Ulardan qaysi biri haqiqatan yordam berdi?',
+    ['Oila va tanishlar', 'YouTube / Instagram / Telegram', 'Onlayn test', 'O‘quv markazi maslahati', 'Pullik konsultatsiya',
+     'AI (ChatGPT va b.)', 'Hech biri aniq javob bermadi'], { optional: true, other: true, help: 'Hech narsa qilmagan bo‘lsangiz, o‘tkazib yuboring' });
+  scale_(form, '6. Keyingi professional qadamingiz noaniqligi sizni qanchalik bezovta qiladi?', 'Umuman bezovta qilmaydi', 'Juda qattiq bezovta qiladi');
+  const q7 = form.addMultipleChoiceItem().setTitle('7. So‘nggi 2 yilda kurs yoki treninglarga taxminan qancha pul sarfladingiz?').setRequired(true);
+
+  const pCourse = form.addPageBreakItem().setTitle('Kurs natijasi');
+  scale_(form, '7b. O‘sha kurs(lar) natijasidan qanchalik mamnunsiz?', 'Umuman mamnun emasman', 'Juda mamnunman');
+
+  const pChoice = form.addPageBreakItem().setTitle('Kasb tanlash');
+  checks_(form, '8. Kasb tanlashda sizga eng ko‘p nima xalaqit beradi?',
+    ['Menga nima mosligini bilmayman', 'Qaysi kasbga talab borligini bilmayman', 'Qayerda va nimani o‘qishni bilmayman',
+     'Pul yetishmaydi', 'Vaqt yetishmaydi', 'Oila kutishlari', 'Til bilmasligim', 'Hech narsa xalaqit bermaydi'], 2,
+    { help: 'Eng muhim 2 tagacha variantni tanlang' });
+  choice_(form, '9. Hozirgi kasbingiz yoki yo‘nalishingiz sizga qanchalik mos deb o‘ylaysiz?',
+    ['1 — Umuman mos emas', '2', '3', '4', '5 — Juda mos', 'Hali kasbim yoki yo‘nalishim yo‘q']);
+  choice_(form, '10. Kasb bo‘yicha maslahatda kimga ko‘proq ishonasiz?',
+    ['Oila va tanishlarga', 'Shu sohada ishlayotgan mutaxassisga', 'Mustaqil karyera maslahatchisiga', 'O‘quv markaziga',
+     'Test yoki AI’ga', 'Blogerlarga', 'Hech kimga — o‘zim qaror qilaman'], { other: true });
+  if (PRICE_QUESTION === 'research') {
+    choice_(form, '11. Agar kurs sotmaydigan mutaxassis siz bilan suhbatlashib, sizga mos yo‘nalishni aniqlashga va 6 oylik reja tuzishga yordam bersa, bunday xizmat uchun qancha to‘lashga tayyor bo‘lardingiz?',
+      ['Faqat bepul bo‘lsa', '50 000 so‘mgacha', '50 000 – 150 000 so‘m', '150 000 – 300 000 so‘m', '300 000 so‘mdan ko‘p'],
+      { help: 'Bu faqat tadqiqot savoli — hozir bunday xizmat sotilmaydi.' });
+  }
+  if (NEW_QUESTIONS) {
+    choice_(form, (PRICE_QUESTION === 'research' ? '12' : '11') + '. O‘zingizni yaxshiroq tushunish uchun bir necha kun davomida kuniga 5–10 daqiqa ajratishga tayyormisiz?',
+      ['Ha, bemalol', 'Ha, agar natija foydali bo‘lsa', 'Bir martada tugatgan ma’qul', 'Yo‘q']);
+    checks_(form, (PRICE_QUESTION === 'research' ? '13' : '12') + '. Kasb tanlashda sizga eng ko‘p nima kerak?',
+      ['O‘zimni yaxshiroq tushunish', 'Bozor haqida aniq ma’lumot (qaysi kasbga talab bor)', 'Qayerda va nimani o‘qish',
+       'Amaliyot va birinchi ish'], 2, { help: 'Eng muhim 2 tagacha' });
+  }
+
+  const pLast = form.addPageBreakItem().setTitle('Oxirgi qadam');
+  form.addTextItem().setTitle('Natijalarni yoki bepul qisqa kasb diagnostikasini olishni xohlasangiz — Telegram username yoki telefon raqamingiz')
+    .setHelpText('Ixtiyoriy. Qoldirsangiz, faqat shu maqsadda bog‘lanamiz; boshqa hech kimga berilmaydi. Qoldirmasangiz ham bo‘ladi.').setRequired(false);
+  form.addTextItem().setTitle('15 daqiqalik onlayn suhbatda tajribangiz bilan bo‘lishishga tayyormisiz? Tayyor bo‘lsangiz, qulay vaqtni yozing')
+    .setHelpText('Ixtiyoriy. Masalan: «ertaga 18:00 dan keyin»').setRequired(false);
+  choice_(form, 'So‘rovnoma haqida qayerdan bildingiz?',
+    ['Telegram kanal', 'Telegram guruh', 'Instagram', 'Do‘stim yubordi', 'Universitet / o‘quv markazi'], { optional: true, other: true });
+
+  const pStop = form.addPageBreakItem().setTitle('Rahmat!')
+    .setHelpText('Bu so‘rovnoma faqat 18 yoshdan kattalar uchun. Qiziqishingiz uchun katta rahmat!');
+  // Oddiy ketma-ketlikda bu yerga yetganlar (so'rovnomani tugatganlar) shu yerda yuboradi.
+  pStop.setGoToPage(FormApp.PageNavigationType.SUBMIT);
+
+  q1.setChoices([
+    q1.createChoice('18 dan kichik', pStop),
+    q1.createChoice('18–21', pStatus), q1.createChoice('22–25', pStatus),
+    q1.createChoice('26–30', pStatus), q1.createChoice('30 dan katta', pStatus)
+  ]);
+  q4.setChoices([q4.createChoice('Ha', pReason), q4.createChoice('Yo‘q', pSearch)]);
+  q7.setChoices([
+    q7.createChoice('Umuman sarflamadim', pChoice),
+    q7.createChoice('1 mln so‘mgacha', pCourse), q7.createChoice('1–3 mln so‘m', pCourse),
+    q7.createChoice('3–7 mln so‘m', pCourse), q7.createChoice('7 mln so‘mdan ko‘p', pCourse)
+  ]);
+
+  Logger.log('Forma (tahrirlash): ' + form.getEditUrl());
+  Logger.log('Forma (qatnashchilar uchun havola): ' + form.getPublishedUrl());
+}
+// QADAM-SURVEY OXIRI: bu qator eng oxirgi qator bo'lishi kerak.
