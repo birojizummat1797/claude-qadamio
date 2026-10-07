@@ -8,8 +8,9 @@
 
 // ===== SOZLAMALAR (faqat shu yerni o'zgartiring) =====
 // CustDev qoidasi: faraziy savollar ("to'lardingizmi?", "tayyormisiz?") ishonchsiz — o'tgan xulq so'raladi.
-// 11-savol (narx): 'remove' — yo'q (Claude tavsiyasi; real to'lov 7-savolda bor); 'research' — va'dasiz faraziy savol. Yakuniy qaror: Founder.
-const PRICE_QUESTION = 'remove';
+// 11-savol (narx): Founder CustDev maqsadi №2 — "to'lay oladimi / to'lashni xohlaydimi" (2026-10-07) -> 'research'.
+// Real to'lash dalili 5-savol ("Pullik konsultatsiya oldim") va 7-savolda (kurslarga sarflangan pul) ham bor. 'remove' — savolsiz.
+const PRICE_QUESTION = 'research';
 // O'tgan qaror haqida 2 savol (qaror nimaga asoslangan va natijasi): true — qo'shiladi, false — yo'q.
 const NEW_QUESTIONS = true;
 // Bonus e'loni (kirish qismida). Bonus sahifasi tayyor bo'lgandan keyingina BONUS_LINK ni to'ldiring.

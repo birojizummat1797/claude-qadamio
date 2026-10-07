@@ -55,3 +55,8 @@ Tur: **mijozni o‘rganish (customer discovery)** so‘rovnomasi — diagnostika
 ## 6. Ochiq savollar
 - Forma allaqachon tarqatilganmi va javoblar bormi? Bo‘lsa: 18 dan kichiklarning kontaktlari o‘chiriladi; 11-savolga "Ha, yozilaman" deganlarga halol javob kerak (xizmat hali yo‘q).
 - Natijalar (CSV) tahlil uchun kerak — bu bozor dalili (customer evidence).
+
+## Founder qarori (2026-10-07): CustDev maqsadlari
+1. Mijozga bizning loyiha (umuman shunday mahsulot) kerakmi?
+2. Mijoz buning uchun to‘lay oladimi va to‘lashni xohlaydimi?
+Savollar asosan yaxshi deb topildi; tuzatishlar kiritildi. 2-maqsad uchun narx savoli **tadqiqot ko‘rinishida qoldirildi** (`PRICE_QUESTION = 'research'`), real to‘lov dalili 5- va 7-savollarda.
