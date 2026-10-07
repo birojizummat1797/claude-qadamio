@@ -13,7 +13,7 @@ Asos: `docs/reviews/2026-10-07-pm-pilot-proposal-review.md` (2-bo‘lim: hozirgi
 | parallel | CustDev suhbatlari + va’da qilingan bepul qisqa test; soliq: faoliyat turi tekshiruvi | Founder |
 | 1 | Pilot 1 (Google Forms) javoblari tahlili → qisqa testni tuzatish | Founder |
 | 2 | 8 katalogning amaliy topshiriqlari va "O‘rgan va bajar" qismi (golden sample formati), 2–3 katalogdan partiyalarda | Founder, har partiya |
-| 3 | 20 ta yangi yo‘l xaritasi, faktlari tekshirilgan, partiyalarda | Founder, har partiya |
+| 3 | 21 ta yangi yo‘l xaritasi (avval "20" deb xato yozilgan; 9×25 da roadmap’i borlar 4 ta), faktlari tekshirilgan | Founder |
 | 4 | Kodga o‘tkazish (taksonomiya, DB, Mini App, chegara kalibrlash, testlar) — PR | Founder |
 | 5 | Ichki sinov → 20 kishilik bepul pilot → legal hal bo‘lgach cohort 2 | Founder |
 
