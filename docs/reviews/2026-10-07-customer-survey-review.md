@@ -60,3 +60,7 @@ Tur: **mijozni o‘rganish (customer discovery)** so‘rovnomasi — diagnostika
 1. Mijozga bizning loyiha (umuman shunday mahsulot) kerakmi?
 2. Mijoz buning uchun to‘lay oladimi va to‘lashni xohlaydimi?
 Savollar asosan yaxshi deb topildi; tuzatishlar kiritildi. 2-maqsad uchun narx savoli **tadqiqot ko‘rinishida qoldirildi** (`PRICE_QUESTION = 'research'`), real to‘lov dalili 5- va 7-savollarda.
+
+## Founder qarori (2026-10-07): bonus va kanal
+- Variant A: bonus Telegraph’da, **shartsiz**; oxirida @qadamio kanaliga muloyim taklif (alohida "CustDev bonus" taklif havolasi bilan — qo‘shilganlar soni o‘lchanadi). Bonusni kanalga obunaga bog‘lash (Variant B) — yo‘q.
+- Kanal hozir 2 postli; so‘rovnomadan oldin 3–5 foydali post joylanadi (qoralama: `docs/pilot/2026-10-channel-posts-draft.md`).
