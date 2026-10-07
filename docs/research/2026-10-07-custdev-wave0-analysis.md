@@ -9,7 +9,7 @@ Shaxsiy ma’lumot (username, telefon, ism) bu hujjatga **kiritilmagan** — faq
 |---|---|
 | Jami qatorlar | 17 |
 | "18 dan kichik" → darhol to‘xtagan (to‘g‘ri ishlagan) | 1 |
-| "30 dan katta" → boshqa javobsiz (3 tasi 5 daqiqa ichida, 2026-10-07 08:51–08:56) | 3 |
+| "30 dan katta" → segmentdan tashqari, to‘xtatilgan (2026-10-07 08:51–08:56) | 3 |
 | To‘liq javoblar | **13** |
 | Ulardan bir xil kontakt qoldirgan 2 qator (ehtimol bitta odam) | 2 → **12 noyob** |
 
@@ -63,7 +63,7 @@ Bu 3 kishi asosidagi taxmin. Suhbatlarda tekshirilishi kerak.
 ## 6. Ma’lumot sifati
 - 18 dan kichik qatnashchi darhol to‘xtatilgan — tuzatish ishlagan.
 - 7-savolda "Umuman sarflamadim" deganlarda 7b bo‘sh — shart ishlagan.
-- "30 dan katta" deganlar boshqa savolga o‘tmagan. Bu **forma 30+ ni ataylab chiqaradimi yoki sinov qatorlarimi — noma’lum.** Agar ataylab bo‘lsa, bu Founder qarori bo‘lishi kerak: 30+ da pul to‘lay oladigan guruh bo‘lishi mumkin.
+- "30 dan katta" deganlar to‘xtatilgan — bu **ataylab qilingan segment tanlovi** (Founder va sherik: 18–30, Founder tasdiqladi 2026-10-07). Natija: 3 kishi qatnasha olmadi, 30+ da muammo bor-yo‘qligi haqida dalil yo‘q. Taklif: keyingi formada 30+ ni to‘xtatmasdan belgilash va alohida tahlil qilish (Founder qarori). 18 dan kichiklarni to‘xtatish — qonun talabi, o‘zgarmaydi.
 - Ikki qator, ehtimol, bitta odamdan va o‘zaro zid (1-bo‘lim).
 - 9 ta qatorda kontakt bor (8 ta noyob). Suhbat vaqti yozilgan noyob qatorlar — 5 ta.
 
