@@ -7,17 +7,17 @@ Aniq Founder qarori: 1-bosqich narxi — 119 000 so‘m (`docs/decisions/2026-10
 ## 1. Qaror jadvali
 | Masala | PM tavsiyasi | Claude tavsiyasi | Founder qarori |
 |---|---|---|---|
-| 1-bosqich tarkibi | A: chuqur tahlil + individual natija + keyingi qadam yo‘nalishi | Roziman (ikki mahsulot aralashmaydi). Lekin 2-bo‘limdagi cheklovni hal qilish kerak | ? |
-| 1:1 suhbat | Mahsulotga kirmaydi; ixtiyoriy feedback | Roziman | ? |
-| N | 20 | Roziman | ? |
-| Tarkib | ~12 earlyvangelist + ~8 turli holat | Roziman (Claude taklifi bilan bir xil) | ? |
-| Yosh | 18+ qat’iy | Roziman | ? |
-| Narxni aytish | Ha, faktning o‘zi, manipulyatsiyasiz | Roziman | ? |
-| Pilot mezonlari | ≥15/20 oxirigacha; ≥12/20 foyda; ≥10/20 xarid niyati (yordamchi) | Roziman; o‘lchov savollari oldindan yozilsin (3-bo‘lim) | ? |
-| 2-cohort WTP | 20 qualified offer → ≥4 real to‘lov | Roziman; "qualified offer" ta’rifi va muddat oldindan yozilsin | ? |
-| Kuchli signal | ≥6/20 | Roziman | ? |
-| 0–1/20 | Qayta tekshirish | Roziman | ? |
-| 2–3/20 | Qo‘shimcha validatsiya | Roziman | ? |
+| 1-bosqich tarkibi | A: chuqur tahlil + individual natija + keyingi qadam yo‘nalishi | Roziman (ikki mahsulot aralashmaydi). Lekin 2-bo‘limdagi cheklovni hal qilish kerak | ✅ ha |
+| 1:1 suhbat | Mahsulotga kirmaydi; ixtiyoriy feedback | Roziman | ✅ ha |
+| N | 20 | Roziman | ✅ ha |
+| Tarkib | ~12 earlyvangelist + ~8 turli holat | Roziman (Claude taklifi bilan bir xil) | ✅ ha |
+| Yosh | 18+ qat’iy | Roziman | ✅ ha |
+| Narxni aytish | Ha, faktning o‘zi, manipulyatsiyasiz | Roziman | ✅ ha |
+| Pilot mezonlari | ≥15/20 oxirigacha; ≥12/20 foyda; ≥10/20 xarid niyati (yordamchi) | Roziman; o‘lchov savollari oldindan yozilsin (3-bo‘lim) | ✅ ha |
+| 2-cohort WTP | 20 qualified offer → ≥4 real to‘lov | Roziman; "qualified offer" ta’rifi va muddat oldindan yozilsin | ✅ ha |
+| Kuchli signal | ≥6/20 | Roziman | ✅ ha |
+| 0–1/20 | Qayta tekshirish | Roziman | ✅ ha |
+| 2–3/20 | Qo‘shimcha validatsiya | Roziman | ✅ ha |
 
 ## 2. Muhim topilma: hozirgi chuqur tahlil faqat 5 kasbni tavsiya qila oladi
 - Production kodida (`qadam-loyiha-deepseek` main, `engine/ranking.py`) roadmap’i yo‘q kasblar tavsiyadan chiqariladi (`no_roadmap`).
@@ -51,3 +51,9 @@ Claude tavsiyasi: **P1** — hozirgi mahsulot halol cheklovi bilan sinaladi, P2 
 - To‘lovni kim qabul qiladi (YaTT/MChJ, soliq) — Founder.
 - Kodda narx 39 000 → 119 000 ga to‘lov yoqilganda alohida tasdiq bilan o‘zgartiriladi.
 - Pilot ishtirokchilari manbasi: CustDev kontaktlari (faqat rozilik bergan maqsadda), kanal e’loni, saralash formasi.
+
+## Founder javobi (2026-10-07)
+- Jadval: **ha** → `docs/decisions/2026-10-07-pilot-cohort-founder-decisions.md`.
+- P1/P2/P3: o‘ylab ko‘riladi (Claude fikri so‘raldi).
+- Pul qaytarish: savol tushuntirildi, qaror kutilmoqda.
+- Huquqiy shakl: Founder o‘zini o‘zi band qilgan shaxs sifatida ro‘yxatdan o‘tgan; to‘liq hal qilinmagan.
