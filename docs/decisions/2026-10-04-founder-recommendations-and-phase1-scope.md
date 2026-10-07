@@ -79,3 +79,7 @@ Hozirgi tizim kasblarni faqat signal mosligi bo‘yicha taqqoslaydi; sohalar ora
 3. Read-only audit: hozirgi sessiyalarda har bir nomzod chegara qiymati nechta tavsiya beradi.
 4. Asoschi chegara qiymatini tasdiqlaydi (PM tavsiyasi bilan) → kod.
 5. Q3 taksonomiya kengaytmasi va Q4 — keyingi bosqichlar.
+
+## Amalga oshirish (2026-10-07)
+- Founder PR #18 ni tasdiqladi ("ha"). `qadam-loyiha-deepseek` `main`ga merge qilindi: `56f7efa`. Testlar: 464 passed.
+- Deploy: backend (Render, qo‘lda) va Mini App — Founder tomonidan; keyin telefonda tekshiruv (qisqa test → halol xabar; chuqur tahlil → kamida 1 tavsiya).
