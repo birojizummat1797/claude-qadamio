@@ -15,6 +15,8 @@ const PRICE_QUESTION = 'research';
 const NEW_QUESTIONS = true;
 // Bonus e'loni (kirish qismida). Bonus sahifasi tayyor bo'lgandan keyingina BONUS_LINK ni to'ldiring.
 const BONUS_TEXT = '5–7 daqiqa ajrating — yakunda siz uchun foydali bonus bor: kasb tanlashdan oldin o‘zingizga berishingiz kerak bo‘lgan 10 savol va O‘zbekistondagi raqamli kasblar bozori bo‘yicha qisqa, manbali sharh. Kontakt kerak emas.';
+// Yakunda (Rahmat sahifasida) havola oldidan chiqadigan matn.
+const BONUS_END_TEXT = '🎁 Va’da qilingan bonusingiz tayyor — 3 daqiqada o‘qiladi. Ochish uchun havolani bosing:';
 // Bonus havolasi (masalan, qo'llanma PDF). Bo'sh qolsa ko'rsatilmaydi.
 const BONUS_LINK = '';
 // ======================================================
@@ -55,7 +57,7 @@ function createQadamSurvey() {
   form.setAllowResponseEdits(false);
   form.setProgressBar(true);
   let thanks = 'Rahmat! 🙏 Javoblaringiz biz uchun juda qimmatli.';
-  if (BONUS_TEXT && BONUS_LINK) thanks += NL + NL + '🎁 Bonusingiz: ' + BONUS_LINK;
+  if (BONUS_TEXT && BONUS_LINK) thanks += NL + NL + BONUS_END_TEXT + NL + BONUS_LINK;
   form.setConfirmationMessage(thanks);
 
   // 1-sahifa
