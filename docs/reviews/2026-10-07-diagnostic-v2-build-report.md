@@ -57,3 +57,8 @@ Telegram ichida sinash uchun branchni deploy qilish kerak. **Bu sening tasdig‘
 - **Har savolga ketgan vaqt hozircha faqat saqlanadi**, natijaga ta’sir qilmaydi. Chegarani pilotdan keyin belgilaymiz.
 - **Ba’zi savollar "ishonchlilik xavfi" bilan belgilangan** (golden sample fayllarida). Pilotda kasblarni ajratmasa, o‘chiriladi.
 - **9×25 faqat raqamli kasblar.** Boshqa sohaga mos odam halol "aniq emas" javobini oladi.
+
+## 6. Founder tasdig‘i va merge (2026-10-08)
+- Founder: deploy uchun "ha".
+- PR: https://github.com/birojizummat1797/qadam-loyiha-deepseek/pull/19 — `main`ga merge qilindi (`e9a320f`). Vercel preview build — muvaffaqiyatli.
+- Qolgan: Render’da backend’ni qo‘lda deploy qilish (Founder), keyin botda `/v2test`.
